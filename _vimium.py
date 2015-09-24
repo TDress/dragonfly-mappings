@@ -13,36 +13,34 @@ window_mapping = {
     'leaf new': Key("c-t"),
     'leaf reopen': Key("cs-t"),
     'leaf close': Key("c-w"),
-    'leaf back': Key("s-l"),
-    'leaf forward': Key("s-r"),
     'leaf fresh': Key("c-r"),
     'leaf link': Key("f"),
     'leaf link new': Key("s-f"),
+    'leaf bar': Key("c-l"),
 
     #  Moving around
-    'more': Key("j"),
-    'less': Key("k"),
-    'more': Key("j:10"),
-    'less': Key("k:10"),
-    'top': Key("g, g"),
-    'bottom hobble': Key("s-g"),
-    'back': Key("s-h"),
-    'forward': Key("s-l"),
-
+    'slump <n>': Key("j:(n)"),
+    'boost <n>': Key("k:(n)"),
+    'slump more': Key("c-d"),
+    'slump most': Key("pgdown"),
+    'boost more':  Key("c-u"),
+    'boost most':  Key("pgup"),
+    'leaf top': Key("g, g"),
+    'leaf bottom': Key("s-g"),
+    'bump <n>': Key("l:(n)"),
+    'tug <n>': Key("h:(n)"),
+    'leaf past': Key("a-left"),
+    'leaf future': Key("a-right"),
+    
     #  Searching
-    'find <text>': Key("escape, slash") + Text("%(text)s") + Key("enter"),
-    'next': Key("n"),
-    'prev|previous': Key("N"),
-}
+    'braille <text>': Key("escape, slash") + Text("%(text)s") + Key("enter"),
+    'Vance': Key("n"),
+    'rev': Key("N"),
 
-gmail_mapping = {
-    'open': Key("o"),
-    'inbox': Key("g, i"),
-    '[go to] label <text>': Key("g, l") + Text("%(text)s") + Key("enter"),
-    'trash': Key("hash"),
-    'archive': Key("e"),
-    '(earl|early|earlier)': Key("j"),
-    '(late|later)': Key("k"),
+    #  page actions
+    'show page atoms': Key("g,s"),
+    'etch': Key("i"),
+    'etch <text>': Key("i") + Text("%(text)")
 }
 
 
@@ -52,12 +50,6 @@ class Mapping(MappingRule):
         IntegerRef('n', 1, 99),
         Dictation('text'),
     ]
-
-class MappingMail(MappingRule):
-     mapping = gmail_mapping
-     extras = [
-        Dictation('text')
-     ]
 
 
 grammar.add_rule(Mapping())

@@ -133,62 +133,47 @@ git_rule = MappingRule(
 	name = "git",
 	mapping = {
 		# commands for git version control
-		"git add": Text("git add "),
-		"git add <text>": Text("git add %(text)s"),
-		"git remove": Text("git rm "),
-		"git remove <text>": Text("git rm %(text)s"),
-		"git move": Text("git move "),
-		"git move <text>": Text("git mv %(text)s"),
-		"git status": Text("git status\n"),
-		"git patch": Text("git add -p\n"),
+		"annals add": Text("git add "),
+		"annals remove": Text("git rm "),
+		"annals move": Text("git move "),
+		"annals status": Text("git status\n"),
+		"annals patch": Text("git add -p\n"),
 
-		"git branch": Text("git branch "),
+		"annals branch": Text("git branch "),
 
-		"git merge": Text("git merge "),
-		"git merge not fast forward": Text("git merge --no-ff "),
+		"annals merge": Text("git merge "),
+		"annals merge not fast forward": Text("git merge --no-ff "),
 
-		"git log": Text("git log\n"),
-		"git log [color] words": Text("git log -p --color-words\n"),
-		"git log minus (P.|patch)": Text("git log -p\n"),
-		"git log minus stat": Text("git log --stat\n"),
+		"annals log": Text("git log\n"),
+		"annals log [color] words": Text("git log -p --color-words\n"),
+		"annals log minus (P.|patch)": Text("git log -p\n"),
+		"annals log minus stat": Text("git log --stat\n"),
 
-		"git diff": Text("git diff\n"),
-		"git diff [color] words": Text("git diff --color-words\n"),
-		"git diff cache": Text("git diff --cached\n"),
-		"git diff [color] words cached": Text("git diff --color-words --cached\n"),
+		"annals diff": Text("git diff\n"),
+		"annals diff [color] words": Text("git diff --color-words\n"),
+		"annals diff (cache | cash)": Text("git diff --color-words --cached\n"),
 
+		"annals commit message": Text("git commit -m ''") + Key("left"),
+		"annals commit add message": Text("git commit -a -m ''") + Key("left"),
+		"annals commit": Text("git commit "),
+		"annals commit --amend": Text("git commit --amend\n"),
 
-		"git submodule init": Text("git submodule init "),
-		"git submodule update": Text("git submodule update "),
+		"annals (checkout | check out)": Text("git checkout "),
+		"annals (checkout | check out) new": Text("git checkout -b "),
+		"annals (checkout | check out) new <text>": Text("git checkout -b  %(text)s"),
+		"annals (checkout | check out) <text>": Text("git checkout %(text)s"),
+		"annals (checkout | check out) minus F.": Text("git checkout -f\n"),
 
-		"git kay": Text("gitk\n"),
-		"git kay all": Text("gitk --all\n"),
+		"annals stash": Text("git stash\n"),
 
-		"git commit message": Text("git commit -m ''") + Key("left"),
-		"git commit": Text("git commit "),
-		"git commit --amend": Text("git commit --amend\n"),
+		"annals pull": Text("git pull "),
+		"annals push": Text("git push "),
 
-		"git check out": Text("git checkout "),
-		"git check out <text>": Text("git checkout %(text)s"),
-		"git check out minus F.": Text("git checkout -f\n"),
+		"annals help": Text("git help"),
+		"annals help push": Text("git help push\n"),
 
-		"git stash": Text("git stash\n"),
-
-		"git pull": Text("git pull\n"),
-
-		"git push": Text("git push\n"),
-		"git push drop box": Text("git push dropbox\n"),
-		"git push origin": Text("git push origin\n"),
-		"git push tomato": Text("git push tomate\n"),
-		"git push all": Text("git push --all\n"),
-		"git push github": Text("git push github\n"),
-		"git help": Text("git help"),
-		"git help push": Text("git help push\n"),
-
-		"git remote add": Text("git remote add"),
-		"yes": Key("y,enter"),
-		"no": Key("n,enter"),
-		"quit": Key("q,enter"),
+		"annals remote add": Text("git remote add "),
+		
 		},
 	extras = [
 		Dictation("text"),
