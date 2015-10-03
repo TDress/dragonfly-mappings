@@ -5,6 +5,7 @@ from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
 
 grammar = Grammar("vim")
 
+
 navigation_rule = MappingRule(
 	name = "navigation",
 	mapping = {
@@ -18,6 +19,27 @@ navigation_rule = MappingRule(
 		'[<n>] dub': Key("w:%(n)d"), 
 		'[<n>] (Hynde | hind)': Key("b:%(n)d"),
 		'[<n>] nib': Key("e:%(n)d"), 
+	},
+	extras = [
+		Dictation("text"),
+		IntegerRef("n", 1, 20)
+	],
+	defaults = {
+		"n": 1
+	}
+)
+
+buffer_rule = MappingRule(
+	name = "buffer",
+	mapping = {
+            'vim buffer next': Text(":bn") + Key("enter"), 
+            'vim buffer previous': Text(":bp") + Key("enter"),
+            'vim buffer <n>': Text(":b") + Key("%(n)d,enter"),
+            'vim save': Text(":w") +  Key("enter"),
+            'vim save quit': Text(":wq") +  Key("enter"),
+            'vim quit': Text(":q")+    Key("enter"),
+            'vim quit bang': Key("colon,q, exclamation, enter"),
+            'vim save quit bang':Key("colon,w,q, exclamation, enter"),
 	},
 	extras = [
 		Dictation("text"),
