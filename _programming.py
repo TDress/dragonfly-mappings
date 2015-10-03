@@ -4,7 +4,7 @@ grammar = Grammar('programming')
 
 class SymbolsRule(MappingRule):
     mapping = {
-	//comparison operators
+	# comparison operators
 	  '(Stowe | stow)': Key("space, equal, space"),
 	  'tick single': Key("apostrophe"),
 	  'tick double': Key("dquote"),
@@ -17,7 +17,7 @@ class SymbolsRule(MappingRule):
 	  'crypt': Key("question"),
 	  'crypt optic': Key("question,colon"),
 	  
-	// mappings, brackets and miscellaneous
+	# mappings, brackets and miscellaneous
 	  'bang': Key("exclamation"),
           'optic': Key("colon"),
           'optic space': Key("colon, space"),
@@ -32,7 +32,7 @@ class SymbolsRule(MappingRule):
 	  'crimp': Text("{"),
 	  'crimp end': Text("}"),
 
-	// arithmetic
+	# arithmetic
 	  'Christ space': Text(" + "),
 	  'Christ': Text("+"),
 	  'shorn space': Text(" - "),

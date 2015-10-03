@@ -173,7 +173,7 @@ git_rule = MappingRule(
 		"annals help push": Text("git help push\n"),
 
 		"annals remote add": Text("git remote add "),
-		
+		"annals remote version": Text("git remote -v") + Key("enter")		
 		},
 	extras = [
 		Dictation("text"),
