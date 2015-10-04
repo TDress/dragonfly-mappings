@@ -21,23 +21,23 @@ window_rule = MappingRule(
     		'leaf bar': Key("c-l"),
 
 	    	#  Moving around
-    		'slump [<n>]': Key("j:%(n)d"),
-    		'boost [<n>]': Key("k:%(n)d"),
+    		'[<n>] slump': Key("escape, j:%(n)d"),
+    		'[<n>] boost': Key("escape, k:%(n)d"),
     		'slump more': Key("c-d"),
     		'slump most': Key("pgdown"),
     		'boost more':  Key("c-u"),
     		'boost most':  Key("pgup"),
-    		'leaf top': Key("g, g"),
-    		'leaf bottom': Key("s-g"),
-    		'bump <n>': Key("l:%(n)d"),
-    		'tug <n>': Key("h:%(n)d"),
+    		'leaf top': Key("escape, g, g"),
+    		'leaf bottom': Key("escape, s-g"),
+    		'[<n>] bump': Key("escape, l:%(n)d"),
+    		'[<n>] tug': Key("escape, h:%(n)d"),
     		'leaf past': Key("a-left"),
     		'leaf future': Key("a-right"),
     
     		#  Searching
     		'braille <text>': Key("escape, slash") + Text("%(text)s") + Key("enter"),
-    		'Vance': Key("n"),
-    		'rev': Key("N"),
+    		'Vance': Key("escape, n"),
+    		'rev': Key("escape, N"),
 
 		#  page actions
     		'show page atoms': Key("g,s"),
