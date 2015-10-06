@@ -68,8 +68,12 @@ manipulation_rule = MappingRule(
    		'swap more': Key("s-r"),
 	},
 	extras = [
-		Dictation("text")
-	]
+		Dictation("text"),
+                IntegerRef("n", 1, 20)
+	],
+        defaults = {
+                "n":  1
+        }
 )
  
 grammar.add_rule(navigation_rule)
