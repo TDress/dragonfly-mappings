@@ -11,7 +11,7 @@ navigation_rule = MappingRule(
 	mapping = {
    		'(Buck | buck)': Key("dollar"),
 	   	'zilch': Key("0"),
-		'cleave': Key("o"),
+		'(cleave | Cleve)': Key("escape,o"),
 		'cleave up': Key("O"),
 		'(Lance | lance)': Key("a"),
 		'(Lance | lance) end': Key("A"),
@@ -60,7 +60,7 @@ manipulation_rule = MappingRule(
                 'lop nib [<n>]': Key("d,%(n)d,e"),
 		'lop line': Key("d,d"), 
 		'oust': Key("c"), 
-                'oust <text>': Key("c") +  Function(vim_movement), 
+                #'oust <text>': Key("c") +  Function(vim_movement), 
                 'oust': Key("c"), 
    		'sub': Key("s"),
    		'sub line': Key("s-s"),
