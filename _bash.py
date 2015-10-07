@@ -114,8 +114,6 @@ bash_rule = MappingRule(
 		"A. P. T. file search": Text("apt-file search "),
 
 		"vim": Text("vim "),
-		"vim <text>": Text("vim %(text)s"),
-
 
 		"W. get ": Text("wget "),
 		},
