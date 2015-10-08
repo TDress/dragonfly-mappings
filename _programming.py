@@ -34,13 +34,19 @@ symbols_rule = MappingRule(
             'raft end': Text("]"),
             'crimp': Text("{"),
             'crimp end': Text("}"),
+            'dot space': Text(" . "),
+            'dot': Text("."),
 
             # arithmetic
             'Christ space': Text(" + "),
             'Christ': Text("+"),
             'shorn space': Text(" - "),
             'shorn': Text("-"),
-
+            'mod space':  Key("space,percent,space"), 
+            'mod':  Key("percent"),
+            'slug space':  Key("space,asterisk,space"),
+            'slug':  Key("asterisk"),
+            'hash': Key("hash")
     }
 )
 

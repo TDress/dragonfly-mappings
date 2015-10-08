@@ -13,9 +13,13 @@ keyVocabulary = {
 # combination functions for vim  commands
 # each function describes combinations for a particular command.
 
+
+
 def cleave_combo(text):
-    keyArgumentString = ""
+    keyArgumentString =  ""
     words = str(text).split(" ")
+    print words
+    print text
     counter = 0
     for word in words:
         if word in keyVocabulary.keys() and counter == 0: 
@@ -43,17 +47,23 @@ navigation_rule = MappingRule(
 	mapping = {
    		'(Buck | buck)': Key("dollar"),
 	  	'zilch': Key("0"),
-		'(Lance | lance)': Key("escape,a"),
+                '[<n>] page up': Key("pgup:%(n)d"),
+                '[<n>] page down': Key("pgdown:%(n)d"),
+                '[<n>] code future':  Key("c-i"),
+                '[<n>] code past':  Key("c-o"),
+                'code help search':  Text(":helpgrep "),
+                'code list errors': Text(":clist") +  Key("enter"),
+                '(Lance | lance)': Key("escape,a"),
 		'(Lance | lance) end': Key("escape,A"),
                 'scape': Key("escape"),
 		'etch start': Key("escape,I"),
-		'[<n>] dub': Key("w:%(n)d"), 
-		'[<n>] (Hynde | hind)': Key("b:%(n)d"),
-		'[<n>] nib': Key("e:%(n)d"), 
+		'[<n>] dub': Key("%(n)d,w"), 
+		'[<n>] (Hynde | hind)': Key("%(n)d,b"),
+		'[<n>] nib': Key("%(n)d,e"), 
 	},
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 1, 20)
+		IntegerRef("n", 1, 9)
 	],
 	defaults = {
 		"n": 1
@@ -63,14 +73,15 @@ navigation_rule = MappingRule(
 buffer_rule = MappingRule(
 	name = "buffer",
 	mapping = {
-            'vim buffer next':  Key("escape") + Text(":bn") + Key("enter"), 
-            'vim buffer previous': Key("escape") + Text(":bp") + Key("enter"),
-            'vim buffer <n>': Key("escape") + Text(":b") + Key("%(n)d,enter"),
-            'vim save': Key("escape") + Text(":w") +  Key("enter"),
-            'vim save quit': Key("escape") + Text(":wq") +  Key("enter"),
-            'vim quit': Key("escape") + Text(":q")+    Key("enter"),
-            'vim quit bang': Key("escape") + Key("colon,q, exclamation, enter"),
-            'vim save quit bang': Key("escape") + Key("colon,w,q, exclamation, enter"),
+            'code buffer next':  Key("escape") + Text(":bn") + Key("enter"), 
+            'code buffer previous': Key("escape") + Text(":bp") + Key("enter"),
+            'code buffer <n>': Key("escape") + Text(":b") + Key("%(n)d,enter"),
+            'code save': Key("escape") + Text(":w") +  Key("enter"),
+            'code save quit': Key("escape") + Text(":wq") +  Key("enter"),
+            'code quit': Key("escape") + Text(":q")+    Key("enter"),
+            'code quit bang': Key("escape") + Key("colon,q, exclamation, enter"),
+            'code save quit bang': Key("escape") + Key("colon,w,q, exclamation, enter"),
+            'code edit':Key("escape") +  Key("colon,e,space")
 	},
 	extras = [
 		Dictation("text"),
@@ -88,6 +99,8 @@ manipulation_rule = MappingRule(
 		'cull block': Key("c-v"), 
 		'(cleave | Cleve) up': Key("escape,O") + Function(cleave_combo),
                 '(Cleve | cleave)': Key("escape,o") + Function(cleave_combo),
+                '[<n>] jump right': Key("rangle:2"),
+                '[<n>] jump left': Key("langle:2"),
                 '[<n>] shoot': Key("enter:%(n)d"),
 		'lop': Key("d"),
                 'lop dub [<n>]':  Key("d,%(n)d,w"),
@@ -97,14 +110,17 @@ manipulation_rule = MappingRule(
                 #'oust <text>': Key("c") +  Function(vim_movement), 
                 'oust': Key("c"), 
                 'paste': Key("p"),
-                'paste front': Key("P"),
-		'cleave up': Key("escape,O"),
+                'paste bump': Key("P"),
+                'redo': Key("cs-r"),
    		'sub': Key("s"),
    		'sub line': Key("s-s"),
    		'swap': Key("r"),
    		'swap more': Key("s-r"),
+                'top off': Key("cs-p"),
                 '[<n>] trim': Key("escape, x:%(n)d"),
-                '[<n>] trim back': Key("escape, X:%(n)d")
+                '[<n>] trim back': Key("escape, X:%(n)d"),
+                'undo': Key("escape,u"),
+                'yank': Key("y"),
 	},
 	extras = [
 		Dictation("text"),

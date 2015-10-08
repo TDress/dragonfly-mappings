@@ -10,15 +10,18 @@ general_rule = MappingRule(
 	name = "general",
 	mapping = {
 		"cancel": Key("c-c"),
-		"kay": Key("enter"),
-		"left": Key("left"),
-		"right": Key("right"),
-
+                "[<n>] up": Key("up:%(n)d"),
+                "[<n>] down": Key("down:%(n)d"),
 		"say <text>": Text("%(text)s"),
+                "[<n>] tab":Key("tab:%(n)d"),
 		},
 	extras = [
 		Dictation("text"),
+                 IntegerRef('n',1, 99)
 		],
+        defaults = {
+            "n":1
+        }
 )
 
 
@@ -59,9 +62,10 @@ bash_rule = MappingRule(
 		"secure copy": Text("scp"),
 		"secure copy <text>": Text("scp %(text)"),
 
-		"change mode": Text("chmod "),
+                "perms mod": Text("chmod "),
+                #"perms mod": Text("chmod "),
 
-		"grep <text>": Text("grep %(text)s"),
+		"gripe <text>": Text("grep %(text)s"),
 
 		"cat": Text("cat "),
 		"cat <text>": Text("cat %(text)s"),
@@ -73,38 +77,33 @@ bash_rule = MappingRule(
 		"list minus A.": Text("ls -a\n"),
 		"list minus one": Text("ls -1 "),
 
-		"pipe": Text(" | "),
+		"pipe space": Text(" | "),
+		"pipe": Text("|"),
 
 		"D. P. K. G. ": Text("dpkg "),
 		"D. P. K. G. minus L.": Text("dpkg -l "),
 		"D. P. K. G. minus I.": Text("dpkg -i "),
 
-		"manual page": Text("man "),
+		"man": Text("man "),
 
 		"word count": Text("wc "),
 		"word count minus L.": Text("wc -l "),
 
-		"repeat previous argument": Key("a-dot"),
-		"up": Key("up"),
+		"bash previous argument": Key("a-dot"),
 
 		# cursor movement
-		"back": Key("a-b"),
-		"[<n>] back": Key("a-b:%(n)d"),
-		"[<n>] whiskey": Key("a-f:%(n)d"),
-		"dollar": Key("c-e"),
-		"hat": Key("c-a"),
+                "[<n>] left": Key("left:%(n)d"),
+                "[<n>] right": Key("right:%(n)d"),
 
-		"scratch": Key("c-w"),
-		"[<n>] scratch": Key("c-w:%(n)d"),
-		"paste": Key("c-y"),
+		"[<n>] left word": Key("a-b:%(n)d"),
+		"[<n>] right word": Key("a-f:%(n)d"),
+		"bash Buck": Key("c-e"),
 
-		"make": Text("make\n"),
-		"make clean": Text("make clean\n"),
-
-		"evince": Text("evince "),
-		"evince <text>": Text("evince %(text)s"),
-
-                "Python": Text("python "),
+		"[<n>] scratch last": Key("c-w:%(n)d"),
+		"[<n>] scratch next": Key("a-d:%(n)d"),
+                "scratch tail":Key("c-k"),
+                "scratch head":Key("c-u"),
+		"bash paste": Key("c-y"),
 
 		"aptitude search": Text("aptitude search "),
 		"pseudo-aptitude install": Text("sudo aptitude install "),
