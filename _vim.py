@@ -1,5 +1,5 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
-                       Key, Text)
+                       Key, Text, Function)
 
 # vocabulary mapping of single command words to key string representations.
 #  these are used in combination functions to retrieve key strokes.
