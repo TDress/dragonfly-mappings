@@ -73,15 +73,15 @@ navigation_rule = MappingRule(
 buffer_rule = MappingRule(
 	name = "buffer",
 	mapping = {
-            'code buffer next':  Key("escape") + Text(":bn") + Key("enter"), 
-            'code buffer previous': Key("escape") + Text(":bp") + Key("enter"),
-            'code buffer <n>': Key("escape") + Text(":b") + Key("%(n)d,enter"),
-            'code save': Key("escape") + Text(":w") +  Key("enter"),
-            'code save quit': Key("escape") + Text(":wq") +  Key("enter"),
-            'code quit': Key("escape") + Text(":q")+    Key("enter"),
-            'code quit bang': Key("escape") + Key("colon,q, exclamation, enter"),
-            'code save quit bang': Key("escape") + Key("colon,w,q, exclamation, enter"),
-            'code edit':Key("escape") +  Key("colon,e,space")
+            'code buffer next':  Key("escape,colon,b,n,enter"),
+            'code buffer previous': Key("escape,colon,b,p,enter"),
+            'code buffer <n>': Key("escape,colon,b,%(n)d,enter"),
+            'code save': Key("escape,colon,w,enter"),
+            'code save quit': Key("escape,colon,w,q,enter"),
+            'code quit': Key("escape,colon,q,enter"),
+            'code quit bang': Key("escape,colon,q,exclamation,enter"),
+            'code save quit bang': Key("escape,colon,w,q,exclamation,enter"),
+            'code edit': Key("escape,colon,e,space")
 	},
 	extras = [
 		Dictation("text"),
@@ -97,8 +97,8 @@ manipulation_rule = MappingRule(
 	mapping = {
 		'cull': Key("v"), 
 		'cull block': Key("c-v"), 
-		'(cleave | Cleve) up': Key("escape,O") + Function(cleave_combo),
-                '(Cleve | cleave)': Key("escape,o") + Function(cleave_combo),
+		'(cleave | Cleve) up <text>': Key("escape,O") + Function(cleave_combo),
+                '(Cleve | cleave) <text>': Key("escape,o") + Function(cleave_combo),
                 '[<n>] jump right': Key("rangle:2"),
                 '[<n>] jump left': Key("langle:2"),
                 '[<n>] shoot': Key("enter:%(n)d"),
@@ -110,7 +110,7 @@ manipulation_rule = MappingRule(
                 #'oust <text>': Key("c") +  Function(vim_movement), 
                 'oust': Key("c"), 
                 'paste': Key("p"),
-                'paste bump': Key("P"),
+                'paste front': Key("P"),
                 'redo': Key("cs-r"),
    		'sub': Key("s"),
    		'sub line': Key("s-s"),
