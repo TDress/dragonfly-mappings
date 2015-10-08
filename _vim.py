@@ -20,7 +20,7 @@ def cleave_combo(text):
     for word in words:
         if word in keyVocabulary.keys() and counter == 0: 
             keyArgumentString += keyVocabulary[word]
-        else if word in keyVocabulary.keys():
+        elif word in keyVocabulary.keys():
             keyArgumentString += "," + keyVocabulary[word]
         else:
             break

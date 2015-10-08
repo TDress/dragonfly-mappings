@@ -2,7 +2,8 @@ from dragonfly import Grammar, MappingRule, Text, Key
 
 grammar = Grammar('programming')
 
-class SymbolsRule(MappingRule):
+symbols_rule = MappingRule(
+    name = 'symbols',
     mapping = {
             # comparison operators
             '(Stowe | stow)': Key("equal"),
@@ -40,9 +41,10 @@ class SymbolsRule(MappingRule):
             'shorn space': Text(" - "),
             'shorn': Text("-"),
 
-            }
+    }
+)
 
-    grammar.add_rule(SymbolsRule())
+grammar.add_rule(symbols_rule)
 grammar.load()
 
 def unload():
