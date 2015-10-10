@@ -115,7 +115,18 @@ bash_rule = MappingRule(
 		"vim": Text("vim "),
 
 		"W. get ": Text("wget "),
-		},
+
+                # screen
+                "screen start": Text("screen") +  Key('enter'),
+                "screen new": Key('c-a,c'),
+                "screen next": Key('c-a,space'),
+                "screen before": Key('c-a,backspace'),
+                "screen list": Key('c-a,c-w'),
+                "screen last": Key('c-a,c-a'),
+                "screen <n>": Key('c-a,%(n)d'),
+                "screen kill": Key('c-a,k'),
+
+        },
 	extras = [
 		Dictation("text"),
 		IntegerRef("n", 1, 20)
@@ -165,6 +176,8 @@ git_rule = MappingRule(
 
 		"annals pull": Text("git pull "),
 		"annals push": Text("git push "),
+                "annals push origin master": Text("git push origin master"),
+                "annals push origin": Text("git push origin "),
 
 		"annals help": Text("git help"),
 		"annals help push": Text("git help push\n"),

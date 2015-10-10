@@ -1,35 +1,63 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text, Function)
 
-# vocabulary mapping of single command words to key string representations.
+# vocabulary mappings of single command words to key string representations.
 #  these are used in combination functions to retrieve key strokes.
 # the command words are not necessarily usable in isolation,
 # i.e. outside of combinations
-keyVocabulary = {
-        "paste": "escape,p",
+
+# vocabulary mappings for vim  normal mode
+nmodeVocabulary = {
+        "paste": "p",
         "indent": "equal,equal",
+        "dub": "w",
+        "nib": "e",
+        "slump": "j",
+        "boost": "k",
+        "leave top": "g,g",
+        "leaf bottom": "G",
 }
 
-# combination functions for vim  commands
-# each function describes combinations for a particular command.
+# vocabulary mappings for vim insert mode
+imodeVocabulary = {
+        "paste": "escape,p",
+        "indent": "escape,equal,equal",
+}
+
+# vocabulary mappings for vim visual mode
+vmodeVocabulary = {
+        "dub": "w",
+        "nib": "e",
+        "slump": "j",
+        "boost": "k",
+        "leave top": "g,g",
+        "leaf bottom": "G",
+} 
 
 
+# functions to determine the vim mode of a combination
 
-def cleave_combo(text):
-    keyArgumentString =  ""
-    words = str(text).split(" ")
-    print words
-    print text
-    counter = 0
-    for word in words:
-        if word in keyVocabulary.keys() and counter == 0: 
-            keyArgumentString += keyVocabulary[word]
-        elif word in keyVocabulary.keys():
-            keyArgumentString += "," + keyVocabulary[word]
-        else:
-            break
-        ++counter
-    Key(keyArgumentString).execute()
+
+# executes keystroke combinations in insert mode
+#   @recursive
+#   loops over all words in text and executes
+#   any commands that exist in the insert mode vocabulary.
+#   Recursive calls are made for any text after the command.
+def imode_combo(text):
+    if len(text) < 1:
+        return
+    words = text.split(" ")
+    for i in range(words.length-1,0,-1):
+        command = ' '.join(words[0:i])
+        if command in imodeVocabulary.keys():
+            Key(imodeVocabulary[command]).execute()
+            if len(words)-1 >= i+1:
+                remainder = words[i+1:len(words)-1]
+                remainder_text = ' '.join(remainder)
+                return imode_combo(remainder_text)
+            else:
+                return
+    Text(text).execute()
 
 
 
@@ -97,8 +125,8 @@ manipulation_rule = MappingRule(
 	mapping = {
 		'cull': Key("v"), 
 		'cull block': Key("c-v"), 
-		'(cleave | Cleve) up <text>': Key("escape,O") + Function(cleave_combo),
-                '(Cleve | cleave) <text>': Key("escape,o") + Function(cleave_combo),
+		'(cleave | Cleve) up <text>': Key("escape,O") + Function(imode_combo),
+                '(Cleve | cleave) <text>': Key("escape,o") + Function(imode_combo),
                 '[<n>] jump right': Key("rangle:2"),
                 '[<n>] jump left': Key("langle:2"),
                 '[<n>] shoot': Key("enter:%(n)d"),

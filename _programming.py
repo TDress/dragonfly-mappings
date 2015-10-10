@@ -9,8 +9,8 @@ symbols_rule = MappingRule(
             '(Stowe | stow)': Key("equal"),
             '(Stowe | stow) space': Key("space, equal, space"),
 
-            'tick single': Key("apostrophe"),
-            'tick double': Key("dquote"),
+            'tick': Key("apostrophe"),
+            'tick twice': Key("dquote"),
             '(way | weigh) (stow | Stowe)': Key("space, equal, equal, space"),
             'way (stow | Stowe) strict': Key("space, equal, equal, equal, space"),
             'way bang': Key("space, exclamation, equal, space"),
@@ -36,6 +36,12 @@ symbols_rule = MappingRule(
             'crimp end': Text("}"),
             'dot space': Text(" . "),
             'dot': Text("."),
+
+            # logical operators
+            'pipe':Text("|"),
+            'pipe space':  Text(" | "),
+            'pipe twice': Text("||"),
+            'pipe twice space': Text(" || "),
 
             # arithmetic
             'Christ space': Text(" + "),
