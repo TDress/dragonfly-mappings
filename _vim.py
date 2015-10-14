@@ -47,17 +47,17 @@ def imode_combo(text):
     if len(text) < 1:
         return
     words = text.split(" ")
-    for i in range(words.length-1,0,-1):
+    for i in range(len(words)-1,0,-1):
         command = ' '.join(words[0:i])
         if command in imodeVocabulary.keys():
             Key(imodeVocabulary[command]).execute()
-            if len(words)-1 >= i+1:
+            if len(words)-1 > i:
                 remainder = words[i+1:len(words)-1]
                 remainder_text = ' '.join(remainder)
                 return imode_combo(remainder_text)
             else:
                 return
-    Text(text).execute()
+    #Text(text).execute()
 
 
 
@@ -88,6 +88,9 @@ navigation_rule = MappingRule(
 		'[<n>] dub': Key("%(n)d,w"), 
 		'[<n>] (Hynde | hind)': Key("%(n)d,b"),
 		'[<n>] nib': Key("%(n)d,e"), 
+
+                # more searching actions
+                'braille word boundaries': Key('escape') + Text('/\<\>') + Key('left:2'),
 	},
 	extras = [
 		Dictation("text"),
@@ -103,13 +106,23 @@ buffer_rule = MappingRule(
 	mapping = {
             'code buffer next':  Key("escape,colon,b,n,enter"),
             'code buffer previous': Key("escape,colon,b,p,enter"),
+            'code buffer last': Key("escape,colon,b,l,enter"),
             'code buffer <n>': Key("escape,colon,b,%(n)d,enter"),
             'code save': Key("escape,colon,w,enter"),
             'code save quit': Key("escape,colon,w,q,enter"),
             'code quit': Key("escape,colon,q,enter"),
             'code quit bang': Key("escape,colon,q,exclamation,enter"),
             'code save quit bang': Key("escape,colon,w,q,exclamation,enter"),
-            'code edit': Key("escape,colon,e,space")
+            'code edit': Key("escape,colon,e,space"),
+            'code shell': Key("escape,colon,s,h,enter"),
+
+            #common options
+            'code ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
+
+            # window actions
+            'code split horizontal': Key("escape,colon,s,p,enter"),
+            'code split vertical': Key("escape,colon,v,s,p,enter"),
+            'code split new': Key("escape,colon,v,n,e,w,space"),
 	},
 	extras = [
 		Dictation("text"),

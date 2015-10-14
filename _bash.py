@@ -45,7 +45,7 @@ bash_rule = MappingRule(
 		"CD dot dot": Text("cd ..\n"),
 		"CD double dot": Text("cd ..\n"),
 		"CD triple dot": Text("cd ../..\n"),
-		"CD ": Text("cd ") + Key("tab:3"),
+		"CD ": Text("cd ") + Key("tab:2"),
 		"CD <text>": Text("cd %(text)s"),
 
 		"copy": Text("cp "),
@@ -99,6 +99,8 @@ bash_rule = MappingRule(
 		"[<n>] right word": Key("a-f:%(n)d"),
 		"bash Buck": Key("c-e"),
 
+                "[<n>] backspace": Key("backspace:%(n)d"),
+                "[<n>] delete": Key("delete:%(n)d"),
 		"[<n>] scratch last": Key("c-w:%(n)d"),
 		"[<n>] scratch next": Key("a-d:%(n)d"),
                 "scratch tail":Key("c-k"),
