@@ -18,10 +18,10 @@ nmodeVocabulary = {
         "leaf bottom": "G",
 }
 
-# vocabulary mappings for vim insert mode
+# vocabulary mappings for vim insert mode. Always return to insert mode.
 imodeVocabulary = {
-        "paste": "escape,p",
-        "indent": "escape,equal,equal",
+        "paste": "escape,p,A",
+        "indent": "escape,equal,equal,A",
 }
 
 # vocabulary mappings for vim visual mode
@@ -44,6 +44,7 @@ vmodeVocabulary = {
 #   any commands that exist in the insert mode vocabulary.
 #   Recursive calls are made for any text after the command.
 def imode_combo(text):
+    text = str(text)
     if len(text) < 1:
         return
     words = text.split(" ")
