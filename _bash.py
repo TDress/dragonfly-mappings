@@ -107,10 +107,10 @@ bash_rule = MappingRule(
                 "scratch head":Key("c-u"),
 		"bash paste": Key("c-y"),
 
-		"aptitude search": Text("aptitude search "),
-		"pseudo-aptitude install": Text("sudo aptitude install "),
-		"pseudo-aptitude update": Text("sudo aptitude update "),
-		"pseudo-aptitude remove": Text("sudo aptitude remove "),
+                "Sudo":Text("sudo"),
+		"pseudo-aptitude install": Text("sudo apt-get install "),
+		"pseudo-aptitude update": Text("sudo apt-get update "),
+		"pseudo-aptitude remove": Text("sudo apt-get remove "),
 
 		"A. P. T. file search": Text("apt-file search "),
 
@@ -126,12 +126,13 @@ bash_rule = MappingRule(
                 "screen list": Key('c-a,c-w'),
                 "screen last": Key('c-a,c-a'),
                 "screen <n>": Key('c-a,%(n)d'),
+                "screen copy":Key('c-a,rbracket'),
                 "screen kill": Key('c-a,k'),
 
         },
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 1, 20)
+		IntegerRef("n", 0, 20)
 		],
 	defaults = {
 		"n": 1
@@ -176,10 +177,7 @@ git_rule = MappingRule(
 
 		"annals stash": Text("git stash\n"),
 
-		"annals pull": Text("git pull "),
-		"annals push": Text("git push "),
-                "annals push origin master": Text("git push origin master"),
-                "annals push origin": Text("git push origin "),
+                "annals [<text>]": Text("git %(text)s"),
 
 		"annals help": Text("git help"),
 		"annals help push": Text("git help push\n"),

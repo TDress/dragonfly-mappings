@@ -56,7 +56,15 @@ symbols_rule = MappingRule(
     }
 )
 
+php_rule = MappingRule(
+    name = 'php',
+    mapping = {
+        'PHP': Text("php")
+    }
+)
+
 grammar.add_rule(symbols_rule)
+grammar.add_rule(php_rule)
 grammar.load()
 
 def unload():

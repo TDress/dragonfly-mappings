@@ -22,6 +22,17 @@ nmodeVocabulary = {
 imodeVocabulary = {
         "paste": "escape,p,A",
         "indent": "escape,equal,equal,A",
+        "tick": "squote",
+        "tick twice": "dquote",
+        "raft": "lbracket",
+        "raft end": "rbracket",
+        "crimp": "lbrace",
+        "crimp end": "rbrace",
+        "arc": "lparen",
+        "arc end": "rparen",
+        "trout": "rangle",
+        "trout less": "langle",
+        "buck": "dollar",
 }
 
 # vocabulary mappings for vim visual mode
@@ -92,6 +103,13 @@ navigation_rule = MappingRule(
 
                 # more searching actions
                 'braille word boundaries': Key('escape') + Text('/\<\>') + Key('left:2'),
+                'go to [a] stowed': Key('escape,g,d'),
+                'go to [a] stowed global': Key('escape,g,D'),
+                'optic vex': Key('escape,colon,V,e,x,enter'),
+                'go to (braille|Brielle) (1st|first)': Key('escape,g,g,n'),
+                'go to (Brielle|braille) last': Key('escape,G,N'),
+                '(Brielle|braille) function': Key('escape') + Text('/function '),
+
 	},
 	extras = [
 		Dictation("text"),
@@ -105,8 +123,11 @@ navigation_rule = MappingRule(
 buffer_rule = MappingRule(
 	name = "buffer",
 	mapping = {
+            'code buffer list': Key("escape") +  Text(":buffers") +  Key("enter"),
+            'code buffer name':Key("escape,colon") +  Text("buffer "),
             'code buffer next':  Key("escape,colon,b,n,enter"),
-            'code buffer previous': Key("escape,colon,b,p,enter"),
+            'code buffer back': Key("escape,colon,b,p,enter"),
+            'code buffer last': Key("c-caret"),
             'code buffer last': Key("escape,colon,b,l,enter"),
             'code buffer <n>': Key("escape,colon,b,%(n)d,enter"),
             'code save': Key("escape,colon,w,enter"),
