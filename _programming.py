@@ -30,29 +30,47 @@ symbols_rule = MappingRule(
             'shark': Text("->"),
             'trout': Text(">"),
             'trout less': Text("<"),
+            'ternary': Text(" ?  :") +  Key("left:2"),
+            'ternary short': Text(" ?: "),
+
             'raft': Text("["),
             'raft end': Text("]"),
             'crimp': Text("{"),
             'crimp end': Text("}"),
             'dot space': Text(" . "),
             'dot': Text("."),
+            'sever':Text(";"),
+            
+            #  tags
+            'Rasmus tag':  Text("<?php"),
+            'Rasmus tag close': Text("?>"),
+            'Rasmus tag short': Text("<?="),
 
             # logical operators
             'pipe':Text("|"),
             'pipe space':  Text(" | "),
             'pipe twice': Text("||"),
             'pipe twice space': Text(" || "),
+            'amp': Text("&"),
+            'amp space': Text(" & "),
+            'amp twice': Text("&&"),
+            'amp twice space': Text(" && "),
 
             # arithmetic
             'Christ space': Text(" + "),
             'Christ': Text("+"),
+            'Christ twice': Text("++"),
             'shorn space': Text(" - "),
             'shorn': Text("-"),
             'mod space':  Key("space,percent,space"), 
             'mod':  Key("percent"),
             'slug space':  Key("space,asterisk,space"),
             'slug':  Key("asterisk"),
-            'hash': Key("hash")
+            'hash': Key("hash"),
+
+            # common abbreviations
+            'Id':  Text("id"),
+
     }
 )
 

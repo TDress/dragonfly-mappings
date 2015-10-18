@@ -41,7 +41,7 @@ vmodeVocabulary = {
         "nib": "e",
         "slump": "j",
         "boost": "k",
-        "leave top": "g,g",
+        "leaf top": "g,g",
         "leaf bottom": "G",
 } 
 
@@ -59,9 +59,9 @@ def imode_combo(text):
     if len(text) < 1:
         return
     words = text.split(" ")
-    print words
     for i in range(len(words)-1,0,-1):
         command = ' '.join(words[0:i])
+        print command
         if command in imodeVocabulary.keys():
             Key(imodeVocabulary[command]).execute()
             if len(words)-1 > i:
@@ -110,6 +110,12 @@ navigation_rule = MappingRule(
                 'go to (braille|Brielle) (1st|first)': Key('escape,g,g,n'),
                 'go to (Brielle|braille) last': Key('escape,G,N'),
                 '(Brielle|braille) function': Key('escape') + Text('/function '),
+
+                # marking and returning to spots in the buffer
+                'Mark Alpha': Key("escape,m,a"),
+                'Mark (Brava|bravo)': Key("escape,m,b"),
+                'Mark Charlie': Key("escape,m,c"),
+                # add jumping to previous location and forward to next?
 
 	},
 	extras = [
@@ -180,6 +186,7 @@ manipulation_rule = MappingRule(
    		'sub line': Key("s-s"),
    		'swap': Key("r"),
    		'swap more': Key("s-r"),
+                'tilde': Key("tilde"),
                 'top off': Key("cs-p"),
                 '[<n>] trim': Key("escape, x:%(n)d"),
                 '[<n>] trim back': Key("escape, X:%(n)d"),
