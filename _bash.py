@@ -144,6 +144,7 @@ git_rule = MappingRule(
 	name = "git",
 	mapping = {
 		# commands for git version control
+                "annals": Text("git"),
 		"annals add": Text("git add "),
 		"annals remove": Text("git rm "),
 		"annals move": Text("git move "),
@@ -176,8 +177,6 @@ git_rule = MappingRule(
 		"annals (checkout | check out) minus F.": Text("git checkout -f\n"),
 
 		"annals stash": Text("git stash\n"),
-
-                "annals [<text>]": Text("git %(text)s"),
 
 		"annals help": Text("git help"),
 		"annals help push": Text("git help push\n"),

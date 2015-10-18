@@ -59,6 +59,7 @@ def imode_combo(text):
     if len(text) < 1:
         return
     words = text.split(" ")
+    print words
     for i in range(len(words)-1,0,-1):
         command = ' '.join(words[0:i])
         if command in imodeVocabulary.keys():
