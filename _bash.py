@@ -85,6 +85,7 @@ bash_rule = MappingRule(
 		"D. P. K. G. minus I.": Text("dpkg -i "),
 
 		"man": Text("man "),
+                "S Sh":Text("ssh "),
 
 		"word count": Text("wc "),
 		"word count minus L.": Text("wc -l "),
@@ -101,7 +102,7 @@ bash_rule = MappingRule(
 
                 "[<n>] backspace": Key("backspace:%(n)d"),
                 "[<n>] delete": Key("delete:%(n)d"),
-		"[<n>] scratch last": Key("c-w:%(n)d"),
+		"[<n>] scratch back": Key("c-w:%(n)d"),
 		"[<n>] scratch next": Key("a-d:%(n)d"),
                 "scratch tail":Key("c-k"),
                 "scratch head":Key("c-u"),
@@ -122,11 +123,12 @@ bash_rule = MappingRule(
                 "screen start": Text("screen") +  Key('enter'),
                 "screen new": Key('c-a,c'),
                 "screen next": Key('c-a,space'),
-                "screen before": Key('c-a,backspace'),
+                "screen back": Key('c-a,backspace'),
                 "screen list": Key('c-a,c-w'),
                 "screen last": Key('c-a,c-a'),
                 "screen <n>": Key('c-a,%(n)d'),
-                "screen copy":Key('c-a,rbracket'),
+                "screen copy":Key('c-a,lbracket'),
+                "screen paste":Key('c-a,rbracket'),
                 "screen kill": Key('c-a,k'),
 
         },
@@ -144,7 +146,7 @@ git_rule = MappingRule(
 	name = "git",
 	mapping = {
 		# commands for git version control
-                "annals": Text("git"),
+                "annals": Text("git "),
 		"annals add": Text("git add "),
 		"annals remove": Text("git rm "),
 		"annals move": Text("git move "),
@@ -152,6 +154,7 @@ git_rule = MappingRule(
 		"annals patch": Text("git add -p\n"),
 
 		"annals branch": Text("git branch "),
+                "annals branch description[s]":Text('git-branch') + Key('enter'),
 
 		"annals merge": Text("git merge "),
 		"annals merge not fast forward": Text("git merge --no-ff "),
@@ -175,6 +178,8 @@ git_rule = MappingRule(
 		"annals (checkout | check out) new <text>": Text("git checkout -b  %(text)s"),
 		"annals (checkout | check out) <text>": Text("git checkout %(text)s"),
 		"annals (checkout | check out) minus F.": Text("git checkout -f\n"),
+
+                "annals push": Text("git push"),
 
 		"annals stash": Text("git stash\n"),
 
