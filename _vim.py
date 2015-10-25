@@ -1,6 +1,8 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text, Function)
 
+import lib.executeCombo
+
 # vocabulary mappings of single command words to key string representations.
 #  these are used in combination functions to retrieve key strokes.
 # the command words are not necessarily usable in isolation,
@@ -18,23 +20,6 @@ nmodeVocabulary = {
         "leaf bottom": "G",
 }
 
-# vocabulary mappings for vim insert mode. Always return to insert mode.
-imodeVocabulary = {
-        "paste": "escape,p,A",
-        "indent": "escape,equal,equal,A",
-        "tick": "squote",
-        "tick twice": "dquote",
-        "raft": "lbracket",
-        "raft end": "rbracket",
-        "crimp": "lbrace",
-        "crimp end": "rbrace",
-        "arc": "lparen",
-        "arc end": "rparen",
-        "trout": "rangle",
-        "trout less": "langle",
-        "buck": "dollar",
-}
-
 # vocabulary mappings for vim visual mode
 vmodeVocabulary = {
         "dub": "w",
@@ -47,35 +32,6 @@ vmodeVocabulary = {
 
 
 # functions to determine the vim mode of a combination
-
-
-# executes keystroke combinations in insert mode
-#   @recursive
-#   loops over all words in text and executes
-#   any commands that exist in the insert mode vocabulary.
-#   Recursive calls are made for any text after the command.
-def imode_combo(text):
-    text = str(text)
-    if len(text) < 1:
-        return
-    words = text.split(" ")
-    print len(words)
-
-    for i in range(len(words),0,-1):
-        print i
-        command = ' '.join(words[0:i])
-        print command
-        if command in imodeVocabulary.keys():
-            Key(imodeVocabulary[command]).execute()
-            if len(words)-1 > i:
-                remainder = words[i+1:len(words)-1]
-                remainder_text = ' '.join(remainder)
-                return imode_combo(remainder_text)
-            else:
-                return
-    #Text(text).execute()
-
-
 
 grammar = Grammar("vim")
 
@@ -93,10 +49,10 @@ navigation_rule = MappingRule(
 	  	'zilch': Key("0"),
                 '[<n>] page up': Key("pgup:%(n)d"),
                 '[<n>] page down': Key("pgdown:%(n)d"),
-                '[<n>] buffer future':  Key("c-i"),
-                '[<n>] buffer past':  Key("c-o"),
-                'buffer help search':  Text(":helpgrep "),
-                'buffer list errors': Text(":clist") +  Key("enter"),
+                '[<n>] buff future':  Key("c-i"),
+                '[<n>] buff past':  Key("c-o"),
+                'buff help search':  Text(":helpgrep "),
+                'buff list errors': Text(":clist") +  Key("enter"),
                 '(Lance | lance)': Key("escape,a"),
 		'(Lance | lance) end': Key("escape,A"),
                 'scape': Key("escape"),
@@ -133,35 +89,35 @@ navigation_rule = MappingRule(
 buffer_rule = MappingRule(
 	name = "buffer",
 	mapping = {
-            'buffer list': Key("escape") +  Text(":buffers") +  Key("enter"),
-            'buffer name':Key("escape,colon") +  Text("buffer "),
-            'buffer next':  Key("escape,colon,b,n,enter"),
-            'buffer back': Key("escape,colon,b,p,enter"),
-            'buffer last': Key("c-caret"),
-            'buffer last': Key("escape,colon,b,l,enter"),
-            'buffer <n>': Key("escape,colon,b,%(n)d,enter"),
-            'buffer save': Key("escape,colon,w,enter"),
-            'buffer save quit': Key("escape,colon,w,q,enter"),
-            'buffer quit': Key("escape,colon,q,enter"),
-            'buffer quit bang': Key("escape,colon,q,exclamation,enter"),
-            'buffer save quit bang': Key("escape,colon,w,q,exclamation,enter"),
-            'buffer edit': Key("escape,colon,e,space"),
-            'buffer shell': Key("escape,colon,s,h,enter"),
+            'buff list': Key("escape") +  Text(":buffers") +  Key("enter"),
+            'buff name':Key("escape,colon") +  Text("buffer "),
+            'buff next':  Key("escape,colon,b,n,enter"),
+            'buff back': Key("escape,colon,b,p,enter"),
+            'buff last': Key("c-caret"),
+            'buff last': Key("escape,colon,b,l,enter"),
+            'buff <n>': Key("escape,colon,b,%(n)d,enter"),
+            'buff save': Key("escape,colon,w,enter"),
+            'buff save quit': Key("escape,colon,w,q,enter"),
+            'buff quit': Key("escape,colon,q,enter"),
+            'buff quit bang': Key("escape,colon,q,exclamation,enter"),
+            'buff save quit bang': Key("escape,colon,w,q,exclamation,enter"),
+            'buff edit': Key("escape,colon,e,space"),
+            'buff shell': Key("escape,colon,s,h,enter"),
 
             #common options
-            'buffer ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
+            'buff ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
 
             # window actions
             'split horizontal': Key("escape,colon,s,p,enter"),
             'split vertical': Key("escape,colon,v,s,p,enter"),
             'split new': Key("escape,colon,v,n,e,w,space"),
             'split (Stowe|stow)': Key('c-w,equal'),
-            'buffer wide <n>': Text(':vertical resize +%(n)d') +  Key('enter'),
-            'buffer narrow <n>': Text(':vertical resize -%(n)d') +  Key('enter'),
-            'buffer window right':  Key('c-w,l'),
-            'buffer window left':  Key('c-w,h'),
-            'buffer window up':  Key('c-w,k'),
-            'buffer window down':  Key('c-w,j'),
+            'buff wide <n>': Text(':vertical resize +%(n)d') +  Key('enter'),
+            'buff narrow <n>': Text(':vertical resize -%(n)d') +  Key('enter'),
+            'buff window right':  Key('c-w,l'),
+            'buff window left':  Key('c-w,h'),
+            'buff window up':  Key('c-w,k'),
+            'buff window down':  Key('c-w,j'),
 	},
 	extras = [
 		Dictation("text"),
@@ -177,8 +133,8 @@ manipulation_rule = MappingRule(
 	mapping = {
 		'cull': Key("v"), 
 		'cull block': Key("c-v"), 
-		'(cleave | Cleve) up <text>': Key("escape,O") + Function(imode_combo),
-                '(Cleve | cleave) <text>': Key("escape,o") + Function(imode_combo),
+		'(cleave | Cleve) up <text>': Key("escape,O") + Function(executeCombo),
+                '(Cleve | cleave) <text>': Key("escape,o") + Function(executeCombo),
                 '[<n>] jump right': Key("rangle:2"),
                 '[<n>] jump left': Key("langle:2"),
                 '[<n>] shoot': Key("enter:%(n)d"),
@@ -199,7 +155,7 @@ manipulation_rule = MappingRule(
                 'tilde': Key("tilde"),
                 'top off': Key("cs-p"),
                 '[<n>] trim': Key("escape, x:%(n)d"),
-                '[<n>] trim back': Key("escape, X:%(n)d"),
+            '[<n>] trim back': Key("escape, X:%(n)d"),
                 'undo': Key("escape,u"),
                 'yank': Key("y"),
                 'yank line': Key("y,y"),
