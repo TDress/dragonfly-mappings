@@ -1,7 +1,7 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text, Function)
 
-import lib.executeCombo
+import lib.combination
 
 # vocabulary mappings of single command words to key string representations.
 #  these are used in combination functions to retrieve key strokes.
@@ -133,8 +133,8 @@ manipulation_rule = MappingRule(
 	mapping = {
 		'cull': Key("v"), 
 		'cull block': Key("c-v"), 
-		'(cleave | Cleve) up <text>': Key("escape,O") + Function(executeCombo),
-                '(Cleve | cleave) <text>': Key("escape,o") + Function(executeCombo),
+		'(cleave | Cleve) up <text>': Key("escape,O") + Function(lib.combination.executeCombo),
+                '(Cleve | cleave) <text>': Key("escape,o") + Function(lib.combination.executeCombo),
                 '[<n>] jump right': Key("rangle:2"),
                 '[<n>] jump left': Key("langle:2"),
                 '[<n>] shoot': Key("enter:%(n)d"),
