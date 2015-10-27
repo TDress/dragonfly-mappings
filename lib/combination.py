@@ -12,8 +12,7 @@ import lib.chars
 # combine all library mappings for inclusion in the combination function.
 allMappings = reduce(
     lambda acc,y: acc.update(y),
-    [lib.vim.vimMapping, lib.chars.charMapping],
-    {}
+    [lib.vim.vimMapping, lib.chars.charMapping]
 )
 
 # executes keystroke combinations 
