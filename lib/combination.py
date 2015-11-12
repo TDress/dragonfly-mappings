@@ -15,9 +15,7 @@ allMappings = reduce(
     lambda acc,y: acc.update(y) or acc,
     [lib.vim.vimMapping, lib.chars.charMapping]
 )
-print lib.vim.vimMapping
-print lib.chars.charMapping
-print allMappings
+
 # executes keystroke combinations 
 #   @recursive
 #   loops over all words in text and executes
@@ -25,12 +23,15 @@ print allMappings
 #   Recursive calls are made for any text after the command.
 def executeCombo(text):
     text = str(text)
+    print 'calling execute combo'
+    print text
     if len(text) < 1:
         return
     words = text.split(" ")
 
-    for i in range(len(words),0,-1):
+    for i in range(len(words)-1,0,-1):
         command = ' '.join(words[0:i])
+        print command
         if command in allMappings.keys():
             Key(allMappings[command]).execute()
             if len(words)-1 > i:
