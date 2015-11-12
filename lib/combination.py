@@ -30,7 +30,7 @@ def executeCombo(text):
     words = text.split(" ")
 
     for i in range(len(words),0,-1):
-        command = ' '.join(words[0:i])
+        command = ' '.join(words[0:i]).lower()
         print command
         if command in allMappings.keys():
             Key(allMappings[command]).execute()

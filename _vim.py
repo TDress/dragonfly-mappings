@@ -131,8 +131,8 @@ buffer_rule = MappingRule(
 manipulation_rule = MappingRule(
 	name = "manipulation",
 	mapping = {
-		'cull': Key("v"), 
-		'cull block': Key("c-v"), 
+		'bag': Key("v"), 
+		'bag block': Key("c-v"), 
 		'(cleave | Cleve) up [<text>]': Key("escape,O") + Function(lib.combination.executeCombo),
                 '(Cleve | cleave) [<text>]': Key("escape,o") + Function(lib.combination.executeCombo),
                 '[<n>] jump right': Key("rangle:2"),
@@ -178,6 +178,7 @@ manipulation_rule = MappingRule(
         }
 )
  
+grammar.add_rule(buffer_rule)
 grammar.add_rule(navigation_rule)
 grammar.add_rule(manipulation_rule)
 grammar.load()
