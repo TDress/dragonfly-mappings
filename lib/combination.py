@@ -29,13 +29,13 @@ def executeCombo(text):
         return
     words = text.split(" ")
 
-    for i in range(len(words)-1,0,-1):
+    for i in range(len(words),0,-1):
         command = ' '.join(words[0:i])
         print command
         if command in allMappings.keys():
             Key(allMappings[command]).execute()
-            if len(words)-1 > i:
-                remainder = words[i+1:len(words)-1]
+            if len(words) > i:
+                remainder = words[i:len(words)]
                 remainder_text = ' '.join(remainder)
                 return executeCombo(remainder_text)
             else:
