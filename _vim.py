@@ -49,10 +49,10 @@ navigation_rule = MappingRule(
 	  	'zilch': Key("0"),
                 '[<n>] page up': Key("pgup:%(n)d"),
                 '[<n>] page down': Key("pgdown:%(n)d"),
-                '[<n>] buff future':  Key("c-i"),
-                '[<n>] buff past':  Key("c-o"),
-                'buff help search':  Text(":helpgrep "),
-                'buff list errors': Text(":clist") +  Key("enter"),
+                '[<n>] code future':  Key("escape") + Key("c-i"),
+                '[<n>] code past':  Key("escape") + Key("c-o"),
+                'code help rake':  Key("escape") + Text(":helpgrep "),
+                'code list errors': Text(":clist") +  Key("enter"),
                 '(Lance | lance)': Key("escape,a"),
 		'(Lance | lance) end': Key("escape,A"),
                 'scape': Key("escape"),
@@ -89,35 +89,35 @@ navigation_rule = MappingRule(
 buffer_rule = MappingRule(
 	name = "buffer",
 	mapping = {
-            'buff list': Key("escape") +  Text(":buffers") +  Key("enter"),
-            'buff name':Key("escape,colon") +  Text("buffer "),
-            'buff next':  Key("escape,colon,b,n,enter"),
-            'buff back': Key("escape,colon,b,p,enter"),
-            'buff last': Key("c-caret"),
-            'buff last': Key("escape,colon,b,l,enter"),
-            'buff <n>': Key("escape,colon,b,%(n)d,enter"),
-            'buff save': Key("escape,colon,w,enter"),
-            'buff save quit': Key("escape,colon,w,q,enter"),
-            'buff quit': Key("escape,colon,q,enter"),
-            'buff quit bang': Key("escape,colon,q,exclamation,enter"),
-            'buff save quit bang': Key("escape,colon,w,q,exclamation,enter"),
-            'buff edit': Key("escape,colon,e,space"),
-            'buff shell': Key("escape,colon,s,h,enter"),
+            'code list': Key("escape") +  Text(":buffers") +  Key("enter"),
+            'code name':Key("escape,colon") +  Text("buffer "),
+            'code next':  Key("escape,colon,b,n,enter"),
+            'code back': Key("escape,colon,b,p,enter"),
+            'code last': Key("c-caret"),
+            'code last': Key("escape,colon,b,l,enter"),
+            'code <n>': Key("escape,colon,b,%(n)d,enter"),
+            'code save': Key("escape,colon,w,enter"),
+            'code save quit': Key("escape,colon,w,q,enter"),
+            'code quit': Key("escape,colon,q,enter"),
+            'code quit bang': Key("escape,colon,q,exclamation,enter"),
+            'code save quit bang': Key("escape,colon,w,q,exclamation,enter"),
+            'code edit': Key("escape,colon,e,space"),
+            'code shell': Key("escape,colon,s,h,enter"),
 
             #common options
-            'buff ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
+            'code ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
 
             # window actions
             'split horizontal': Key("escape,colon,s,p,enter"),
             'split vertical': Key("escape,colon,v,s,p,enter"),
             'split new': Key("escape,colon,v,n,e,w,space"),
             'split (Stowe|stow)': Key('c-w,equal'),
-            'buff wide <n>': Text(':vertical resize +%(n)d') +  Key('enter'),
-            'buff narrow <n>': Text(':vertical resize -%(n)d') +  Key('enter'),
-            'buff window right':  Key('c-w,l'),
-            'buff window left':  Key('c-w,h'),
-            'buff window up':  Key('c-w,k'),
-            'buff window down':  Key('c-w,j'),
+            'code wide <n>': Text(':vertical resize +%(n)d') +  Key('enter'),
+            'code narrow <n>': Text(':vertical resize -%(n)d') +  Key('enter'),
+            'code window right':  Key('c-w,l'),
+            'code window left':  Key('c-w,h'),
+            'code window up':  Key('c-w,k'),
+            'code window down':  Key('c-w,j'),
 	},
 	extras = [
 		Dictation("text"),
@@ -133,8 +133,8 @@ manipulation_rule = MappingRule(
 	mapping = {
 		'cull': Key("v"), 
 		'cull block': Key("c-v"), 
-		'(cleave | Cleve) up <text>': Key("escape,O") + Function(lib.combination.executeCombo),
-                '(Cleve | cleave) <text>': Key("escape,o") + Function(lib.combination.executeCombo),
+		'(cleave | Cleve) up [<text>]': Key("escape,O") + Function(lib.combination.executeCombo),
+                '(Cleve | cleave) [<text>]': Key("escape,o") + Function(lib.combination.executeCombo),
                 '[<n>] jump right': Key("rangle:2"),
                 '[<n>] jump left': Key("langle:2"),
                 '[<n>] shoot': Key("enter:%(n)d"),
@@ -159,13 +159,22 @@ manipulation_rule = MappingRule(
                 'undo': Key("escape,u"),
                 'yank': Key("y"),
                 'yank line': Key("y,y"),
+                # recording and replaying movements
+                'record Alpha': Key("q,a"),
+                'record bravo': Key("q,b"),
+                'record Charlie': Key("q,c"),
+                'replay Alpha':  Key("at,a"),
+                'replay bravo':  Key("at,b"),
+                'replay Charlie':  Key("at,c"),
+                'replay repeat':  Key("at,at"),
 	},
 	extras = [
 		Dictation("text"),
                 IntegerRef("n", 1, 20)
 	],
         defaults = {
-                "n":  1
+                "n":  1,
+                "text": ""
         }
 )
  

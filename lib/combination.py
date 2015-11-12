@@ -11,10 +11,13 @@ import lib.chars
 
 # combine all library mappings for inclusion in the combination function.
 allMappings = reduce(
-    lambda acc,y: acc.update(y),
+    # map update() has no return, so use logical or
+    lambda acc,y: acc.update(y) or acc,
     [lib.vim.vimMapping, lib.chars.charMapping]
 )
-
+print lib.vim.vimMapping
+print lib.chars.charMapping
+print allMappings
 # executes keystroke combinations 
 #   @recursive
 #   loops over all words in text and executes

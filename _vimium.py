@@ -9,8 +9,8 @@ window_rule = MappingRule(
 	name = "window",
 	mapping = {
     		# Tab navigation
-    		'leaf left': Key("cs-tab"),
-    		'leaf right': Key("c-tab"),
+    		'leaf back': Key("cs-tab"),
+    		'leaf next': Key("c-tab"),
     		'leaf <n>': Key("c-%(n)d"),
     		'leaf new': Key("c-t"),
     		'leaf reopen': Key("cs-t"),

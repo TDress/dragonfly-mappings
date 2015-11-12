@@ -10,10 +10,7 @@ general_rule = MappingRule(
 	name = "general",
 	mapping = {
 		"cancel": Key("c-c"),
-                "[<n>] up": Key("up:%(n)d"),
-                "[<n>] down": Key("down:%(n)d"),
 		"say <text>": Text("%(text)s"),
-                "[<n>] tab":Key("tab:%(n)d"),
 		},
 	extras = [
 		Dictation("text"),
@@ -36,6 +33,12 @@ file_extensions_rule = MappingRule(
 		],
 )
 
+symbol_rule = MappingRule(
+        name = "symbols",
+        mapping = {
+            "caret | carrot":  Text("^"),
+        },
+)
 
 bash_rule = MappingRule(
 	name = "bash",
@@ -65,7 +68,8 @@ bash_rule = MappingRule(
                 "perms mod": Text("chmod "),
                 #"perms mod": Text("chmod "),
 
-		"gripe <text>": Text("grep %(text)s"),
+		"rake recursive": Text("grep -r ''") + Key('left'),
+		"rake <text>": Text("grep ''") +  Key('left'),
 
 		"cat": Text("cat "),
 		"cat <text>": Text("cat %(text)s"),
@@ -87,6 +91,8 @@ bash_rule = MappingRule(
 		"man": Text("man "),
                 "S Sh":Text("ssh "),
 
+                "Cron | Craun": Text("cron"),
+
 		"word count": Text("wc "),
 		"word count minus L.": Text("wc -l "),
 
@@ -102,7 +108,7 @@ bash_rule = MappingRule(
 
                 "[<n>] backspace": Key("backspace:%(n)d"),
                 "[<n>] delete": Key("delete:%(n)d"),
-		"[<n>] scratch back": Key("c-w:%(n)d"),
+		"[<n>] scratch back": Key("a-backspace:%(n)d"),
 		"[<n>] scratch next": Key("a-d:%(n)d"),
                 "scratch tail":Key("c-k"),
                 "scratch head":Key("c-u"),
@@ -194,6 +200,18 @@ git_rule = MappingRule(
 		],
 )
 
+apache_rule = MappingRule(
+	name = "apache",
+	mapping = {
+                "Apache": Text("apache "),
+                "Apache restart":Text("sudo apachectl restart")
+		},
+	extras = [
+		Dictation("text"),
+		],
+)
+
+
 prefix_key = "c-a"
 
 screen_rule = MappingRule(
@@ -214,9 +232,11 @@ screen_rule = MappingRule(
 
 grammar.add_rule(general_rule)
 grammar.add_rule(file_extensions_rule)
+grammar.add_rule(symbol_rule)
 grammar.add_rule(bash_rule)
 grammar.add_rule(screen_rule)
 grammar.add_rule(git_rule)
+grammar.add_rule(apache_rule)
 grammar.load()
 
 # Unload function which will be called by natlink at unload time.

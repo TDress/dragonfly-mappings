@@ -3,6 +3,8 @@ vimMapping = {
         "arc": "lparen",
         "arc end": "rparen",
         "buck": "dollar",
+        "(Cleve | Cleave)": "o",
+        "(Cleve | Cleave) up": "O",
         "crimp": "lbrace",
         "crimp end": "rbrace",
         "indent": "escape,equal,equal,A",
