@@ -1,7 +1,7 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text)
 
-
+import lib.combination
 
 grammar = Grammar("bash")
 
@@ -11,6 +11,7 @@ general_rule = MappingRule(
 	mapping = {
 		"cancel": Key("c-c"),
 		"say <text>": Text("%(text)s"),
+                "Lennix | Lenox": Text("linux"),
 		},
 	extras = [
 		Dictation("text"),
@@ -43,6 +44,7 @@ symbol_rule = MappingRule(
 bash_rule = MappingRule(
 	name = "bash",
 	mapping = {
+                "curl [<text>]": Text("curl ") +  Function(lib.combination.executeCombo),
 		"P. W. D.": Text("pwd\n"),
 
 		"CD dot dot": Text("cd ..\n"),
@@ -53,6 +55,8 @@ bash_rule = MappingRule(
 
 		"copy": Text("cp "),
 		"copy <text>": Text("cp %(text)s"),
+
+                "disc freedom": Text("df -h"),
 
 		"make directory ": Text("mkdir "),
 		"make directory <text>": Text("mkdir %(text)s\n"),
@@ -143,7 +147,8 @@ bash_rule = MappingRule(
 		IntegerRef("n", 0, 20)
 		],
 	defaults = {
-		"n": 1
+		"n": 1,
+                "text": ""
 	}
 )
 

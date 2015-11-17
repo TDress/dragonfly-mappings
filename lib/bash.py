@@ -1,0 +1,18 @@
+bashMapping = {
+    'backspace': 'backspace',
+    'bash buck': 'c-e',
+    'bash paste': 'c-y',
+    'cancel': 'c-c',
+    'caret': 'caret',
+    'carrot': 'caret',
+    'delete': 'delete',
+    'dot': 'dot',
+    'left': 'left',
+    'left word': 'a-b',
+    'pipe': 'bar',
+    'pipe space': 'bar,space',
+    'right': 'right',
+    'right word': 'a-f',
+    'scratch head': 'c-u',
+    'scratch tail': 'c-k',
+} 

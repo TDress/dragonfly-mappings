@@ -16,7 +16,8 @@ charMapping = {
         'Noah': "n",
         'Oscar': "o",
         'Papa': "p",
-        'Quintin | Quentin': "q",
+        'Quentin': "q"
+        'Quintin': "q",
         'Randy': "r",
         'Simon': "s",
         'tango': "t",
