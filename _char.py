@@ -16,10 +16,10 @@ character_rule = MappingRule(
             'George [<text>]':  Key("g") + Function(lib.combination.executeCombo),
             'Hank [<text>]':  Key("h") + Function(lib.combination.executeCombo),
             'Ike [<text>]':  Key("i") + Function(lib.combination.executeCombo),
-            'Jake [<text>]':  Key("j"), + Function(lib.combination.executeCombo) 
-            'kilo [<text>]':  Key("k"), + Function(lib.combination.executeCombo) 
-            'Lima [<text>]':  Key("l"), + Function(lib.combination.executeCombo) 
-            'Mike [<text>]':  Key("m"), + Function(lib.combination.executeCombo) 
+            'Jake [<text>]':  Key("j") + Function(lib.combination.executeCombo),
+            'kilo [<text>]':  Key("k") + Function(lib.combination.executeCombo),
+            'Lima [<text>]':  Key("l") + Function(lib.combination.executeCombo), 
+            'Mike [<text>]':  Key("m") + Function(lib.combination.executeCombo), 
             'Noah [<text>]':  Key("n") + Function(lib.combination.executeCombo),
             'Oscar [<text>]':  Key("o") + Function(lib.combination.executeCombo),
             'Papa [<text>]':  Key("p") + Function(lib.combination.executeCombo),
@@ -32,7 +32,7 @@ character_rule = MappingRule(
             'whiskey [<text>]':  Key("w") + Function(lib.combination.executeCombo),
             'x-ray [<text>]': Key("x") +  Function(lib.combination.executeCombo),
             'Yankee [<text>]':  Key("y") + Function(lib.combination.executeCombo),
-            'Zulu [<text>]':  Key("z" + Function(lib.combination.executeCombo),
+            'Zulu [<text>]':  Key("z") + Function(lib.combination.executeCombo),
             # uppercase characters
             'Stout bravo [<text>]': Key("B") + Function(lib.combination.executeCombo),
             'Stout Charlie [<text>]':  Key("C") + Function(lib.combination.executeCombo),
@@ -42,10 +42,10 @@ character_rule = MappingRule(
             'Stout George [<text>]':  Key("G") + Function(lib.combination.executeCombo),
             'Stout Hank [<text>]':  Key("H") + Function(lib.combination.executeCombo),
             'Stout Ike [<text>]':  Key("I") + Function(lib.combination.executeCombo),
-            'Stout Jake [<text>]':  Key("J"), + Function(lib.combination.executeCombo) 
-            'Stout kilo [<text>]':  Key("K"), + Function(lib.combination.executeCombo) 
-            'Stout Lima [<text>]':  Key("L"), + Function(lib.combination.executeCombo) 
-            'Stout Mike [<text>]':  Key("M"), + Function(lib.combination.executeCombo) 
+            'Stout Jake [<text>]':  Key("J") + Function(lib.combination.executeCombo),
+            'Stout kilo [<text>]':  Key("K") + Function(lib.combination.executeCombo), 
+            'Stout Lima [<text>]':  Key("L") + Function(lib.combination.executeCombo), 
+            'Stout Mike [<text>]':  Key("M") + Function(lib.combination.executeCombo), 
             'Stout Noah [<text>]':  Key("N") + Function(lib.combination.executeCombo),
             'Stout Oscar [<text>]':  Key("O") + Function(lib.combination.executeCombo),
             'Stout Papa [<text>]':  Key("P") + Function(lib.combination.executeCombo),

@@ -142,7 +142,7 @@ manipulation_rule = MappingRule(
 		'lop [<text>]': Key("d") +  Function(lib.combination.executeCombo),
 		'lop line [<text>]': Key("d,d") +  Function(langle.combination.executeCombo), 
                 'oust [<text>]': Key("c") +  Function(last.combination.executeCombo), 
-                'paste': Key("p",
+                'paste': Key("p"),
                 'paste front': Key("P"),
                 'redo': Key("cs-r"),
    		'sub [<text>]': Key("s") +  Function(lib.combination.executeCombo),
