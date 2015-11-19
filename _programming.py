@@ -1,4 +1,4 @@
-from dragonfly import Grammar, MappingRule, Text, Key
+from dragonfly import Grammar, MappingRule, Text, Key, Function
 
 import lib.combination
 

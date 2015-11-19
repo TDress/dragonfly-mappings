@@ -4,13 +4,9 @@ from dragonfly import (
     IntegerRef,
     Grammar,
     Dictation,
-    Function
-)
-
-from lib.dynamic_aenea import (
-    GlobalDynamicContext,
+    Function,
     Key,
-    Text,
+     Text
 )
 
 from lib.text import SCText
@@ -319,36 +315,9 @@ rules = MappingRule(
 )
 
 
-grammar = Grammar("Html grammar", context=GlobalDynamicContext())
+grammar = Grammar("Html grammar")
 grammar.add_rule(rules)
 grammar.load()
-grammar.disable()
-
-
-def dynamic_enable():
-    global grammar
-    if grammar.enabled:
-        return False
-    else:
-        grammar.enable()
-        return True
-
-
-def dynamic_disable():
-    global grammar
-    if grammar.enabled:
-        grammar.disable()
-        return True
-    else:
-        return False
-
-
-def is_enabled():
-    global grammar
-    if grammar.enabled:
-        return True
-    else:
-        return False
 
 
 # Unload function which will be called at unload time.
