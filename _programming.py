@@ -19,29 +19,29 @@ symbols_rule = MappingRule(
             'way bang strict': Key("space, exclamation, equal, equal, space"),
             'way trout equal': Key("space, rangle, equal, space"),
             'way whale flip': Key("space,langle, equal, space"),
-            'crypt [<text>]': Key("question") +  Function(langle.combination.executeCombo),
+            'crypt [<text>]': Key("question") +  Function(lib.combination.executeCombo),
             'crypt optic': Key("question,colon"),
 
             # mappings, brackets and miscellaneous
-            'bang [<text>]': Key("exclamation") +  Function(langle.combination.executeCombo),
-            'optic [<text>]': Key("colon") +  Function(langle.combination.executeCombo),
+            'bang [<text>]': Key("exclamation") +  Function(lib.combination.executeCombo),
+            'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
-            'arc [<text>]': Key("lparen") +  Function(lparen.combination.executeCombo),
+            'arc [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
             'arc end': Key("rparen"),
-            'whale [<text>]': Text(" => ") +  Function(lparen.combination.executeCombo),
-            'shark [<text>]': Text("->") +  Function(lparen.combination.executeCombo),
-            'trout [<text>]': Text(">") +  Function(lparen.combination.executeCombo),
+            'whale [<text>]': Text(" => ") +  Function(lib.combination.executeCombo),
+            'shark [<text>]': Text("->") +  Function(lib.combination.executeCombo),
+            'trout [<text>]': Text(">") +  Function(lib.combination.executeCombo),
             'trout less': Text("<"),
             'ternary': Text(" ?  :") +  Key("left:2"),
             'ternary short': Text(" ?: "),
 
-            'raft [<text>]': Text("[") +  Function(left.combination.executeCombo),
+            'raft [<text>]': Text("[") +  Function(lib.combination.executeCombo),
             'raft end': Text("]"),
-            'crimp [<text>]': Text("{") +  Function(left.combination.executeCombo),
+            'crimp [<text>]': Text("{") +  Function(lib.combination.executeCombo),
             'crimp end': Text("}"),
             'dot space': Text(" . "),
-            'dot [<text>]': Text(".") +  Function(left.combination.executeCombo),
-            'sever [<text>]':Text(";") +  Function(left.combination.executeCombo),
+            'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
+            'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
             #  tags
             'Rasmus tag':  Text("<?php"),
@@ -49,7 +49,7 @@ symbols_rule = MappingRule(
             'Rasmus tag short': Text("<?="),
 
             # logical operators
-            'pipe [<text>]':Text("|") +  Function(logical.combination.executeCombo),
+            'pipe [<text>]':Text("|") +  Function(lib.combination.executeCombo),
             'pipe space':  Text(" | "),
             'pipe twice': Text("||"),
             'pipe twice space': Text(" || "),
@@ -60,7 +60,7 @@ symbols_rule = MappingRule(
 
             # arithmetic
             'Christ space': Text(" + "),
-            'Christ [<text>]': Text("+") +  Function(logical.combination.executeCombo),
+            'Christ [<text>]': Text("+") +  Function(lib.combination.executeCombo),
             'Christ twice': Text("++"),
             'minus space': Text(" - "),
             'minus': Text("-"),
