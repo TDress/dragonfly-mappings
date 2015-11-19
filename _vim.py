@@ -46,7 +46,7 @@ navigation_rule = MappingRule(
 	name = "navigation",
 	mapping = {
    		'(Buck | buck) [<text>]': Key("dollar") + Function(lib.combination.executeCombo),
-	  	'zilch [<text>]': Key("0") + Function(leave.combination.executeCombo),
+	  	'zilch [<text>]': Key("0") + Function(lib.combination.executeCombo),
                 'page up': Key("pgup"),
                 'page down': Key("pgdown"),
                 'code future': Key("c-i"),
