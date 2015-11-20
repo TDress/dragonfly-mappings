@@ -72,8 +72,9 @@ bash_rule = MappingRule(
                 "perms mod": Text("chmod "),
                 #"perms mod": Text("chmod "),
 
+                "rake history":  Text("history | grep ''"),
 		"rake recursive": Text("grep -r ''") + Key('left'),
-		"rake <text>": Text("grep ''") +  Key('left'),
+		"rake": Text("grep ''") +  Key('left'),
 
 		"cat": Text("cat "),
 		"cat <text>": Text("cat %(text)s"),
@@ -166,6 +167,7 @@ git_rule = MappingRule(
 
 		"annals branch": Text("git branch "),
                 "annals branch description[s]":Text('git-branch') + Key('enter'),
+                "annals branch edit description": Text('git branch --edit-description '),
 
 		"annals merge": Text("git merge "),
 		"annals merge not fast forward": Text("git merge --no-ff "),

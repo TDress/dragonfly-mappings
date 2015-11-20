@@ -8,6 +8,7 @@ grammar = Grammar("characters")
 character_rule = MappingRule(
 	name = "characters",
 	mapping = {
+            'Alpha [<text>]': Key("a") + Function(lib.combination.executeCombo),
             'bravo [<text>]': Key("b") + Function(lib.combination.executeCombo),
             'Charlie [<text>]':  Key("c") + Function(lib.combination.executeCombo),
             'Delta [<text>]':    Key("d") + Function(lib.combination.executeCombo),

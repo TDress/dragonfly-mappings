@@ -3,9 +3,9 @@ from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
 
 import lib.vim 
 import lib.chars 
-#import lib.vim 
-#import lib.vim 
-#import lib.vim 
+import lib.environment
+import lib.programming 
+import lib.bash 
 #import lib.vim 
 #import lib.vim 
 
