@@ -44,19 +44,15 @@ symbols_rule = MappingRule(
             'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
             #  tags
-            'Rasmus tag':  Text("<?php"),
-            'Rasmus tag close': Text("?>"),
-            'Rasmus tag short': Text("<?="),
+            'Rasmus tag':   Key('langle,question,p,h,p'),
+            'Rasmus tag close':  Key('question,rangle'),
+            'Rasmus tag short':  Key('langle,question,equal'),
 
             # logical operators
-            'pipe [<text>]':Text("|") +  Function(lib.combination.executeCombo),
-            'pipe space':  Text(" | "),
-            'pipe twice': Text("||"),
-            'pipe twice space': Text(" || "),
             'amp': Text("&"),
-            'amp space': Text(" & "),
-            'amp twice': Text("&&"),
-            'amp twice space': Text(" && "),
+            'amp space':  Key('space,ampersand,space'),
+            'amp twice':  Key('ampersand,ampersand'),
+            'amp twice space': Key('space,ampersand,ampersand,space'),
 
             # arithmetic
             'Christ space': Text(" + "),

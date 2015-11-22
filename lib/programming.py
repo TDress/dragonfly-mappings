@@ -16,9 +16,6 @@ programming_mapping = {
         "minus": "minus",
         "mod": "percent",
         "optic": "colon",
-        "pipe": "bar",
-        "pipe space":"space, bar,space",
-        "pipe twice":"space,bar,bar,space",
 
         "raft": "lbracket",
         "raft end": "rbracket",

@@ -6,7 +6,6 @@ bashMapping = {
     'caret': 'caret',
     'carrot': 'caret',
     'delete': 'delete',
-    'dot': 'dot',
     'left': 'left',
     'left word': 'a-b',
     'pipe': 'bar',
