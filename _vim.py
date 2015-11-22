@@ -153,7 +153,7 @@ manipulation_rule = MappingRule(
    		'swap more [<text>]': Key("s-r") +  Function(lib.combination.executeCombo),
                 'tilde [<text>]': Key("tilde") +  Function(lib.combination.executeCombo),
                 'top off [<text>]': Key("cs-p") + Function(lib.combination.executeCombo),
-                '[<n>] trim [<text>]': Key("x")+ Functon(lib.combination.executeCombo),
+                '[<n>] trim [<text>]': Key("x")+  Function(lib.combination.executeCombo),
                 '[<n>] trim back [<text>]': Key("X") +  Function(lib.combination.executeCombo),
                 'undo': Key("escape,u"),
                 'yank [<text>]': Key("y") +  Function(lib.combination.executeCombo),
