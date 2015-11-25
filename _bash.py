@@ -9,9 +9,12 @@ grammar = Grammar("bash")
 general_rule = MappingRule(
 	name = "general",
 	mapping = {
+                'bash text copy': Key('cs-c'),
+                'Bash text paste': Key('cs-v'),
 		"cancel": Key("c-c"),
-		"say <text>": Text("%(text)s"),
+                "integer <n>": Text("%(n)d"),
                 "Lennix | Lenox": Text("linux"),
+		"say <text>": Text("%(text)s"),
 		},
 	extras = [
 		Dictation("text"),
@@ -37,8 +40,16 @@ file_extensions_rule = MappingRule(
 symbol_rule = MappingRule(
         name = "symbols",
         mapping = {
+            'backslash [<text>]':  Key('backslash') +  Function(lib.combination.executeCombo),
             "caret | carrot":  Text("^"),
+            'hyphen [<text>]': Key('hyphen') +  Function(lib.combination.executeCombo),
         },
+        extras = [
+             Dictation("text")
+        ],
+        defaults = {
+            'text':''
+        }
 )
 
 bash_rule = MappingRule(
@@ -73,7 +84,7 @@ bash_rule = MappingRule(
                 #"perms mod": Text("chmod "),
 
                 "rake history":  Text("history | grep ''"),
-		"rake recursive": Text("grep -r ''") + Key('left'),
+		"(rate recursive | rake recursive | Raker cursive)": Text("grep -r ''") + Key('left'),
 		"rake": Text("grep ''") +  Key('left'),
 
 		"cat": Text("cat "),
@@ -104,8 +115,8 @@ bash_rule = MappingRule(
 		"bash previous argument": Key("a-dot"),
 
 		# cursor movement
-                "[<n>] left": Key("left:%(n)d"),
-                "[<n>] right": Key("right:%(n)d"),
+                "[<n>] left [<text>]": Key("left:%(n)d") + Function(lib.combination.executeCombo),
+                "[<n>] right [<text>]": Key("right:%(n)d") + Function(lib.combination.executeCombo),
 
 		"[<n>] left word": Key("a-b:%(n)d"),
 		"[<n>] right word": Key("a-f:%(n)d"),

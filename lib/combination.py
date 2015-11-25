@@ -13,7 +13,13 @@ import lib.bash
 allMappings = reduce(
     # map update() has no return, so use logical or
     lambda acc,y: acc.update(y) or acc,
-    [lib.vim.vimMapping, lib.chars.charMapping]
+    [
+        lib.vim.vimMapping, 
+        lib.chars.charMapping, 
+        lib.environment.environment_mapping,
+        lib.programming.programming_mapping,
+        lib.bash.bashMapping
+    ]
 )
 
 # executes keystroke combinations 

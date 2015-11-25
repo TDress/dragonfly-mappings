@@ -1,4 +1,5 @@
 bashMapping = {
+    'backslash': 'backslash',
     'backspace': 'backspace',
     'bash buck': 'c-e',
     'bash paste': 'c-y',
@@ -6,10 +7,11 @@ bashMapping = {
     'caret': 'caret',
     'carrot': 'caret',
     'delete': 'delete',
+    'hyphen': 'hyphen',
     'left': 'left',
     'left word': 'a-b',
     'pipe': 'bar',
-    'pipe space': 'bar,space',
+    'pipe space': 'space,bar,space',
     'right': 'right',
     'right word': 'a-f',
     'scratch head': 'c-u',

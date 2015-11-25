@@ -35,6 +35,7 @@ character_rule = MappingRule(
             'Yankee [<text>]':  Key("y") + Function(lib.combination.executeCombo),
             'Zulu [<text>]':  Key("z") + Function(lib.combination.executeCombo),
             # uppercase characters
+            'Stout alpha [<text>]': Key("A") + Function(lib.combination.executeCombo),
             'Stout bravo [<text>]': Key("B") + Function(lib.combination.executeCombo),
             'Stout Charlie [<text>]':  Key("C") + Function(lib.combination.executeCombo),
             'Stout Delta [<text>]':    Key("D") + Function(lib.combination.executeCombo),

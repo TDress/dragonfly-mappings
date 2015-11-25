@@ -1,7 +1,7 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text)
 
-
+import lib.combination
 
 grammar = Grammar("vimium")
 
@@ -36,8 +36,8 @@ window_rule = MappingRule(
     
     		#  Searching
     		'braille <text>': Key("escape, slash") + Text("%(text)s") + Key("enter"),
-    		'Vance': Key("escape, n"),
-    		'rev': Key("escape, N"),
+    		'[<n>] Vance': Key("escape, %(n)d, n"),
+    		'[<n>] rev': Key("escape, %(n)d, N"),
 
 		#  page actions
     		'show page atoms': Key("g,s"),
