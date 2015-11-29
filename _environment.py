@@ -30,7 +30,7 @@ general_rule = MappingRule(
 lubuntu_rule = MappingRule(
 	name = "lubuntu",
 	mapping = {
-            'terminal new': Key('alt-f2') +  Text('gnome-terminal') + Key('tab:2,enter'),
+            'terminal new': Key('a-f2') +  Text('gnome-terminal') + Key('tab:2,enter'),
             'window full-screen': Key('f11'),
 	}
 )
