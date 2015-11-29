@@ -3,36 +3,6 @@ from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
 
 import lib.combination
 
-# vocabulary mappings of single command words to key string representations.
-#  these are used in combination functions to retrieve key strokes.
-# the command words are not necessarily usable in isolation,
-# i.e. outside of combinations
-
-# vocabulary mappings for vim  normal mode
-nmodeVocabulary = {
-        "paste": "p",
-        "indent": "equal,equal",
-        "dub": "w",
-        "nib": "e",
-        "slump": "j",
-        "boost": "k",
-        "leave top": "g,g",
-        "leaf bottom": "G",
-}
-
-# vocabulary mappings for vim visual mode
-vmodeVocabulary = {
-        "dub": "w",
-        "nib": "e",
-        "slump": "j",
-        "boost": "k",
-        "leaf top": "g,g",
-        "leaf bottom": "G",
-} 
-
-
-# functions to determine the vim mode of a combination
-
 grammar = Grammar("vim")
 
 
@@ -47,8 +17,8 @@ navigation_rule = MappingRule(
 	mapping = {
    		'(Buck | buck) [<text>]': Key("dollar") + Function(lib.combination.executeCombo),
 	  	'zilch [<text>]': Key("0") + Function(lib.combination.executeCombo),
-                '[<n>] page up': Key("%(n)d,pgup"),
-                '[<n>] page down': Key("%(n)d,pgdown"),
+                '[<n>] page up': Key("pgup:%(n)d"),
+                '[<n>] page down': Key("pgdown:%(n)d"),
                 'code future': Key("c-i"),
                 'code past':  Key("c-o"),
                 'code help rake':  Key("escape") + Text(":helpgrep "),
@@ -62,10 +32,11 @@ navigation_rule = MappingRule(
 		'[<n>] nib [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
 
                 # more searching actions
+                'braille ignore case': Key('escape') +  Text('/\c'),
+                'braille ignore case [<text>]': Key('escape') +  Text('/\c%(text)s'),
                 'braille word boundaries': Key('escape') + Text('/\<\>') + Key('left:2'),
                 'go to [a] stowed': Key('escape,g,d'),
                 'go to [a] stowed global': Key('escape,g,D'),
-                'optic vex': Key('escape,colon,V,e,x,enter'),
                 'go to (braille|Brielle) (1st|first)': Key('escape,g,g,n'),
                 'go to (Brielle|braille) last': Key('escape,G,N'),
                 '(Brielle|braille) function': Key('escape') + Text('/function '),
@@ -96,7 +67,7 @@ buffer_rule = MappingRule(
             'code back': Key("escape,colon,b,p,enter"),
             'code last': Key("c-caret"),
             'code last': Key("escape,colon,b,l,enter"),
-            'code <n>': Key("escape,colon,b,%(n)d,enter"),
+            'code <n>': Key("escape,colon,b") + Text("%(n)d"),
             'code save': Key("escape,colon,w,enter"),
             'code save quit': Key("escape,colon,w,q,enter"),
             'code quit': Key("escape,colon,q,enter"),
@@ -115,7 +86,7 @@ buffer_rule = MappingRule(
             'split (Stowe|stow)': Key('c-w,equal'),
             'code wide <n>': Text(':vertical resize +%(n)d') +  Key('enter'),
             'code narrow <n>': Text(':vertical resize -%(n)d') +  Key('enter'),
-            'code split visual': Key('colon,V,e,x,enter'),
+            'vertical (explore | Explorer)': Key('escape, colon, V') + Text('explore') +  Key('enter'),
             'code window right':  Key('c-w,l'),
             'code window left':  Key('c-w,h'),
             'code window up':  Key('c-w,k'),
@@ -153,8 +124,8 @@ manipulation_rule = MappingRule(
    		'swap more [<text>]': Key("s-r") +  Function(lib.combination.executeCombo),
                 'tilde [<text>]': Key("tilde") +  Function(lib.combination.executeCombo),
                 'top off [<text>]': Key("cs-p") + Function(lib.combination.executeCombo),
-                '[<n>] trim [<text>]': Key("x")+  Function(lib.combination.executeCombo),
-                '[<n>] trim back [<text>]': Key("X") +  Function(lib.combination.executeCombo),
+                '[<n>] trim [<text>]': Key("x:%(n)d")+  Function(lib.combination.executeCombo),
+                '[<n>] trim back [<text>]': Key("X:%(n)d") +  Function(lib.combination.executeCombo),
                 'undo': Key("escape,u"),
                 'yank [<text>]': Key("y") +  Function(lib.combination.executeCombo),
                 'yank line [<text>]': Key("y,y") + Function(lib.combination.executeCombo),

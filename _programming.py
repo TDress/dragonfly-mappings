@@ -12,7 +12,7 @@ symbols_rule = MappingRule(
             '(Stowe | stow) space': Key("space, equal, space") +  Function(lib.combination.executeCombo),
 
             'tick [<text>]': Key("apostrophe") +  Function(lib.combination.executeCombo),
-            'tick twice': Key("dquote"),
+            'tick twice [<text>]': Key("dquote") + Function(lib.combination.executeCombo),
             '(way | weigh) (stow | Stowe)': Key("space, equal, equal, space"),
             'way (stow | Stowe) strict': Key("space, equal, equal, equal, space"),
             'way bang': Key("space, exclamation, equal, space"),
@@ -24,6 +24,7 @@ symbols_rule = MappingRule(
 
             # mappings, brackets and miscellaneous
             'bang [<text>]': Key("exclamation") +  Function(lib.combination.executeCombo),
+            'comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
             'arc [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
@@ -60,8 +61,7 @@ symbols_rule = MappingRule(
             'Christ twice': Text("++"),
             'minus space': Text(" - "),
             'minus': Text("-"),
-            'mod space':  Key("space,percent,space"), 
-            'mod':  Key("percent"),
+            'mod [<text>]':  Key("percent") +  Function(lib.combination.executeCombo),
             'slug space':  Key("space,asterisk,space"),
             'slug':  Key("asterisk"),
             'hash': Key("hash"),
@@ -82,7 +82,9 @@ symbols_rule = MappingRule(
 php_rule = MappingRule(
     name = 'php',
     mapping = {
-        'PHP': Text("php")
+        'comment':Text('// '),
+        'comment more': Text('/*') + Key('enter'),
+        'PHP': Text("php"),
     }
 )
 
