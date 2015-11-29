@@ -14,7 +14,7 @@ general_rule = MappingRule(
                 '[<n>] tab back': Key("shift-tab:%(n)d"),
                 'text copy': Key("c-c"),
                 'text paste': Key("c-v"),
-                'lock screen': Key('win-l'),
+                'lock screen': Key('w-l'),
                 'window last': Key('a-tab'),
 		},
 	extras = [
