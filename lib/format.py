@@ -54,8 +54,9 @@ class SCText(Text):  # Special Characters Text.
         # That's because this class is a subclass of the container, not of the Action itself.  So, in order to ensure
         # our overridden method is called on the correct Action, we must add an unbound copy of the method to each
         # of the Actions.
-        setattr(self._dragonfly_action, "_parse_spec", self._parse_spec)
-        setattr(self._aenea_action, "_parse_spec", self._parse_spec)
+
+        # setattr(self._dragonfly_action, "_parse_spec", self._parse_spec)
+        # setattr(self._aenea_action, "_parse_spec", self._parse_spec)
 
     def _parse_spec(self, spec):
         """Overrides the normal Text class behavior. To handle dictation of

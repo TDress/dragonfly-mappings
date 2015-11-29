@@ -67,7 +67,7 @@ buffer_rule = MappingRule(
             'code back': Key("escape,colon,b,p,enter"),
             'code last': Key("c-caret"),
             'code last': Key("escape,colon,b,l,enter"),
-            'code <n>': Key("escape,colon,b") + Text("%(n)d"),
+            'code <n>': Key("escape,colon,b") + Text("%(n)d") +  Key('enter'),
             'code save': Key("escape,colon,w,enter"),
             'code save quit': Key("escape,colon,w,q,enter"),
             'code quit': Key("escape,colon,q,enter"),

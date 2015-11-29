@@ -1,5 +1,5 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
-                       Key, Text)
+                       Key, Text,  Function)
 
 import lib.combination
 
