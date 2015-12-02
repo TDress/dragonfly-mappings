@@ -12,6 +12,7 @@ general_rule = MappingRule(
                 'bash text copy': Key('cs-c'),
                 'Bash text paste': Key('cs-v'),
 		"cancel": Key("c-c"),
+                'end of file': Key('c-d'),
                 "integer <n>": Text("%(n)d"),
                 "Lennix | Lenox": Text("linux"),
 		"say <text>": Text("%(text)s"),
@@ -41,6 +42,7 @@ symbol_rule = MappingRule(
         name = "symbols",
         mapping = {
             'backslash [<text>]':  Key('backslash') +  Function(lib.combination.executeCombo),
+            'slash [<text>]':  Key('slash') +  Function(lib.combination.executeCombo),
             "caret | carrot":  Text("^"),
             'hyphen [<text>]': Key('hyphen') +  Function(lib.combination.executeCombo),
         },
@@ -123,7 +125,7 @@ bash_rule = MappingRule(
 		"bash Buck": Key("c-e"),
 
                 "[<n>] backspace": Key("backspace:%(n)d"),
-                "[<n>] delete": Key("delete:%(n)d"),
+                '[<n>] delete [<text>]': Key("delete:%(n)d") + Function(lib.combination.executeCombo),
 		"[<n>] scratch back": Key("a-backspace:%(n)d"),
 		"[<n>] scratch next": Key("a-d:%(n)d"),
                 "scratch tail":Key("c-k"),
@@ -142,7 +144,7 @@ bash_rule = MappingRule(
 		"W. get ": Text("wget "),
 
                 # screen
-                "screen start": Text("screen") +  Key('enter'),
+                "screen start": Text("screen") +  Key('enter:2'),
                 "screen new": Key('c-a,c'),
                 "screen next": Key('c-a,space'),
                 "screen back": Key('c-a,backspace'),

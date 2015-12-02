@@ -10,6 +10,7 @@ programming_mapping = {
         "Christ space": "space,plus,space",
         "Christ twice": "space,plus,space",
         "comma": "comma",
+        'snake': 'underscore',
         "crimp": "lbrace",
         "crimp end": "rbrace",
         "crypt": "question",

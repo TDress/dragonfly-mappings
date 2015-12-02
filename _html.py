@@ -272,7 +272,7 @@ rules = MappingRule(
     mapping={
         # Commands and keywords.
         'Html':Text('html'),
-        "[start] tag": Text("<>") + Key("left"),
+        "[start] tag":  Key("langle,rangle") + Key("left"),
         "[start] tag <element>": Function(start_tag),
         "tags <element>": Function(tags),
         "hyper close tag": Text("</>") + Key("left"),
@@ -280,13 +280,13 @@ rules = MappingRule(
         "hyper attribute <attribute>": Text(' %(attribute)s=""') + Key("left"),
         "hyper attribute <attribute> [equals] <text>": Function(attribute_with_content),  # @IgnorePep8
         # Comments.
-        "hyper comment": Text("<!--  -->") + Key("left:4"),
+        "hyper comment":  Key('langle,exclamation') + Text("--  -->") + Key("left:4"),
         "hyper comment <text>": SCText("<!-- %(text)s -->") + Key("left:4"),
-        "hyper (open|left) comment": Text("<!-- "),
+        "hyper (open|left) comment":  Key('langle,exclamation') + Text("-- "),
         "hyper (open|left) comment <text>": SCText("<!-- %(text)s"),
         "hyper (close|right) comment": Text(" -->"),
         # Doctypes.
-        "(doc type | doctype) 5": Text("<!DOCTYPE html>"),
+        "(doc type | doctype) 5":  Key('langle,exclamation') + Text("DOCTYPE html>"),
         "(doc type | doctype) 4 [transitional]": Text('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">'),  # @IgnorePep8
         "(doc type | doctype) 4 strict": Text('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">'),  # @IgnorePep8
         "(doc type | doctype) X [transitional]": Text('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'),  # @IgnorePep8

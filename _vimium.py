@@ -37,8 +37,6 @@ window_rule = MappingRule(
 
 		#  page actions
     		'show page atoms': Key("g,s"),
-    		'etch': Key("i"),
-    		'etch <text>': Key("i") + Text("%(text)")
 	},
     	extras = [
         	IntegerRef('n', 1, 99),
