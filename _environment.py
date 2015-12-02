@@ -1,5 +1,5 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
-                       Key, Text,  Function)
+                       Key, Text,  Function, Pause)
 
 import lib.combination
 
@@ -8,18 +8,21 @@ grammar = Grammar("environment")
 general_rule = MappingRule(
 	name = "general",
 	mapping = {
+                '<n>':Key('%(n)d'),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
+                '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
                 "[<n>] tab [<text>]":Key("tab:%(n)d") + Function(lib.combination.executeCombo),
-                '[<n>] tab back': Key("shift-tab:%(n)d"),
+                '[<n>] tab back': Key("s-tab:%(n)d"),
                 'text copy': Key("c-c"),
                 'text paste': Key("c-v"),
                 'lock screen': Key('w-l'),
-                'window last': Key('a-tab'),
+                'window close': Key('a-f4'),
+                'window last': Key('a-tab, enter'),
 		},
 	extras = [
 		Dictation("text"),
-                 IntegerRef('n',1, 99)
+                 IntegerRef('n',1,  1000000)
 		],
         defaults = {
             "n":1,
@@ -30,7 +33,7 @@ general_rule = MappingRule(
 lubuntu_rule = MappingRule(
 	name = "lubuntu",
 	mapping = {
-            'terminal new': Key('a-f2') +  Text('gnome-terminal') + Key('tab:2,enter'),
+            'terminal new': Key('a-f2') +  Pause('100') + Text('gnome-terminal') + Key('tab:2,enter'),
             'window full-screen': Key('f11'),
 	}
 )

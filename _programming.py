@@ -25,6 +25,7 @@ symbols_rule = MappingRule(
             # mappings, brackets and miscellaneous
             'bang [<text>]': Key("exclamation") +  Function(lib.combination.executeCombo),
             'comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
+            'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
             'arc [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
@@ -32,9 +33,9 @@ symbols_rule = MappingRule(
             'whale [<text>]': Text(" => ") +  Function(lib.combination.executeCombo),
             'shark [<text>]': Text("->") +  Function(lib.combination.executeCombo),
             'trout [<text>]': Text(">") +  Function(lib.combination.executeCombo),
-            'trout less': Text("<"),
+            'trout less [<text>]': Text("<") + Function(lib.combination.executeCombo),
             'ternary': Text(" ?  :") +  Key("left:2"),
-            'ternary short': Text(" ?: "),
+            'ternary short': Key("space,question,colon,space"),
 
             'raft [<text>]': Text("[") +  Function(lib.combination.executeCombo),
             'raft end': Text("]"),
@@ -56,7 +57,7 @@ symbols_rule = MappingRule(
             'amp twice space': Key('space,ampersand,ampersand,space'),
 
             # arithmetic
-            'Christ space': Text(" + "),
+            'Christ space [<text>]': Text(" + ") + Function(lib.combination.executeCombo),
             'Christ [<text>]': Text("+") +  Function(lib.combination.executeCombo),
             'Christ twice': Text("++"),
             'minus space': Text(" - "),

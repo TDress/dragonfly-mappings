@@ -21,16 +21,12 @@ window_rule = MappingRule(
     		'leaf bar': Key("c-l"),
 
 	    	#  Moving around
-    		'[<n>] slump': Key("j:%(n)d"),
-    		'[<n>] boost': Key("k:%(n)d"),
     		'slump more': Key("c-d"),
     		'slump most': Key("pgdown"),
     		'boost more':  Key("c-u"),
     		'boost most':  Key("pgup"),
     		'leaf top': Key("escape, g, g"),
     		'leaf bottom': Key("escape, s-g"),
-    		'[<n>] bump': Key("l:%(n)d"),
-    		'[<n>] tug': Key("h:%(n)d"),
     		'leaf past': Key("a-left"),
     		'leaf future': Key("a-right"),
     
@@ -41,8 +37,6 @@ window_rule = MappingRule(
 
 		#  page actions
     		'show page atoms': Key("g,s"),
-    		'etch': Key("i"),
-    		'etch <text>': Key("i") + Text("%(text)")
 	},
     	extras = [
         	IntegerRef('n', 1, 99),
