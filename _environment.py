@@ -1,5 +1,5 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
-                       Key, Text,  Function, Pause)
+                       Key, Text,  Function, Pause,  Mimic)
 
 import lib.combination
 
@@ -8,7 +8,7 @@ grammar = Grammar("environment")
 general_rule = MappingRule(
 	name = "general",
 	mapping = {
-                '<n>':Key('%(n)d'),
+                '<n>': Text('%(n)d'),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
@@ -17,8 +17,9 @@ general_rule = MappingRule(
                 'text copy': Key("c-c"),
                 'text paste': Key("c-v"),
                 'lock screen': Key('w-l'),
+                'shards': Mimic('list', 'all', 'windows'),
                 'window close': Key('a-f4'),
-                'window last': Key('a-tab, enter'),
+                'window last': Key('alt:down,tab,alt:up'),
 		},
 	extras = [
 		Dictation("text"),

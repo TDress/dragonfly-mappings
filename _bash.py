@@ -10,10 +10,8 @@ general_rule = MappingRule(
 	name = "general",
 	mapping = {
                 'bash text copy': Key('cs-c'),
-                'Bash text paste': Key('cs-v'),
 		"cancel": Key("c-c"),
                 'end of file': Key('c-d'),
-                "integer <n>": Text("%(n)d"),
                 "Lennix | Lenox": Text("linux"),
 		"say <text>": Text("%(text)s"),
 		},
@@ -132,7 +130,7 @@ bash_rule = MappingRule(
                 "scratch head":Key("c-u"),
 		"bash paste": Key("c-y"),
 
-                "Sudo":Text("sudo"),
+                "Sudo":Text("sudo "),
 		"pseudo-aptitude install": Text("sudo apt-get install "),
 		"pseudo-aptitude update": Text("sudo apt-get update "),
 		"pseudo-aptitude remove": Text("sudo apt-get remove "),
@@ -158,7 +156,7 @@ bash_rule = MappingRule(
         },
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 0, 20)
+		IntegerRef("n", 0, 50)
 		],
 	defaults = {
 		"n": 1,
@@ -204,9 +202,13 @@ git_rule = MappingRule(
 		"annals (checkout | check out) new <text>": Text("git checkout -b  %(text)s"),
 		"annals (checkout | check out) <text>": Text("git checkout %(text)s"),
 		"annals (checkout | check out) minus F.": Text("git checkout -f\n"),
+		"annals (checkout | check out) master": Text("git checkout master") + Key('enter'),
 
                 "annals push": Text("git push"),
+                'annals push origin':  Text('git push origin '),
+                'annals push origin master':  Text('git push origin master'),
 
+                'annals show': Text('git show '),
 		"annals stash": Text("git stash\n"),
 
 		"annals help": Text("git help"),

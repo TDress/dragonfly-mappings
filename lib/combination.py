@@ -28,12 +28,11 @@ allMappings = reduce(
 #   any commands that exist in all vocabulary.
 #   Recursive calls are made for any text after the command.
 def executeCombo(text):
-    text = str(text)
+    words = lib.strip_dragon_info(text)
     print 'calling execute combo'
-    print text
-    if len(text) < 1:
+    print words
+    if len(words) < 1:
         return
-    words = text.split(" ")
 
     for i in range(len(words),0,-1):
         command = ' '.join(words[0:i]).lower()
