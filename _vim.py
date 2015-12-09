@@ -34,7 +34,7 @@ navigation_rule = MappingRule(
 		'etch start [<text>]': Key("escape,I") + Function(lib.combination.executeCombo),
 		'[<n>] dub [<text>]': Key("%(n)d,w") + Function(lib.combination.executeCombo),
 		'[<n>] (Hynde | hind) [<text>]': Key("%(n)d,b") + Function(lib.combination.executeCombo),
-		'[<n>] nib [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
+		'[<n>] (tail  | tale) [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
 
                 # more searching actions
                 'braille ignore case': Key('escape') +  Text('/\c'),
@@ -55,7 +55,7 @@ navigation_rule = MappingRule(
 	},
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 1, 9)
+		IntegerRef("n", 1, 50)
 	],
 	defaults = {
 		"n": 1,
@@ -71,12 +71,12 @@ buffer_rule = MappingRule(
             'code next':  Key("escape,colon,b,n,enter"),
             'code back': Key("escape,colon,b,p,enter"),
             'code last': Key("c-caret"),
-            'code last': Key("escape,colon,b,l,enter"),
             'code <n>': Key("escape,colon,b") + Text("%(n)d") +  Key('enter'),
             'code save': Key("escape,colon,w,enter"),
             'code save quit': Key("escape,colon,w,q,enter"),
             'code quit': Key("escape,colon,q,enter"),
             'code quit bang': Key("escape,colon,q,exclamation,enter"),
+            'code remove':  Key('escape,colon,b,d,enter'),
             'code save quit bang': Key("escape,colon,w,q,exclamation,enter"),
             'code edit': Key("escape,colon,e,space"),
             'code shell': Key("escape,colon,s,h,enter"),
@@ -85,13 +85,14 @@ buffer_rule = MappingRule(
             'code ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
 
             # window actions
-            'split horizontal': Key("escape,colon,s,p,enter"),
-            'split vertical': Key("escape,colon,v,s,p,enter"),
+            'horizontal split': Key("escape,colon,s,p,enter"),
+            'vertical split': Key("escape,colon,v,s,p,enter"),
             'split new': Key("escape,colon,v,n,e,w,space"),
             'split (Stowe|stow)': Key('c-w,equal'),
             'code wide <n>': Text(':vertical resize +%(n)d') +  Key('enter'),
             'code narrow <n>': Text(':vertical resize -%(n)d') +  Key('enter'),
-            'vertical (explore | Explorer)': Key('escape, colon, V') + Text('explore') +  Key('enter'),
+            'vertical (explore | Explorer)': Key('escape, colon') 
+                + Key('e,left,V,right') + Text('xplore') +  Key('enter'),
             'code window right':  Key('c-w,l'),
             'code window left':  Key('c-w,h'),
             'code window up':  Key('c-w,k'),
@@ -115,11 +116,12 @@ manipulation_rule = MappingRule(
                 '(Cleve | cleave) [<text>]': Key("escape,o") + Function(lib.combination.executeCombo),
                 'jump right': Key("rangle:2"),
                 'jump left': Key("langle:2"),
-                '[<n>] shoot [<text>]': Key("enter") +  Function(lib.combination.executeCombo),
+                '[<n>] shoot [<text>]': Key("enter:%(n)d") +  Function(lib.combination.executeCombo),
 		'lop [<text>]': Key("d") +  Function(lib.combination.executeCombo),
 		'lop line [<text>]': Key("d,d") +  Function(lib.combination.executeCombo), 
                 'oust [<text>]': Key("c") +  Function(lib.combination.executeCombo), 
                 'oust back': Key("escape,b,c,e"),
+                'oust line': Key('c:2'),
                 'paste': Key("p"),
                 'paste front': Key("P"),
                 'redo': Key("cs-r"),

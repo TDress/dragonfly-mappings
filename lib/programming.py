@@ -19,6 +19,7 @@ programming_mapping = {
         "minus": "minus",
         "mod": "percent",
         "optic": "colon",
+        'optic twice': 'colon,colon',
 
         "raft": "lbracket",
         "raft and": "rbracket",

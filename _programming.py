@@ -27,6 +27,7 @@ symbols_rule = MappingRule(
             'comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
+            'optic twice [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
             'arc [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
             'arc end': Key("rparen"),
@@ -86,6 +87,7 @@ php_rule = MappingRule(
         'comment':Text('// '),
         'comment more': Text('/*') + Key('enter'),
         'PHP': Text("php"),
+        'variable dump': Text('var_dump( );') + Key('left,left,backspace'),
     }
 )
 
