@@ -1,5 +1,6 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text, Function)
+import lib.format
 
 import lib.vim 
 import lib.chars 
@@ -28,7 +29,7 @@ allMappings = reduce(
 #   any commands that exist in all vocabulary.
 #   Recursive calls are made for any text after the command.
 def executeCombo(text):
-    words = lib.strip_dragon_info(text)
+    words = lib.format.strip_dragon_info(text)
     print 'calling execute combo'
     print words
     if len(words) < 1:
