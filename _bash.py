@@ -9,7 +9,11 @@ grammar = Grammar("bash")
 general_rule = MappingRule(
 	name = "general",
 	mapping = {
-                'bash text copy': Key('cs-c'),
+                'bash back': Key('c-pgup'),
+                'bash copy': Key('cs-c'),
+                'bash next': Key('c-pgdown'),
+                'bash new': Key('cs-t'),
+                'bash paste':Key('cs-v'),
 		"cancel": Key("c-c"),
                 'end of file': Key('c-d'),
                 "Lennix | Lenox": Text("linux"),
@@ -60,6 +64,7 @@ bash_rule = MappingRule(
 
 		"CD dot dot": Text("cd ..\n"),
 		"CD double dot": Text("cd ..\n"),
+                'double dot':Text('../'),
 		"CD triple dot": Text("cd ../..\n"),
 		"CD ": Text("cd ") + Key("tab:2"),
 		"CD <text>": Text("cd %(text)s"),
@@ -132,7 +137,6 @@ bash_rule = MappingRule(
 		"[<n>] scratch next": Key("a-d:%(n)d"),
                 "scratch tail":Key("c-k"),
                 "scratch head":Key("c-u"),
-		"bash paste": Key("c-y"),
 
                 "Sudo":Text("sudo "),
 		"pseudo-aptitude install": Text("sudo apt-get install "),

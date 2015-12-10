@@ -9,7 +9,8 @@ grammar = Grammar("environment")
 general_rule = MappingRule(
 	name = "general",
 	mapping = {
-                'integer <n>': Function(lib.format.remove_spaces_text),
+                'browser (console | consul)': Key('cs-j'),
+                'integer <n>': Function(lib.format.remove_spaces_text('%(n)d')),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
@@ -17,7 +18,7 @@ general_rule = MappingRule(
                 '[<n>] tab back': Key("s-tab:%(n)d"),
                 'text copy': Key("c-c"),
                 'text paste': Key("c-v"),
-                'lock screen': Key('w-l'),
+                'lock screen': Key('win:down,l'),
                 'shards': Mimic('list', 'all', 'windows'),
                 'window close': Key('a-f4'),
                 'window last': Key('alt:down,tab,alt:up') + Pause('10') + Key('enter'),
