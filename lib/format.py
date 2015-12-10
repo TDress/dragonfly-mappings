@@ -281,6 +281,11 @@ def format_text(text, formatType=None):
         Text("%(text)s").execute({"text": result})
 
 
+def remove_spaces_text(text):
+    s = str(text)
+    print s
+    Text(re.sub('\s', '', text)).execute()
+    
 def camel_case_text(text):
     """Formats dictated text to camel case.
 

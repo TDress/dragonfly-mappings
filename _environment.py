@@ -1,6 +1,7 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text,  Function, Pause,  Mimic)
 
+import lib.format
 import lib.combination
 
 grammar = Grammar("environment")
@@ -8,7 +9,7 @@ grammar = Grammar("environment")
 general_rule = MappingRule(
 	name = "general",
 	mapping = {
-                '<n>': Text( Function(lib.format.format_squash('%(n)d')) ),
+                'integer <n>': Function(lib.format.remove_spaces_text),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
