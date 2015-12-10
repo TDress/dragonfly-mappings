@@ -26,8 +26,6 @@ vimMapping = {
         "leaf top": "g,g",
         "lop": "d",
         "lop line": "d,d",
-        "tail": "e",
-        "tale": "e",
         "oust": "c",
         "page down": "pgdown",
         "page up": "pgup",

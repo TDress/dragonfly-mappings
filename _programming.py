@@ -81,6 +81,17 @@ symbols_rule = MappingRule(
 
 )
 
+text_formatting_rule = MappingRule(
+    name = 'text',
+    mapping = {
+        'camel case [<text>]': Function(lib.format.camel_case_text)
+    },
+    extras = [
+        Dictation("text"),
+    ]
+)
+
+
 php_rule = MappingRule(
     name = 'php',
     mapping = {

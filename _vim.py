@@ -34,7 +34,7 @@ navigation_rule = MappingRule(
 		'etch start [<text>]': Key("escape,I") + Function(lib.combination.executeCombo),
 		'[<n>] dub [<text>]': Key("%(n)d,w") + Function(lib.combination.executeCombo),
 		'[<n>] (Hynde | hind) [<text>]': Key("%(n)d,b") + Function(lib.combination.executeCombo),
-		'[<n>] (tail  | tale) [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
+		'<n> Eli [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
 
                 # more searching actions
                 'braille ignore case': Key('escape') +  Text('/\c'),

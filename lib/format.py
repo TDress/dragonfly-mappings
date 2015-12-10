@@ -214,6 +214,7 @@ def format_dotify(text):
 def format_squash(text):
     newText = ""
     words = strip_dragon_info(text)
+    print words
     for word in words:
         newText = '%s%s' % (newText, word)
     return newText

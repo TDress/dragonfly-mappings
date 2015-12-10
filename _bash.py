@@ -87,8 +87,12 @@ bash_rule = MappingRule(
 		"(rate recursive | rake recursive | Raker cursive)": Text("grep -r ''") + Key('left'),
 		"rake": Text("grep ''") +  Key('left'),
 
+                # viewing files and text
 		"cat": Text("cat "),
 		"cat <text>": Text("cat %(text)s"),
+                '(tail|tale)': Text("tail "),
+                '(tail|tale) follow': Text("tail -f "),
+
 		"exit": Text("exit\n"),
 
 		"list": Text("ls\n"),

@@ -8,7 +8,7 @@ grammar = Grammar("environment")
 general_rule = MappingRule(
 	name = "general",
 	mapping = {
-                '<n>': Text('%(n)d'),
+                '<n>': Text( Function(lib.format.format_squash('%(n)d')) ),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
@@ -19,7 +19,7 @@ general_rule = MappingRule(
                 'lock screen': Key('w-l'),
                 'shards': Mimic('list', 'all', 'windows'),
                 'window close': Key('a-f4'),
-                'window last': Key('alt:down,tab,alt:up'),
+                'window last': Key('alt:down,tab,alt:up') + Pause('10') + Key('enter'),
 		},
 	extras = [
 		Dictation("text"),
