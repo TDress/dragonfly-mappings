@@ -93,6 +93,7 @@ buffer_rule = MappingRule(
             'code narrow <n>': Text(':vertical resize -%(n)d') +  Key('enter'),
             'vertical (explore | Explorer)': Key('escape, colon') 
                 + Key('e,left,V,right') + Text('xplore') +  Key('enter'),
+            'code (Explorer | explore)': Key('escape, colon') +  Key('x,left,E,enter'),
             'code window right':  Key('c-w,l'),
             'code window left':  Key('c-w,h'),
             'code window up':  Key('c-w,k'),
@@ -100,7 +101,7 @@ buffer_rule = MappingRule(
 	},
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 1, 20)
+		IntegerRef("n", 1, 500)
 	],
 	defaults = {
 		"n": 1

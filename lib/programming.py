@@ -34,4 +34,5 @@ programming_mapping = {
         "way stow": "space,equal,equal,space",
         "way Stowe strict": "space,equal,equal,equal,space",
         "way Stow strict": "space,equal,equal,equal,space",
+        'whale': 'space,equal,rangle,space',
 } 
