@@ -24,7 +24,7 @@ symbols_rule = MappingRule(
 
             # mappings, brackets and miscellaneous
             'bang [<text>]': Key("exclamation") +  Function(lib.combination.executeCombo),
-            ',\comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
+            #',\comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic twice [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
