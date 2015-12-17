@@ -9,7 +9,7 @@ programming_mapping = {
         "Christ": "plus",
         "Christ space": "space,plus,space",
         "Christ twice": "space,plus,space",
-        "comma": "comma",
+        ",": "comma",
         'snake': 'underscore',
         "crimp": "lbrace",
         "crimp end": "rbrace",
@@ -20,6 +20,7 @@ programming_mapping = {
         "mod": "percent",
         "optic": "colon",
         'optic twice': 'colon,colon',
+        'pipe twice':'space,bar,space,bar,left,backspace,right,space',
 
         "raft": "lbracket",
         "raft and": "rbracket",

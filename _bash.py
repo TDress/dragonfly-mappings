@@ -10,6 +10,7 @@ general_rule = MappingRule(
 	name = "general",
 	mapping = {
                 'bash back': Key('c-pgup'),
+                'bash (clothes | close)': Key('cs-w'),
                 'bash copy': Key('cs-c'),
                 'bash next': Key('c-pgdown'),
                 'bash new': Key('cs-t'),
@@ -106,6 +107,7 @@ bash_rule = MappingRule(
 		"list minus A.": Text("ls -a\n"),
 		"list minus one": Text("ls -1 "),
 
+                'symbolic link': Text('ln -s '),
 		"pipe space": Text(" | "),
 		"pipe": Text("|"),
 
@@ -160,6 +162,10 @@ bash_rule = MappingRule(
                 "screen copy":Key('c-a,lbracket'),
                 "screen paste":Key('c-a,rbracket'),
                 "screen kill": Key('c-a,k'),
+                # node package manager
+                'node packages':  Text('npm '),
+                'node packages install':  Text('npm install') +  Key('enter'),
+                'node packages build':  Text('npm build') +  Key('enter'),
 
         },
 	extras = [
@@ -212,10 +218,12 @@ git_rule = MappingRule(
 		"annals (checkout | check out) minus F.": Text("git checkout -f\n"),
 		"annals (checkout | check out) master": Text("git checkout master") + Key('enter'),
 
-                "annals push": Text("git push"),
+                "annals push": Text("git push "),
                 'annals push origin':  Text('git push origin '),
                 'annals push origin master':  Text('git push origin master'),
-
+                'annals (Paul | pull)':Text('git pull '),
+                'annals (Paul | pull) origin':Text('git pull origin'),
+                'annals (Paul | pull) origin master':Text('git pull origin master'),
                 'annals show': Text('git show '),
 		"annals stash": Text("git stash\n"),
 
