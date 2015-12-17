@@ -275,8 +275,8 @@ rules = MappingRule(
         "[start] tag":  Key("langle,rangle") + Key("left"),
         "[start] tag <element>": Function(start_tag),
         "tags <element>": Function(tags),
-        "hyper close tag": Text("</>") + Key("left"),
-        "hyper close tag <element>": Function(end_tag),
+        "close tag": Text("</>") + Key("left"),
+        "close tag <element>": Function(end_tag),
         "hyper attribute <attribute>": Text(' %(attribute)s=""') + Key("left"),
         "hyper attribute <attribute> [equals] <text>": Function(attribute_with_content),  # @IgnorePep8
         # Comments.

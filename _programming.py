@@ -10,6 +10,10 @@ symbols_rule = MappingRule(
             # comparison operators
             '(Stowe | stow) [<text>]': Key("equal") +  Function(lib.combination.executeCombo),
             '(Stowe | stow) space': Key("space, equal, space") +  Function(lib.combination.executeCombo),
+            "less than": Text(" < "),
+            "less equals": Text(" <= "),
+            "greater than": Text(" > "),
+            "greater equals": Text(" >= "),
 
             'tick [<text>]': Key("apostrophe") +  Function(lib.combination.executeCombo),
             'tick twice [<text>]': Key("dquote") + Function(lib.combination.executeCombo),
@@ -24,7 +28,7 @@ symbols_rule = MappingRule(
 
             # mappings, brackets and miscellaneous
             'bang [<text>]': Key("exclamation") +  Function(lib.combination.executeCombo),
-            #',\comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
+            'comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic twice [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
@@ -54,21 +58,24 @@ symbols_rule = MappingRule(
             # logical operators
             'amp': Text("&"),
             'amp space':  Key('space,ampersand,space'),
-            'amp twice':  Key('ampersand,ampersand'),
-            'amp twice space': Key('space,ampersand,ampersand,space'),
+            'amp twice':  Key('space,ampersand,space,ampersand,left,backspace,right,space'),
+            'or': Key('space,bar,space,bar,left,backspace,right,space'),
 
             # arithmetic
             'Christ space [<text>]': Text(" + ") + Function(lib.combination.executeCombo),
             'Christ [<text>]': Text("+") +  Function(lib.combination.executeCombo),
+            "Christ equals": Text(" += "),
             'Christ twice': Text("++"),
-            'minus space': Text(" - "),
-            'minus': Text("-"),
+            "(minus|subtract|subtraction)": Text(" - "),
+            "(minus|subtract|subtraction) equals": Text(" -= "),
+
             'mod [<text>]':  Key("percent") +  Function(lib.combination.executeCombo),
             'slug space':  Key("space,asterisk,space"),
             'slug':  Key("asterisk"),
             'hash': Key("hash"),
 
-            # common abbreviations
+            # common abbreviations and terms
+            'JavaScript': Text('javascript'),
             'Id':  Text("id"),
 
     },
@@ -91,12 +98,54 @@ text_formatting_rule = MappingRule(
     ]
 )
 
+builtin_statement_rule = MappingRule(
+    name = 'builtin_statement',
+    mapping = {
+        '(brake | break)': Text('break'),
+        '(brake | break) finish': Text('break;') +  Key('enter'), 
+        "case": Text("case "),
+        "case <text>": SCText("case %(text)s"),
+        "catch": Text("catch () {") + Key("left:3"),
+        "continue": Text("continue"),
+        'continue finish':  Text('continue;') +  Key('enter'),
+        "close comment": Text(" */"),
+        "do while": Text("do {") +  Key('enter, rbrace,space') 
+            + Text('while('),
+        "else": Text("else"),
+        "else if": Text("else if () {") + Key("left:3"),
+        "extends ": Text("extends "),
+        "for": Text("for () {") + Key("left:3"),
+        "false": Text("false"),
+        "finally": Text("finally {") + Key("enter"),
+                "if": Text("if ("),
+        "if <text>": Text("if (%(text)s) {") + Key("left:3"),
+        'integer short': Text('int '),
+        "(several | Sever) line": Key("end") + Text(";") + Key("enter"),
+
+        "new": Text("new "),
+        "return": Text("return "),
+        "return finish":  Text('return;') +  Key('enter'),
+        "switch": Text("switch () {") + Key("left:3"),
+        "switch <text>": SCText("switch (%(text)s) {") + Key("left:3"),
+        "throw": Text("throw "),
+        "true": Text("true"),
+        "try": Text("try {") + Key("enter"),
+        "while": Text("while () {") + Key("left:3"),
+        "while <text>": SCText("while (%(text)s) {") + Key("left:3"),
+
+
+    },
+    extras = [
+        Dictation("text"),
+    ]
+)
 
 php_rule = MappingRule(
     name = 'php',
     mapping = {
         'comment':Text('// '),
         'comment more': Text('/*') + Key('enter'),
+        'nil': Text('null'),
         'PHP': Text("php"),
         'variable dump': Text('var_dump( );') + Key('left,left,backspace'),
     }
@@ -113,6 +162,7 @@ grammar.add_rule(symbols_rule)
 grammar.add_rule(php_rule)
 grammar.add_rule(text_formatting_rule)
 grammar.add_rule(vocabulary_rule)
+grammar.add_rule(builtin_statement_rule)
 grammar.load()
 
 def unload():

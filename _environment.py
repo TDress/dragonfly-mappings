@@ -10,7 +10,7 @@ general_rule = MappingRule(
 	name = "general",
 	mapping = {
                 'browser (console | consul)': Key('cs-j'),
-                'integer <n>': Function(lib.format.remove_spaces_text),
+                'integer <n>': Function(lib.format.squash_text),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
@@ -21,7 +21,7 @@ general_rule = MappingRule(
                 'lock screen': Key('win:down,l'),
                 'shards': Mimic('list', 'all', 'windows'),
                 'window close': Key('a-f4'),
-                'window last': Key('alt:down,tab,alt:up') + Pause('10') + Key('enter'),
+                'window last': Key('a-tab') + Key('alt')
 		},
 	extras = [
 		Dictation("text"),

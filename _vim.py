@@ -1,5 +1,5 @@
 from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
-                       Key, Text, Function)
+                       Key, Text, Function,  Pause)
 
 import lib.combination
 
@@ -94,8 +94,8 @@ buffer_rule = MappingRule(
             'vertical (explore | Explorer)': Key('escape, colon') 
                 + Key('e,left,V,right') + Text('xplore') +  Key('enter'),
             'code (Explorer | explore)': Key('escape, colon') +  Key('x,left,E,enter'),
-            'code window right':  Key('c-w,l'),
-            'code window left':  Key('c-w,h'),
+            'code window right':  Key('escape,c-w,l'),
+            'code window left':  Key('escape,c-w,h'),
             'code window up':  Key('c-w,k'),
             'code window down':  Key('c-w,j'),
 	},
@@ -115,8 +115,8 @@ manipulation_rule = MappingRule(
 		'bag block [<text>]': Key("c-v") +  Function(lib.combination.executeCombo), 
 		'(cleave | Cleve) up [<text>]': Key("escape,O") + Function(lib.combination.executeCombo),
                 '(Cleve | cleave) [<text>]': Key("escape,o") + Function(lib.combination.executeCombo),
-                'jump right': Key("rangle:2"),
-                'jump left': Key("langle:2"),
+                '[<n>] jump right':  Key('%(n)d,rangle') +  Pause('20') +  Key('rangle'),
+                '[<n>] jump left':  Key('%(n)d,langle') +  Pause('20') +  Key('langle'),
                 '[<n>] shoot [<text>]': Key("enter:%(n)d") +  Function(lib.combination.executeCombo),
 		'lop [<text>]': Key("d") +  Function(lib.combination.executeCombo),
 		'lop line [<text>]': Key("d,d") +  Function(lib.combination.executeCombo), 
