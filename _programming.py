@@ -1,6 +1,7 @@
 from dragonfly import Grammar, MappingRule, Text, Key, Function,  Dictation
 
 import lib.combination
+from lib.format import SCText
 
 grammar = Grammar('programming')
 
