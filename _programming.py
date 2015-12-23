@@ -29,7 +29,7 @@ symbols_rule = MappingRule(
 
             # mappings, brackets and miscellaneous
             'bang [<text>]': Key("exclamation") +  Function(lib.combination.executeCombo),
-            'comma [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
+            '(breathed | breathe) [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic twice [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
@@ -52,9 +52,9 @@ symbols_rule = MappingRule(
             'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
             #  tags
-            'Rasmus tag':   Key('langle,question,p,h,p'),
-            'Rasmus tag close':  Key('question,rangle'),
-            'Rasmus tag short':  Key('langle,question,equal'),
+            'Rasmus tag': Text('<?php') + Key('left:3,backspace,question,'),
+            'Rasmus tag close':  Key('question,rangle') + Key('backspace,rangle'),
+            'Rasmus tag short':  Key('langle,question,equal,left,backspace,question'),
 
             # logical operators
             'amp': Text("&"),
@@ -77,6 +77,7 @@ symbols_rule = MappingRule(
 
             # common abbreviations and terms
             'JavaScript': Text('javascript'),
+            'Js': Text('js'),
             'Id':  Text("id"),
 
     },
@@ -92,7 +93,15 @@ symbols_rule = MappingRule(
 text_formatting_rule = MappingRule(
     name = 'text',
     mapping = {
-        'camel case [<text>]': Function(lib.format.camel_case_text)
+        'camel case [<text>]': Function(lib.format.camel_case_text),
+        'capital [<text>]': Function(lib.format.pascal_case_text),       
+        'Pascal case [<text>]': Function(lib.format.pascal_case_text),
+        'snake case [<text>]': Function(lib.format.snake_case_text),
+        'squash case [<text>]': Function(lib.format.squash_text),
+        '(uppercase | upper case) [<text>]': Function(lib.format.uppercase_text),
+        '(lowercase | lower case) [<text>]': Function(lib.format.lowercase_text),
+        'hyphen case [<text>]': Function(lib.format.dash_text),
+        '(spec | speck) case [<text>]': Function(lib.format.dot_text),
     },
     extras = [
         Dictation("text"),
@@ -121,7 +130,7 @@ builtin_statement_rule = MappingRule(
                 "if": Text("if ("),
         "if <text>": Text("if (%(text)s) {") + Key("left:3"),
         'integer short': Text('int '),
-        "(several | Sever) line": Key("end") + Text(";") + Key("enter"),
+        "(several | Sever) line": Key("escape,end") + Text(";"),
 
         "new": Text("new "),
         "return": Text("return "),
@@ -146,9 +155,19 @@ php_rule = MappingRule(
     mapping = {
         'comment':Text('// '),
         'comment more': Text('/*') + Key('enter'),
+        'empty': Text('empty( )') +  Key('left,backspace'),
+        'for each': Text('foreach( as ) {') +  Key('enter:2,up:2,escape,w:2,a'),
+        'namespace': Text('namespace '),
         'nil': Text('null'),
         'PHP': Text("php"),
+        'Rasmus print custom': Text('pr( );') +  Key('left,left,backspace'),
+        'Rasmus print custom exit': Text('pr( );exit;') +  Key('escape,b:3,a,delete'),
+        'Rasmus print readable': Text('print_r( )') +  Key('left,backspace'),
+        'Rasmus <text>': SCText('$%(text)s'),
+        'static access': Key('colon,space,colon,left,backspace,right'),  
+        'use': Text('use '),
         'variable dump': Text('var_dump( );') + Key('left,left,backspace'),
+        'variable dump exit': Text('var_dump( );exit;') + Key('escape,b:3,a,delete'),
     }
 )
 

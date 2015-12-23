@@ -36,6 +36,9 @@ file_extensions_rule = MappingRule(
 	mapping = {
 		"dot text": Text(".txt"),
 		"dot pie": Text(".py"),
+                'dot Php': Text('.php'),
+                'dot Js': Text('.js'),
+                'dot Html': Text('.html')
 		},
 	extras = [
 		],

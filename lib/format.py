@@ -382,6 +382,19 @@ def snake_case_text(text):
     newText = format_snake_case(text)
     Text("%(text)s").execute({"text": newText})
 
+def dash_text(text):
+    """Formats dictated text to dash case.
+
+    """
+    newText = format_dashify(text)
+    Text("%(text)s").execute({"text": newText})
+
+def dot_text(text):
+    """Formats dictated text to dot case.
+
+    """
+    newText = format_dotify(text)
+    Text("%(text)s").execute({"text": newText})
 
 def snake_case_count(n):
     """Formats n words to the left of the cursor to snake case.
