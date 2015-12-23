@@ -21,6 +21,7 @@ def define_function(text):
 rules = MappingRule(
     mapping={
         # Keywords:
+        'console log': Text('console.log(.);') +  Key('left:2,backspace'),
         "debugger": Text("debugger"),
         "default": Text("default"),
         "function": Text("function "),

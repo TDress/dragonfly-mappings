@@ -16,7 +16,7 @@ navigation_rule = MappingRule(
 	name = "navigation",
 	mapping = {
    		'(Buck | buck) [<text>]': Key("dollar") + Function(lib.combination.executeCombo),
-	  	'zilch [<text>]': Key("0") + Function(lib.combination.executeCombo),
+	  	'zilch [<text>]': Key("escape,0") + Function(lib.combination.executeCombo),
     		'[<n>] slump [<text>]': Key("j:%(n)d")  + Function(lib.combination.executeCombo),
     		'[<n>] boost [<text>]': Key("k:%(n)d") + Function(lib.combination.executeCombo),
     		'[<n>] bump [<text>]': Key("l:%(n)d") + Function(lib.combination.executeCombo),
@@ -123,7 +123,7 @@ manipulation_rule = MappingRule(
                 'oust [<text>]': Key("c") +  Function(lib.combination.executeCombo), 
                 'oust back': Key("escape,b,c,e"),
                 'oust line': Key('c:2'),
-                'paste': Key("p"),
+                'paste': Key("escape,p"),
                 'paste front': Key("P"),
                 'redo': Key("cs-r"),
    		'sub [<text>]': Key("s") +  Function(lib.combination.executeCombo),
