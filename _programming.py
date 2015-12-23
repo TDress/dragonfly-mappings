@@ -168,7 +168,11 @@ php_rule = MappingRule(
         'use': Text('use '),
         'variable dump': Text('var_dump( );') + Key('left,left,backspace'),
         'variable dump exit': Text('var_dump( );exit;') + Key('escape,b:3,a,delete'),
-    }
+    },
+    extras = [
+        Dictation("text"),
+    ]
+
 )
 
 vocabulary_rule = MappingRule(
