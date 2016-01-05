@@ -20,7 +20,6 @@ programming_mapping = {
         "mod": "percent",
         "optic": "colon",
         'optic twice': 'colon,colon',
-        'pipe twice':'space,bar,space,bar,left,backspace,right,space',
 
         "raft": "lbracket",
         "raft and": "rbracket",

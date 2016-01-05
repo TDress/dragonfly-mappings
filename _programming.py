@@ -32,7 +32,7 @@ symbols_rule = MappingRule(
             '(breathed | breathe) [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
-            'optic twice [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
+            'optic twice [<text>]': Key("colon,space,colon,left,backspace,right") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
             'arc [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
             'arc end': Key("rparen"),
@@ -52,15 +52,16 @@ symbols_rule = MappingRule(
             'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
             #  tags
-            'Rasmus tag': Text('<?php') + Key('left:3,backspace,question,'),
+            'Rasmus tag': Key('langle,delete,question,p,h,p,space'),
             'Rasmus tag close':  Key('question,rangle') + Key('backspace,rangle'),
-            'Rasmus tag short':  Key('langle,question,equal,left,backspace,question'),
+            'Rasmus tag short':   Key('langle,delete,question,equal,space'),
 
             # logical operators
             'amp': Text("&"),
             'amp space':  Key('space,ampersand,space'),
             'amp twice':  Key('space,ampersand,space,ampersand,left,backspace,right,space'),
-            'or': Key('space,bar,space,bar,left,backspace,right,space'),
+            
+            'or': Key('space,bar,space:2,bar,left,backspace:2,right,space'),
 
             # arithmetic
             'Christ space [<text>]': Text(" + ") + Function(lib.combination.executeCombo),
@@ -160,6 +161,7 @@ php_rule = MappingRule(
         'namespace': Text('namespace '),
         'nil': Text('null'),
         'PHP': Text("php"),
+        'in array': Text('in_array('),
         'Rasmus print custom': Text('pr( );') +  Key('left,left,backspace'),
         'Rasmus print custom exit': Text('pr( );exit;') +  Key('escape,b:3,a,delete'),
         'Rasmus print readable': Text('print_r( )') +  Key('left,backspace'),
