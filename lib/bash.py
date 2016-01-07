@@ -13,6 +13,7 @@ bashMapping = {
     'left word': 'a-b',
     'pipe': 'bar',
     'pipe space': 'space,bar,space',
+    'pipe twice':'bar,space:2,bar,left,backspace:2,right',
     'up': 'up',
     'down': 'down', 
     'right': 'right',

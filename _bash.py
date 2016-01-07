@@ -15,6 +15,8 @@ general_rule = MappingRule(
                 'bash next': Key('c-pgdown'),
                 'bash new': Key('cs-t'),
                 'bash paste':Key('cs-v'),
+                'bash page up': Key('s-pgup'),
+                'Bash page down': Key('s-pgdown'),
 		"cancel": Key("c-c"),
                 'end of file': Key('c-d'),
                 "Lennix | Lenox": Text("linux"),
@@ -113,6 +115,7 @@ bash_rule = MappingRule(
                 'symbolic link': Text('ln -s '),
 		"pipe space": Text(" | "),
 		"pipe": Text("|"),
+        'pipe twice': Key('bar,space:2,bar,left,backspace:2,right'),
 
 		"D. P. K. G. ": Text("dpkg "),
 		"D. P. K. G. minus L.": Text("dpkg -l "),

@@ -16,7 +16,7 @@ navigation_rule = MappingRule(
 	name = "navigation",
 	mapping = {
    		'(Buck | buck) [<text>]': Key("dollar") + Function(lib.combination.executeCombo),
-	  	'zilch [<text>]': Key("escape,0") + Function(lib.combination.executeCombo),
+	  	'zilch [<text>]': Key("0") + Function(lib.combination.executeCombo),
     		'[<n>] slump [<text>]': Key("j:%(n)d")  + Function(lib.combination.executeCombo),
     		'[<n>] boost [<text>]': Key("k:%(n)d") + Function(lib.combination.executeCombo),
     		'[<n>] bump [<text>]': Key("l:%(n)d") + Function(lib.combination.executeCombo),
@@ -67,6 +67,7 @@ buffer_rule = MappingRule(
 	name = "buffer",
 	mapping = {
             'code buffers': Key("escape") +  Text(":buffers") +  Key("enter"),
+            'code file': Key('escape,colon,f,enter'),
             'code name':Key("escape,colon") +  Text("buffer "),
             'code next':  Key("escape,colon,b,n,enter"),
             'code back': Key("escape,colon,b,p,enter"),
@@ -80,6 +81,7 @@ buffer_rule = MappingRule(
             'code save quit bang': Key("escape,colon,w,q,exclamation,enter"),
             'code edit': Key("escape,colon,e,space"),
             'code shell': Key("escape,colon,s,h,enter"),
+            'code search file':Key('c-p'),
 
             #common options
             'code ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
@@ -120,8 +122,9 @@ manipulation_rule = MappingRule(
                 '[<n>] shoot [<text>]': Key("enter:%(n)d") +  Function(lib.combination.executeCombo),
 		'lop [<text>]': Key("d") +  Function(lib.combination.executeCombo),
 		'lop line [<text>]': Key("d,d") +  Function(lib.combination.executeCombo), 
-                'oust [<text>]': Key("c") +  Function(lib.combination.executeCombo), 
+                '[<n>] oust [<text>]': Key("c") +  Function(lib.combination.executeCombo), 
                 'oust back': Key("escape,b,c,e"),
+                'oust Buck':Key('c,dollar'),
                 'oust line': Key('c:2'),
                 'paste': Key("escape,p"),
                 'paste front': Key("P"),
