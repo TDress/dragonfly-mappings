@@ -219,6 +219,7 @@ git_rule = MappingRule(
 
 		"annals (checkout | check out)": Text("git checkout "),
 		"annals (checkout | check out) new": Text("git checkout -b "),
+		"annals (checkout | check out) fresh": Text("git checkout -- "),
 		"annals (checkout | check out) new <text>": Text("git checkout -b  %(text)s"),
 		"annals (checkout | check out) <text>": Text("git checkout %(text)s"),
 		"annals (checkout | check out) minus F.": Text("git checkout -f\n"),
