@@ -39,7 +39,7 @@ navigation_rule = MappingRule(
                 'comma space': Key('comma,space'),
                 'cork optic': Key('right,colon,space'),
                 'Cork whale': Key('right,space,equal,rangle,space'),
-                'seal (sever | several)': Key('escape,A,semicolon,escape'),
+                'seal (sever | several)': Key('escape,A') + Text(';') + Key('escape'),
                 'seal comma': Key('escape,A,comma,escape'),
 
 
