@@ -10,7 +10,7 @@ general_rule = MappingRule(
 	name = "general",
 	mapping = {
                 'browser (console | consul)': Key('cs-j'),
-                'integer <n>': Function(lib.format.squash_text),
+                'integer <n>': Text('%(n)d'),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
@@ -36,7 +36,7 @@ general_rule = MappingRule(
 lubuntu_rule = MappingRule(
 	name = "lubuntu",
 	mapping = {
-            'terminal new': Key('a-f2') +  Pause('100') + Text('gnome-terminal') + Key('tab:2,enter'),
+            'terminal new': Key('a-f2') +  Pause('100') + Text('gnome-terminal') + Key('enter'),
             'window full-screen': Key('f11'),
 	}
 )

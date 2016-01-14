@@ -16,11 +16,11 @@ navigation_rule = MappingRule(
 	name = "navigation",
 	mapping = {
    		'(Buck | buck) [<text>]': Key("dollar") + Function(lib.combination.executeCombo),
-	  	'zilch [<text>]': Key("0") + Function(lib.combination.executeCombo),
-    		'[<n>] slump [<text>]': Key("j:%(n)d")  + Function(lib.combination.executeCombo),
-    		'[<n>] boost [<text>]': Key("k:%(n)d") + Function(lib.combination.executeCombo),
-    		'[<n>] bump [<text>]': Key("l:%(n)d") + Function(lib.combination.executeCombo),
-    		'[<n>] tug [<text>]': Key("h:%(n)d") +  Function(lib.combination.executeCombo),
+	  	'zilch [<text>]': Key("escape,0") + Function(lib.combination.executeCombo),
+    		'[<n>] slump [<text>]': Key("escape,j:%(n)d")  + Function(lib.combination.executeCombo),
+    		'[<n>] boost [<text>]': Key("escape,k:%(n)d") + Function(lib.combination.executeCombo),
+    		'[<n>] bump [<text>]': Key("escape,l:%(n)d") + Function(lib.combination.executeCombo),
+    		'[<n>] tug [<text>]': Key("escape,h:%(n)d") +  Function(lib.combination.executeCombo),
                 '[<n>] page up': Key("pgup:%(n)d"),
                 '[<n>] page down': Key("pgdown:%(n)d"),
                 'code future': Key("c-i"),
@@ -35,6 +35,13 @@ navigation_rule = MappingRule(
 		'[<n>] dub [<text>]': Key("%(n)d,w") + Function(lib.combination.executeCombo),
 		'[<n>] (Hynde | hind) [<text>]': Key("%(n)d,b") + Function(lib.combination.executeCombo),
 		'<n> Eli [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
+                'Cork comma': Key('right, comma,space'), 
+                'comma space': Key('comma,space'),
+                'cork optic': Key('right,colon,space'),
+                'Cork whale': Key('right,space,equal,rangle,space'),
+                'seal (sever | several)': Key('escape,A,semicolon,escape'),
+                'seal comma': Key('escape,A,comma,escape'),
+
 
                 # more searching actions
                 'braille ignore case': Key('escape') +  Text('/\c'),
@@ -81,7 +88,7 @@ buffer_rule = MappingRule(
             'code save quit bang': Key("escape,colon,w,q,exclamation,enter"),
             'code edit': Key("escape,colon,e,space"),
             'code shell': Key("escape,colon,s,h,enter"),
-            'code search file':Key('c-p'),
+            'code search file':Key('escape,colon') + Text('CtrlP '),
 
             #common options
             'code ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),

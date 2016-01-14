@@ -190,6 +190,23 @@ def format_snake_case(text):
         newText += word.lower()
     return newText
 
+def format_path_case(text):
+    newText = ""
+    words = strip_dragon_info(text)
+    for word in words:
+        if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
+            word = "/" + word  # Adds dashes between normal words.
+        newText += word
+    return newText
+
+def format_namespace_case(text):
+    newText = ""
+    words = strip_dragon_info(text)
+    for word in words:
+        if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
+            word = "\\" + word  # Adds dashes between normal words.
+        newText += word
+    return newText
 
 def format_dashify(text):
     newText = ""
@@ -286,6 +303,28 @@ def remove_spaces_text(text):
     print s
     Text(re.sub('\s', '', text)).execute()
     
+def namespace_case_text(text):
+    """Formats dictated text to namespace case
+
+    Example:
+    "'path case my new variable'" => "my\new\variable".
+
+    """
+    newText = format_namespace_case(text)
+    Text("%(text)s").execute({"text": newText})
+
+
+def path_case_text(text):
+    """Formats dictated text to path case
+
+    Example:
+    "'path case my new variable'" => "my/new/variable".
+
+    """
+    newText = format_path_case(text)
+    Text("%(text)s").execute({"text": newText})
+
+
 def camel_case_text(text):
     """Formats dictated text to camel case.
 

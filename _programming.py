@@ -32,7 +32,7 @@ symbols_rule = MappingRule(
             '(breathed | breathe) [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
-            'optic twice [<text>]': Key("colon,space,colon,left,backspace,right") +  Function(lib.combination.executeCombo),
+            'optic twice [<text>]': Key("colon:2") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
             'arc [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
             'arc end': Key("rparen"),
@@ -51,9 +51,11 @@ symbols_rule = MappingRule(
             'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
             'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
+            'string [<text>]': Text("'%(text)s'"),
+
             #  tags
             'Rasmus tag': Key('langle,delete,question,p,h,p,space'),
-            'Rasmus tag close':  Key('question,rangle') + Key('backspace,rangle'),
+            'Rasmus close tag':  Key('question,rangle') + Key('backspace,rangle'),
             'Rasmus tag short':   Key('langle,delete,question,equal,space'),
 
             # logical operators
@@ -98,6 +100,8 @@ text_formatting_rule = MappingRule(
         'capital [<text>]': Function(lib.format.pascal_case_text),       
         'Pascal case [<text>]': Function(lib.format.pascal_case_text),
         'snake case [<text>]': Function(lib.format.snake_case_text),
+        'path case [<text>]': Function(lib.format.path_case_text),
+        'namespace case [<text>]': Function(lib.format.namespace_case_text),
         'squash case [<text>]': Function(lib.format.squash_text),
         '(uppercase | upper case) [<text>]': Function(lib.format.uppercase_text),
         '(lowercase | lower case) [<text>]': Function(lib.format.lowercase_text),
@@ -163,6 +167,8 @@ php_rule = MappingRule(
         'nil': Text('null'),
         'PHP': Text("php"),
         'in array': Text('in_array('),
+        'lithium log': Text('logger::debug('),
+        'lithium log (air  | error)': Text('logger::error('),
         'array shift': Text('array_shift('),
         'string to time': Text('strtotime('),
         'Rasmus print custom': Text('pr( );') +  Key('left,left,backspace'),
