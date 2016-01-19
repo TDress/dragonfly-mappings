@@ -86,6 +86,7 @@ bash_rule = MappingRule(
 		"move": Text("mv "),
 		"move <text>": Text("mv %(text)s"),
 		"remove": Text("rm "),
+		"remove recursive": Text("rm -r "),
 		"remove <text>": Text("rm %(text)s"),
 
 		"secure copy": Text("scp"),

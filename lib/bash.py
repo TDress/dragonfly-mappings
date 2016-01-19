@@ -1,5 +1,4 @@
 bashMapping = {
-    'slash': 'slash',
     'backslash': 'backslash',
     'backspace': 'backspace',
     'bash buck': 'c-e',
@@ -20,4 +19,5 @@ bashMapping = {
     'right word': 'a-f',
     'scratch head': 'c-u',
     'scratch tail': 'c-k',
+    'slash': 'slash',
 } 
