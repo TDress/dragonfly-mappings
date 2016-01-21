@@ -20,6 +20,12 @@ general_rule = MappingRule(
                 'text paste': Key("c-v"),
                 'lock screen': Key('win:down,l'),
                 'shards': Mimic('list', 'all', 'windows'),
+                'shard browser': Mimic('switch','to','chrome'),
+                'shard Ubuntu': Mimic('switch','to','lubuntu'),
+                '(spawn | Spohn) Outlook': Key('win') + Pause('100') + Text('chrome') + Key('enter')
+                     + Pause('3000') + Text('Outlook') + Key('enter') + Pause('3000') + Key('f,d'),   
+                '(spawn | Spohn) Ubuntu': Key('win') + Pause('100') + Text('Oracle') + Key('enter')
+                    + Pause('3000') + Key('enter:2'),
                 'window close': Key('a-f4'),
                 'window last': Key('a-tab') + Key('alt')
 		},
