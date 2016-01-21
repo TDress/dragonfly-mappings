@@ -123,7 +123,7 @@ bash_rule = MappingRule(
 		"D. P. K. G. minus I.": Text("dpkg -i "),
 
 		"man": Text("man "),
-                "S Sh":Text("ssh "),
+                "(SS H | ssh | S Sh)":Text("ssh "),
 
                 "Cron | Craun": Text("cron"),
 
