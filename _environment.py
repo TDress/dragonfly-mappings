@@ -27,7 +27,8 @@ general_rule = MappingRule(
                 '(spawn | Spohn) Ubuntu': Key('win') + Pause('100') + Text('Oracle') + Key('enter')
                     + Pause('3000') + Key('enter:2'),
                 'window close': Key('a-f4'),
-                'window last': Key('a-tab') + Key('alt')
+                'window last': Key('a-tab') + Key('alt'),
+                '(Spohn | spawn) bash dragonfly': Key('win') + Pause('100') + Text('git bash') + Key('enter') + Pause('1000') + Text('cd ../../') + Key('enter') + Pause('300') + Text('cd NatLink/NatLink/MacroSystem') + Key('enter'),
 		},
 	extras = [
 		Dictation("text"),
