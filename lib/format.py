@@ -1,4 +1,5 @@
 import re
+import string
 
 from dragonfly import (
     Clipboard,
@@ -172,7 +173,6 @@ def format_camel_case(text):
             newText = '%s%s' % (newText, word.capitalize())
     return newText
 
-
 def format_pascal_case(text):
     newText = ""
     words = strip_dragon_info(text)
@@ -246,6 +246,15 @@ def format_upper_case(text):
         newText += word.upper()
     return newText
 
+def format_sentence_case(text):
+    newText = ""
+    words = strip_dragon_info(text)
+    for word in words:
+        if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
+            word = " " + word  # Adds spacing between normal words.
+        newText += string.capwords(word)
+        break
+    return newText
 
 def format_lower_case(text):
     newText = ""
@@ -552,6 +561,16 @@ def uppercase_text(text):
 
     """
     newText = format_upper_case(text)
+    Text("%(text)s").execute({"text": newText})
+
+def sentence_text(text):
+    """Formats dictated text to upper case for only the first letter of first word.
+
+    Example:
+    "'upper case my new variable'" => "My new variable"
+
+    """
+    newText = format_sentence_case(text)
     Text("%(text)s").execute({"text": newText})
 
 
