@@ -46,8 +46,12 @@ file_extensions_rule = MappingRule(
                 'hidden vim config': Text('.vimrc'),
                 'hidden bash config': Text('.bashrc'),
 		},
-	extras = [
+        extras = [
+		Dictation("text"),
 		],
+        defaults = {
+            'text':''
+        }
 )
 
 symbol_rule = MappingRule(
