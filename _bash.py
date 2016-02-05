@@ -40,7 +40,11 @@ file_extensions_rule = MappingRule(
 		"dot pie": Text(".py"),
                 'dot Php': Text('.php'),
                 'dot Js': Text('.js'),
-                'dot Html': Text('.html')
+                'dot Html': Text('.html'),
+                # hidden files
+                'hidden [<text>]': Text('.%(text)s'),
+                'hidden vim config': Text('.vimrc'),
+                'hidden bash config': Text('.bashrc'),
 		},
 	extras = [
 		],
@@ -65,6 +69,11 @@ symbol_rule = MappingRule(
 bash_rule = MappingRule(
 	name = "bash",
 	mapping = {
+            'bash config': Text('bashrc'),
+            'bash flag [<text>]': Text(' -%(text)s '), 
+            'bash flag': Text(' -'),
+            'bash option [<text>]': Text(' --%(text)s '),
+            'bash option': Text(' --'),
                 "curl [<text>]": Text("curl ") +  Function(lib.combination.executeCombo),
 		"P. W. D.": Text("pwd\n"),
 
@@ -73,6 +82,7 @@ bash_rule = MappingRule(
                 'double dot':Text('../'),
 		"CD triple dot": Text("cd ../..\n"),
 		"CD ": Text("cd ") + Key("tab:2"),
+                'Cd home': Text('cd ~') + Key('enter'),
 		"CD <text>": Text("cd %(text)s"),
 
 		"copy": Text("cp "),
@@ -148,6 +158,11 @@ bash_rule = MappingRule(
                 "scratch head":Key("c-u"),
 
                 "Sudo":Text("sudo "),
+                
+                # yum
+                'Yum install': Text('sudo yum install '),
+                'Yum search': Text('sudo yum search '),
+
 		"pseudo-aptitude install": Text("sudo apt-get install "),
 		"pseudo-aptitude update": Text("sudo apt-get update "),
 		"pseudo-aptitude remove": Text("sudo apt-get remove "),
@@ -155,6 +170,7 @@ bash_rule = MappingRule(
 		"A. P. T. file search": Text("apt-file search "),
 
 		"vim": Text("vim "),
+                'vim config': Text('vimrc'),
 
 		"W. get ": Text("wget "),
 
@@ -191,6 +207,7 @@ git_rule = MappingRule(
 	mapping = {
 		# commands for git version control
                 "annals": Text("git "),
+                'annals initialize': Text('git init') + Key('enter'),
 		"annals add": Text("git add "),
 		"annals remove": Text("git rm "),
 		"annals move": Text("git move "),
@@ -204,10 +221,14 @@ git_rule = MappingRule(
 		"annals merge": Text("git merge "),
 		"annals merge not fast forward": Text("git merge --no-ff "),
 
-		"annals log": Text("git log\n"),
+		"annals log": Text("git log"),
+		"annals log path": Text("git log -- "),
 		"annals log [color] words": Text("git log -p --color-words\n"),
 		"annals log minus (P.|patch)": Text("git log -p\n"),
+                'annals log last [<n>]': Text('git log -p -%(n)d'),
 		"annals log minus stat": Text("git log --stat\n"),
+                'annals log committed by': Text('git log --committer="" '),
+                'annals log committed by Thomas': Text('git log --committer="Thomas Dressler" '),
 
 		"annals diff": Text("git diff\n"),
 		"annals diff [color] words": Text("git diff --color-words\n"),
@@ -241,9 +262,14 @@ git_rule = MappingRule(
 		"annals remote add": Text("git remote add "),
 		"annals remote version": Text("git remote -v") + Key("enter")		
 		},
-	extras = [
+        extras = [
 		Dictation("text"),
+		IntegerRef("n", 0, 50)
 		],
+	defaults = {
+		"n": 1,
+                "text": ""
+	}
 )
 
 apache_rule = MappingRule(

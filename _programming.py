@@ -28,6 +28,7 @@ symbols_rule = MappingRule(
             'crypt optic': Key("question,colon"),
 
             # mappings, brackets and miscellaneous
+            'bang twice': Text('! !') + Key('left,backspace,right'),
             'bang [<text>]': Key("exclamation") +  Function(lib.combination.executeCombo),
             '(breathed | breathe) [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
@@ -159,7 +160,6 @@ builtin_statement_rule = MappingRule(
         "return true": Text("return true;"),
         "return false": Text("return false;"),
         "switch": Text("switch () {") + Key("left:3"),
-        "switch <text>": SCText("switch (%(text)s) {") + Key("left:3"),
         "throw": Text("throw "),
         "true": Text("true"),
         "try": Text("try {") + Key("enter"),

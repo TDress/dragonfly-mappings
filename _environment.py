@@ -23,9 +23,9 @@ general_rule = MappingRule(
                 'shard browser': Mimic('switch','to','chrome'),
                 'shard Ubuntu': Mimic('switch','to','lubuntu'),
                 '(spawn | Spohn) Outlook': Key('win') + Pause('100') + Text('chrome') + Key('enter')
-                     + Pause('3000') + Text('Outlook') + Key('enter') + Pause('3000') + Key('f,d'),   
+                     + Pause('300') + Text('Outlook') + Key('enter') + Pause('300') + Key('enter'),   
                 '(spawn | Spohn) Ubuntu': Key('win') + Pause('100') + Text('Oracle') + Key('enter')
-                    + Pause('3000') + Key('enter:2'),
+                    + Pause('400') + Key('enter:2'),
                 'window close': Key('a-f4'),
                 'window last': Key('a-tab') + Key('alt'),
                 '(Spohn | spawn) bash dragonfly': Key('win') + Pause('100') + Text('git bash') + Key('enter') + Pause('1000') + Text('cd ../../') + Key('enter') + Pause('300') + Text('cd NatLink/NatLink/MacroSystem') + Key('enter'),
