@@ -45,7 +45,7 @@ symbols_rule = MappingRule(
             'shark [<text>]': Text("->%(text)s"),
             'trout [<text>]': Text(">") +  Function(lib.combination.executeCombo),
             'trout less [<text>]': Text("<") + Function(lib.combination.executeCombo),
-            'ternary': Text(" ?  :") +  Key("left:2,backspace,left"),
+            'ternary': Text(" ? : ") +  Key('left:3'),
             'ternary short': Text(" ? :") +  Key("left,backspace,right,space"),
             'ternary optic': Text(' : '),
             'ternary crypt': Text(' ? '),
