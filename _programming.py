@@ -46,7 +46,7 @@ symbols_rule = MappingRule(
             'trout [<text>]': Text(">") +  Function(lib.combination.executeCombo),
             'trout less [<text>]': Text("<") + Function(lib.combination.executeCombo),
             'ternary': Text(" ?  :") +  Key("left:2,backspace,left"),
-            'ternary short': Text(" ?  :") +  Key("left:2,backspace:2,escape,A"),
+            'ternary short': Text(" ? :") +  Key("left,backspace,right,space"),
             'ternary optic': Text(' : '),
             'ternary crypt': Text(' ? '),
 
@@ -89,6 +89,7 @@ symbols_rule = MappingRule(
 
             # common abbreviations and terms
             'JavaScript': Text('javascript'),
+            'self': Text('self'),
             'Js': Text('js'),
             'Id':  Text("id"),
 
@@ -107,6 +108,7 @@ text_formatting_rule = MappingRule(
     mapping = {
         'camel case [<text>]': Function(lib.format.camel_case_text),
         'capital [<text>]': Function(lib.format.pascal_case_text),       
+        'capital case [<text>]': Function(lib.format.capital_text),       
         'Pascal case [<text>]': Function(lib.format.pascal_case_text),
         'snake case [<text>]': Function(lib.format.snake_case_text),
         'path case [<text>]': Function(lib.format.path_case_text),
@@ -117,6 +119,9 @@ text_formatting_rule = MappingRule(
         '(lowercase | lower case) [<text>]': Function(lib.format.lowercase_text),
         'hyphen case [<text>]': Function(lib.format.dash_text),
         '(spec | speck) case [<text>]': Function(lib.format.dot_text),
+        'Ip case <n> <n> <n> <n>': Text('%(n)d.%(n)d.%(n)d.%(n)d'),
+        'version case <n> <n> <n>': Text('%(n)d.%(n)d.%(n)d'),
+        'float case <n> <n>': Text('%(n)d.%(n)d'),
     },
     extras = [
         Dictation("text"),
@@ -144,12 +149,6 @@ builtin_statement_rule = MappingRule(
         "finally": Text("finally {") + Key("enter"),
         "if": Text("if ("),
         "if not": Text("if ( !") + Key('left,backspace,escape,l,a'),
-        "if (is | it's | its | his) set": Text("if (isset("),
-        "if not (is | it's | its | his) set": Text("if ( !") + Key('left,backspace,escape,l,a')
-        + Text('isset('),
-        'if empty': Text('if(empty('),
-        "if not empty": Text("if ( !") + Key('left,backspace,escape,l,a')
-        + Text('empty('),
         "if <text>": Text("if (%(text)s) {") + Key("left:3"),
         'integer short': Text('int '),
         "(several | Sever) line": Key("escape,end") + Text(";"),
@@ -186,9 +185,18 @@ php_rule = MappingRule(
         'nil': Text('null'),
         'PHP': Text("php"),
         'in array': Text('in_array('),
+        "if (is | it's | its | his) set": Text("if (isset("),
+        "if not (is | it's | its | his) set": Text("if ( !") + Key('left,backspace,escape,l,a')
+        + Text('isset('),
+        'is set': Test('isset('),
+        'if empty': Text('if(empty('),
+        "if not empty": Text("if ( !") + Key('left,backspace,escape,l,a')
+        + Text('empty('),
         'Jason (in code | encode)': Text('json_encode('),
         'Jason (the code | decode)': Text('json_decode('),
         'lithium log': Text('Logger: :debug(') + Key('escape,b,X,e,l,a'),
+        'die': Text('die;'),
+        'index zero': Text('[0]'),
         'lithium log (air  | error)': Text('logger: :error(') + Key('escape,b,X,e,l,a'),
         'array shift': Text('array_shift('),
         'string to time': Text('strtotime('),

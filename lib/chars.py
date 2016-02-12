@@ -1,5 +1,7 @@
 # character mappings
 
+from dragonfly import (Key, Text)
+
 charMapping = {
         'alpha':"a",
         'bravo':"b",
@@ -12,6 +14,7 @@ charMapping = {
         'ike': "i",
         'jake': "j", 
         'kilo': "k", 
+        'key low': "k",
         'lima': "l", 
         'mike': "m", 
         'noah': "n",
@@ -58,3 +61,9 @@ charMapping = {
         'stout zulu': "Z"
 
     }
+
+def bashFlagText(text): 
+    if text in charMapping.keys(): 
+        Key(charMapping[text]).execute()
+    else:
+        Text('%(text)s').execute()

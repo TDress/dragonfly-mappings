@@ -2,6 +2,8 @@ from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text, Function)
 
 import lib.combination
+import lib.chars
+from lib.format import SCText
 
 grammar = Grammar("bash")
 
@@ -20,7 +22,8 @@ general_rule = MappingRule(
 		"cancel": Key("c-c"),
                 'end of file': Key('c-d'),
                 "Lennix | Lenox": Text("linux"),
-		"say <text>": Text("%(text)s"),
+		"say <text>": Function(lib.format.strip_dragon_info_text),
+
 		},
 	extras = [
 		Dictation("text"),
@@ -39,6 +42,9 @@ file_extensions_rule = MappingRule(
 		"dot text": Text(".txt"),
 		"dot pie": Text(".py"),
                 'dot Php': Text('.php'),
+                'dot config': Text('.config'),
+                'dot configure short': Text('.conf'),
+                'dot log': Text('.log'),
                 'dot Js': Text('.js'),
                 'dot Html': Text('.html'),
                 # hidden files
@@ -74,10 +80,10 @@ bash_rule = MappingRule(
 	name = "bash",
 	mapping = {
             'bash config': Text('bashrc'),
-            'bash flag [<text>]': Text(' -%(text)s '), 
-            'bash flag': Text(' -'),
-            'bash option [<text>]': Text(' --%(text)s '),
-            'bash option': Text(' --'),
+            'flag <text>': Text(' -') + Function(lib.chars.bashFlagText) + Key('space'), 
+            'flag': Text(' -'),
+            'option <text>': Text(' --') + Function(lib.chars.bashFlagText) + Key('space'), 
+            'option': Text(' --'),
                 "curl [<text>]": Text("curl ") +  Function(lib.combination.executeCombo),
 		"P. W. D.": Text("pwd\n"),
 
@@ -88,8 +94,12 @@ bash_rule = MappingRule(
 		"CD ": Text("cd ") + Key("tab:2"),
                 'Cd home': Text('cd ~') + Key('enter'),
 		"CD <text>": Text("cd %(text)s"),
+                'push D [<text>]': Text('pushd %(text)s'),
+                'pop D': Text('popd') + Key('enter'),
+                'directory stack': Text('dirs'),
 
 		"copy": Text("cp "),
+		"copy recursive": Text("cp -r "),
 		"copy <text>": Text("cp %(text)s"),
 
                 "disc freedom": Text("df -h"),
@@ -107,9 +117,15 @@ bash_rule = MappingRule(
 		"secure copy <text>": Text("scp %(text)"),
 
                 "perms mod": Text("chmod "),
-                #"perms mod": Text("chmod "),
 
-                "rake history":  Text("history | grep ''"),
+                # find
+                'find': Text("find * -name ''") + Key('left'), 
+                'find (fruit | route | root)': Text("find /* -name ''") + Key('left'), 
+                'find directory': Text("find * -name '' -type d") + Key('left:9'), 
+    
+
+                "rake history [<text>]":  Text("history | grep '%(text)s'") + Key('left'),
+                'history <n>': Text('!%(n)d') + Key('enter'),
 		"(rate recursive | rake recursive | Raker cursive)": Text("grep -r ''") + Key('left'),
 		"rake": Text("grep ''") +  Key('left'),
 
@@ -121,14 +137,17 @@ bash_rule = MappingRule(
 
 		"exit": Text("exit\n"),
 
-		"list": Text("ls\n"),
+		"list now": Text("ls\n"),
+                'list': Text('ls '),
 		"list <text>": Text("ls %(text)s"),
 		"list minus L.": Text("ls -l\n"),
 		"list minus A.": Text("ls -a\n"),
 		"list minus one": Text("ls -1 "),
+                'list unsorted': Text('ls -f\n'),
 
                 'symbolic link': Text('ln -s '),
 		"pipe space": Text(" | "),
+                'pipe less': Text(' | less\n'),
 		"pipe": Text("|"),
         'pipe twice': Key('bar,space:2,bar,left,backspace:2,right'),
 
@@ -146,13 +165,23 @@ bash_rule = MappingRule(
 
 		"bash previous argument": Key("a-dot"),
 
+                # networking
+                'network all': Text('netstat --all --program '),
+                'network listening': Text('netstat --listening --program '),
+                'processes all': Text('ps aux '),
+                'list open': Text('lsof'),
+                'list open port <n>': Text('lsof -i :%(n)d'),
+
+                # common linux directories
+                'logs directory': Text('/var/log/'),
+
 		# cursor movement
                 "[<n>] left [<text>]": Key("left:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] right [<text>]": Key("right:%(n)d") + Function(lib.combination.executeCombo),
-
 		"[<n>] left word": Key("a-b:%(n)d"),
 		"[<n>] right word": Key("a-f:%(n)d"),
 		"bash Buck": Key("c-e"),
+                'bash zilch': Key('c-a'),
 
                 "[<n>] backspace": Key("backspace:%(n)d"),
                 '[<n>] delete [<text>]': Key("delete:%(n)d") + Function(lib.combination.executeCombo),
@@ -160,10 +189,17 @@ bash_rule = MappingRule(
 		"[<n>] scratch next": Key("a-d:%(n)d"),
                 "scratch tail":Key("c-k"),
                 "scratch head":Key("c-u"),
+                'scratch first': Key('c-a,a-d'),
 
                 "Sudo":Text("sudo "),
+                'Sudo <text>': Text('sudo %(text)s'),
+
+                # short commands and simplifiers
+                'Sudo last': Text('sudo !!') + Key('enter'),
+                'term last <n>': Text('!:%(n)d'),
                 
                 # yum
+                'Yum': Text('yum'),
                 'Yum install': Text('sudo yum install '),
                 'Yum search': Text('sudo yum search '),
 
@@ -173,7 +209,8 @@ bash_rule = MappingRule(
 
 		"A. P. T. file search": Text("apt-file search "),
 
-		"vim": Text("vim "),
+		"(vim | them)": Text("vim "),
+                'code': Text('vim '), 
                 'vim config': Text('vimrc'),
 
 		"W. get ": Text("wget "),
@@ -197,7 +234,7 @@ bash_rule = MappingRule(
         },
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 0, 50)
+		IntegerRef("n", 0, 10000)
 		],
 	defaults = {
 		"n": 1,
@@ -279,8 +316,11 @@ git_rule = MappingRule(
 apache_rule = MappingRule(
 	name = "apache",
 	mapping = {
-                "Apache": Text("apache "),
-                "Apache restart":Text("sudo apachectl restart")
+                "Apache space": Text("apache "),
+                "Apache": Text("apache"),
+                'Apache control': Text('apachectl'),
+                "Apache restart":Text("sudo apachectl restart"),
+                "Apache stop":Text("sudo apachectl stop")
 		},
 	extras = [
 		Dictation("text"),
