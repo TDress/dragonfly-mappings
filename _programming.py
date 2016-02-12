@@ -189,7 +189,7 @@ php_rule = MappingRule(
         "if (is | it's | its | his) set": Text("if (isset("),
         "if not (is | it's | its | his) set": Text("if ( !") + Key('left,backspace,escape,l,a')
         + Text('isset('),
-        'is set': Test('isset('),
+        'is set': Text('isset('),
         'if empty': Text('if(empty('),
         "if not empty": Text("if ( !") + Key('left,backspace,escape,l,a')
         + Text('empty('),
