@@ -41,6 +41,7 @@ vimMapping = {
         "sub": "s",
         "sub line": "S",
         "tick": "squote",
+        "take": "squote",
         "tick twice": "dquote",
         "trim": "x",
         "trim back": "X",

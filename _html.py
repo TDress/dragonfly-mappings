@@ -272,7 +272,7 @@ rules = MappingRule(
     mapping={
         # Commands and keywords.
         'Html':Text('html'),
-        "[start] tag":  Key("langle,rangle") + Key("left"),
+        "[start] tag":  Text('< >') + Key("left,backspace"),
         "[start] tag <element>": Function(start_tag),
         "tags <element>": Function(tags),
         "close tag": Text("</>") + Key("left"),

@@ -11,6 +11,8 @@ general_rule = MappingRule(
 	mapping = {
                 'browser (console | consul)': Key('cs-j'),
                 'integer <n>': Text('%(n)d'),
+                'shoot <n>': Key('%(n)d,enter'),
+                'zilch <n>': Text('0%(n)d'),
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
@@ -27,7 +29,7 @@ general_rule = MappingRule(
                 '(spawn | Spohn) Ubuntu': Key('win') + Pause('100') + Text('Oracle') + Key('enter')
                     + Pause('400') + Key('enter:2'),
                 'window close': Key('a-f4'),
-                'window last': Key('a-tab') + Key('alt'),
+                'flip': Key('a-tab') + Key('alt'),
                 '(Spohn | spawn) bash dragonfly': Key('win') + Pause('100') + Text('git bash') + Key('enter') + Pause('1000') + Text('cd ../../') + Key('enter') + Pause('300') + Text('cd NatLink/NatLink/MacroSystem') + Key('enter'),
 		},
 	extras = [

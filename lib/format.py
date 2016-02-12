@@ -173,6 +173,15 @@ def format_camel_case(text):
             newText = '%s%s' % (newText, word.capitalize())
     return newText
 
+def format_capital_case(text):
+    newText = ""
+    words = strip_dragon_info(text)
+    for word in words:
+        if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
+            word = " " + word  # Adds spacing between normal words.
+        newText += string.capwords(word)
+    return newText
+
 def format_pascal_case(text):
     newText = ""
     words = strip_dragon_info(text)
@@ -244,16 +253,21 @@ def format_upper_case(text):
         if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
             word = " " + word  # Adds spacing between normal words.
         newText += word.upper()
+        print word.upper()
     return newText
 
 def format_sentence_case(text):
     newText = ""
     words = strip_dragon_info(text)
+    isFirstWordCapitalized = false
     for word in words:
         if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
             word = " " + word  # Adds spacing between normal words.
+        if isFirstWordCapitalized:
+            newText += word
+            isFirstWordCapitalized = true
+            continue
         newText += string.capwords(word)
-        break
     return newText
 
 def format_lower_case(text):
@@ -419,6 +433,9 @@ def pascal_case_count(n):
         Key('c-v').execute()  # Restore cut out text.
     _set_clipboard_text(saveText)
 
+def strip_dragon_info_text(text): 
+    newText = strip_dragon_info(text)
+    Text("%(text)s").execute({"text": newText})
 
 def snake_case_text(text):
     """Formats dictated text to snake case.
@@ -573,6 +590,15 @@ def sentence_text(text):
     newText = format_sentence_case(text)
     Text("%(text)s").execute({"text": newText})
 
+def capital_text(text):
+    """Formats dictated text to capitalized words.
+
+    Example:
+    "'upper case my new variable'" => "My New Variable"
+
+    """
+    newText = format_capital_case(text)
+    Text("%(text)s").execute({"text": newText})
 
 def uppercase_count(n):
     """Formats n words to the left of the cursor to upper case.

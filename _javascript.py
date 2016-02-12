@@ -36,6 +36,7 @@ rules = MappingRule(
         "this": Text("this"),
         "typeof": Text("typeof "),
         "to String": Text("toString()") + Key("left"),
+        'variable short': Text('var'),
         "variable (define | defined)": Text("var "),
         "(variable|var) (define | defined) <text>": SCText("var %(text)s"),
         "with": Text("with () {") + Key("left:3"),
