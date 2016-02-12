@@ -1,4 +1,4 @@
-from dragonfly import Grammar, MappingRule, Text, Key, Function,  Dictation
+from dragonfly import Grammar, MappingRule, Text, Key, Function,  Dictation,IntegerRef
 
 import lib.combination
 from lib.format import SCText
@@ -124,8 +124,9 @@ text_formatting_rule = MappingRule(
         'float case <n> <n>': Text('%(n)d.%(n)d'),
     },
     extras = [
-        Dictation("text"),
-    ]
+		Dictation("text"),
+		IntegerRef("n", 1, 999)
+	]
 )
 
 builtin_statement_rule = MappingRule(

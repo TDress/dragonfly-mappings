@@ -22,7 +22,7 @@ general_rule = MappingRule(
 		"cancel": Key("c-c"),
                 'end of file': Key('c-d'),
                 "Lennix | Lenox": Text("linux"),
-		"say <text>": Function(lib.format.strip_dragon_info_text),
+		"say <text>":  Text('%(text)s')
 
 		},
 	extras = [
