@@ -63,7 +63,8 @@ charMapping = {
     }
 
 def bashFlagText(text): 
-    if text in charMapping.keys(): 
-        Key(charMapping[text]).execute()
+    newText = text.lower()
+    if newText in charMapping.keys(): 
+        Key(charMapping[newText]).execute()
     else:
-        Text('%(text)s').execute()
+        Text("%(text)s").execute({"text": newText})

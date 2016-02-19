@@ -259,15 +259,15 @@ def format_upper_case(text):
 def format_sentence_case(text):
     newText = ""
     words = strip_dragon_info(text)
-    isFirstWordCapitalized = false
+    isFirstWordCapitalized = False
     for word in words:
         if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
             word = " " + word  # Adds spacing between normal words.
         if isFirstWordCapitalized:
             newText += word
-            isFirstWordCapitalized = true
             continue
-        newText += string.capwords(word)
+        else:
+            newText += string.capwords(word)
     return newText
 
 def format_lower_case(text):

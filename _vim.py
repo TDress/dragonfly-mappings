@@ -31,6 +31,7 @@ navigation_rule = MappingRule(
 		'(Lance | lance) end [<text>]': Key("escape,A") + Function(lib.combination.executeCombo),
                 'scape [<text>]': Key("escape") + Function(lib.combination.executeCombo),
     		'etch [<text>]': Key("i") + Function(lib.combination.executeCombo),
+                'etch indent': Key('i') + Text('stub') + Key('escape,b,equal:2,c,a,w'),
 		'etch start [<text>]': Key("escape,I") + Function(lib.combination.executeCombo),
 		'[<n>] dub [<text>]': Key("%(n)d,w") + Function(lib.combination.executeCombo),
 		'[<n>] (Hynde | hind) [<text>]': Key("%(n)d,b") + Function(lib.combination.executeCombo),
@@ -39,6 +40,7 @@ navigation_rule = MappingRule(
                 '(paz | pause | paws) space': Key('comma,space'),
                 'cork optic': Key('right,colon,space'),
                 'Cork whale': Key('right,space,equal,rangle,space'),
+                'pitch': Key('right,space'),
                 'seal (sever | several)': Key('escape,A') + Text(';') + Key('escape'),
                 'seal (paz | pause | paws)': Key('escape,A,comma,escape'),
 
@@ -49,9 +51,10 @@ navigation_rule = MappingRule(
                 'braille word boundaries': Key('escape') + Text('/\<\>') + Key('left:2'),
                 'go to [a] stowed': Key('escape,g,d'),
                 'go to [a] stowed global': Key('escape,g,D'),
-                'go to (braille|Brielle) (1st|first)': Key('escape,g,g,n'),
-                'go to (Brielle|braille) last': Key('escape,G,N'),
+                '(braille|Brielle) (1st|first)': Key('escape,g,g,n'),
+                '(Brielle|braille) last': Key('escape,G,N'),
                 '(Brielle|braille) capital <text>': Key('escape,slash') + Function(lib.format.pascal_case_text) + Key('enter'),
+                '(Brielle|braille) integer <n>': Key('escape') + Text('/%(n)d') + Key('enter'),
                 'highlight off': Key('escape,colon,n,o,h,enter'),
 
                 # marking and returning to spots in the buffer
@@ -63,7 +66,7 @@ navigation_rule = MappingRule(
 	},
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 1, 50)
+		IntegerRef("n", 1, 10000)
 	],
 	defaults = {
 		"n": 1,
@@ -150,6 +153,7 @@ manipulation_rule = MappingRule(
 		'lop line [<text>]': Key("escape,d,d") +  Function(lib.combination.executeCombo), 
                 '[<n>] oust [<text>]': Key("%(n)d,c") +  Function(lib.combination.executeCombo), 
                 '[<n>] oust back': Key("escape,%(n)d,b,%(n)d,c,e"),
+                '[<n>] oust next': Key("escape,%(n)d,c,e"),
                 'oust Buck':Key('c,dollar'),
                 'oust word':Key('escape,c,a,w'),
                 'oust inside': Key('escape,c,i'),

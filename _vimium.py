@@ -32,7 +32,7 @@ window_rule = MappingRule(
     
     		#  Searching
     		'braille <text>': Key("escape, slash") + Text("%(text)s") + Key("enter"),
-    		'[<n>] Vance': Key("%(n)d, n"),
+    		'[<n>] Noah': Key("%(n)d, n"),
     		'[<n>] rev': Key("%(n)d, N"),
 
 		#  page actions
