@@ -91,8 +91,10 @@ bash_rule = MappingRule(
 		"CD double dot": Text("cd ..\n"),
                 'double dot':Text('../'),
 		"CD triple dot": Text("cd ../..\n"),
+                'triple dot':Text('../../'),
 		"CD ": Text("cd ") + Key("tab:2"),
                 'Cd home': Text('cd ~') + Key('enter'),
+                'Cd last': Text('cd -') + Key('enter'),
 		"CD <text>": Text("cd %(text)s"),
                 'push D [<text>]': Text('pushd %(text)s'),
                 'pop D': Text('popd') + Key('enter'),
@@ -116,7 +118,7 @@ bash_rule = MappingRule(
 		"secure copy": Text("scp"),
 		"secure copy <text>": Text("scp %(text)"),
 
-                "perms mod": Text("chmod "),
+                "change mode": Text("chmod "),
 
                 # find
                 'find': Text("find * -name ''") + Key('left'), 
@@ -135,7 +137,6 @@ bash_rule = MappingRule(
                 '(tail|tale)': Text("tail "),
                 '(tail|tale) follow': Text("tail -f "),
 
-		"exit": Text("exit\n"),
 
 		"list now": Text("ls\n"),
                 'list': Text('ls '),
@@ -145,7 +146,7 @@ bash_rule = MappingRule(
 		"list minus one": Text("ls -1 "),
                 'list unsorted': Text('ls -f\n'),
 
-                'symbolic link': Text('ln -s '),
+                'link symbolic': Text('ln -s '),
 		"pipe space": Text(" | "),
                 'pipe less': Text(' | less\n'),
 		"pipe": Text("|"),
@@ -195,8 +196,8 @@ bash_rule = MappingRule(
                 'Sudo <text>': Text('sudo %(text)s'),
 
                 # short commands and simplifiers
-                'Sudo last': Text('sudo !!') + Key('enter'),
-                'term last <n>': Text('!:%(n)d'),
+                'Sudo last': Text('sudo ! !') + Key('left,backspace,enter'),
+                'term last <n>': Text('! :') + Key('left,backspace,right,%(n)d'),
                 
                 # yum
                 'Yum': Text('yum'),
@@ -249,6 +250,7 @@ git_rule = MappingRule(
 		# commands for git version control
                 "annals": Text("git "),
                 'annals initialize': Text('git init') + Key('enter'),
+                'annals clone': Text('git clone '),
 		"annals add": Text("git add "),
 		"annals remove": Text("git rm "),
 		"annals move": Text("git move "),
@@ -256,13 +258,15 @@ git_rule = MappingRule(
 		"annals patch": Text("git add -p\n"),
 
 		"annals branch": Text("git branch "),
+                'annals branch delete': Text('git branch -d '),
+                'annals branch delete hard': Text('git branch -D '),
                 "annals branch description[s]":Text('git-branch') + Key('enter'),
                 "annals branch edit description": Text('git branch --edit-description '),
 
 		"annals merge": Text("git merge "),
 		"annals merge not fast forward": Text("git merge --no-ff "),
 
-		"annals log": Text("git log"),
+		"annals log": Text("git log "),
 		"annals log path": Text("git log -- "),
 		"annals log [color] words": Text("git log -p --color-words\n"),
 		"annals log minus (P.|patch)": Text("git log -p\n"),

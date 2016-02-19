@@ -33,6 +33,8 @@ symbols_rule = MappingRule(
             '(breathed | breathe) [<text>]': Key("comma") +  Function(lib.combination.executeCombo),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'snake word [<text>]': Text('_%(text)s'),
+            'snake Id': Text('_id'),
+
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic twice [<text>]': Key("colon:2") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
@@ -45,7 +47,7 @@ symbols_rule = MappingRule(
             'shark [<text>]': Text("->%(text)s"),
             'trout [<text>]': Text(">") +  Function(lib.combination.executeCombo),
             'trout less [<text>]': Text("<") + Function(lib.combination.executeCombo),
-            'ternary': Text(" ? : ") +  Key('left:3'),
+            'ternary': Text(" ?  : ") +  Key('left:3'),
             'ternary short': Text(" ? :") +  Key("left,backspace,right,space"),
             'ternary optic': Text(' : '),
             'ternary crypt': Text(' ? '),
@@ -57,14 +59,15 @@ symbols_rule = MappingRule(
             'crimp end': Text("}"),
             'dot space': Text(" . "),
             'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
+            'dot id': Text('.id'),
             'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
             'string [<text>]': Text("'%(text)s'"),
 
             #  tags
-            'Rasmus tag': Key('langle,delete,question,p,h,p,space'),
+            'Rasmus tag': Text('< ?php>') + Key('backspace,left:4,backspace,right:4,space'),
             'Rasmus close tag':  Key('question,rangle') + Key('backspace,rangle'),
-            'Rasmus tag short':   Key('langle,delete,question,equal,space'),
+            'Rasmus tag short': Text('< ?=>') + Key('backspace,left:2,backspace,right:2,space'),
 
             # logical operators
             'amp': Text("&"),
@@ -151,12 +154,12 @@ builtin_statement_rule = MappingRule(
         "if": Text("if ("),
         "if not": Text("if ( !") + Key('left,backspace,escape,l,a'),
         "if <text>": Text("if (%(text)s) {") + Key("left:3"),
-        'integer short': Text('int '),
+        'integer short': Text('int'),
         "(several | Sever) line": Key("escape,end") + Text(";"),
 
         "new": Text("new "),
         "return": Text("return "),
-        "return finish":  Text('return;') +  Key('enter'),
+        "return finish":  Text('return;'),
         "return true": Text("return true;"),
         "return false": Text("return false;"),
         "switch": Text("switch () {") + Key("left:3"),
@@ -178,6 +181,8 @@ php_rule = MappingRule(
     mapping = {
         'comment':Text('// '),
         'comment more': Text('/*') + Key('enter'),
+        'comment line': Key('escape,I') + Text('// ') + Key('escape'),
+        'comment line <n>': Key('escape,0,c-v,%(n)d,j,k,I') + Text('// ') + Key('escape'),
         'Rasmus Christ string': Key('escape,A,space') + Text('.') + Key('enter,squote'),
         'empty': Text('empty( )') +  Key('left,backspace'),
         'for each': Text('foreach( as ) {') +  Key('enter:2,up:2,escape,dollar,6,h'),
@@ -190,15 +195,18 @@ php_rule = MappingRule(
         "if not (is | it's | its | his) set": Text("if ( !") + Key('left,backspace,escape,l,a')
         + Text('isset('),
         'is set': Text('isset('),
+        'not is set': Text('!isset('),
         'if empty': Text('if(empty('),
+        'crimp block': Text('{ }') + Key('left,enter:2,up,tab'),
+        'crimp block remove': Key('percent,d:2,c-o,x'),
         "if not empty": Text("if ( !") + Key('left,backspace,escape,l,a')
         + Text('empty('),
         'Jason (in code | encode)': Text('json_encode('),
         'Jason (the code | decode)': Text('json_decode('),
-        'lithium log': Text('Logger: :debug(') + Key('escape,b,X,e,l,a'),
+        'lithium log': Text('Logger: :debug(') + Key('escape,b,h,X,e,l,a'),
         'die': Text('die;'),
         'index zero': Text('[0]'),
-        'lithium log (air  | error)': Text('logger: :error(') + Key('escape,b,X,e,l,a'),
+        'lithium log (air  | error)': Text('Logger: :error(') + Key('escape,b,h,X,e,l,a'),
         'array shift': Text('array_shift('),
         'string to time': Text('strtotime('),
         'Rasmus print custom': Text('pr( );') +  Key('left,left,backspace'),
