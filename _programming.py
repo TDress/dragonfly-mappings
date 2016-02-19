@@ -222,6 +222,7 @@ php_rule = MappingRule(
     },
     extras = [
         Dictation("text"),
+        IntegerRef("n", 1, 999)
     ]
 
 )
