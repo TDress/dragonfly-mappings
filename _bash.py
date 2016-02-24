@@ -2,6 +2,7 @@ from dragonfly import (Grammar, AppContext, MappingRule, Dictation, IntegerRef,
                        Key, Text, Function)
 
 import lib.combination
+import lib.format
 import lib.chars
 from lib.format import SCText
 
@@ -22,7 +23,7 @@ general_rule = MappingRule(
 		"cancel": Key("c-c"),
                 'end of file': Key('c-d'),
                 "Lennix | Lenox": Text("linux"),
-		"say <text>":  Text('%(text)s')
+		"say <text>":  Function(lib.format.strip_backslash_case),
 
 		},
 	extras = [
@@ -166,6 +167,10 @@ bash_rule = MappingRule(
 
 		"bash previous argument": Key("a-dot"),
 
+                # compression
+                'gun zip decompress': Text('gzip -d '),
+
+
                 # networking
                 'network all': Text('netstat --all --program '),
                 'network listening': Text('netstat --listening --program '),
@@ -194,6 +199,7 @@ bash_rule = MappingRule(
 
                 "Sudo":Text("sudo "),
                 'Sudo <text>': Text('sudo %(text)s'),
+                'Sudo service': Text('sudo service '),
 
                 # short commands and simplifiers
                 'Sudo last': Text('sudo ! !') + Key('left,backspace,enter'),
@@ -258,6 +264,7 @@ git_rule = MappingRule(
 		"annals patch": Text("git add -p\n"),
 
 		"annals branch": Text("git branch "),
+		"annals branch rename": Text("git branch -m "),
                 'annals branch delete': Text('git branch -d '),
                 'annals branch delete hard': Text('git branch -D '),
                 "annals branch description[s]":Text('git-branch') + Key('enter'),

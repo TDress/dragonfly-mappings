@@ -2,6 +2,8 @@
 
 from dragonfly import (Key, Text)
 
+import lib.format
+
 charMapping = {
         'alpha':"a",
         'bravo':"b",
@@ -63,7 +65,7 @@ charMapping = {
     }
 
 def bashFlagText(text): 
-    newText = text.lower()
+    newText = lib.format.strip_dragon_info(text).lower()
     if newText in charMapping.keys(): 
         Key(charMapping[newText]).execute()
     else:

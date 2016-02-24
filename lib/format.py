@@ -134,6 +134,13 @@ class FormatTypes:
     spokenForm = 9
 
 
+def strip_backslash_info(text): 
+    words = str(text)
+    backslash_index = words.find("\\")
+    if backslash_index > -1:
+        words = words[:backslash_index]  # Remove spoken form info.
+    return words
+
 def strip_dragon_info(text):
     newWords = []
     words = str(text).split(" ")
@@ -267,7 +274,7 @@ def format_sentence_case(text):
             newText += word
             continue
         else:
-            newText += string.capwords(word)
+            newText += " " + string.capwords(word)
     return newText
 
 def format_lower_case(text):
@@ -619,6 +626,9 @@ def uppercase_count(n):
         Key('c-v').execute()  # Restore cut out text.
     _set_clipboard_text(saveText)
 
+def strip_backslash_case(text): 
+    newText = strip_backslash_info(text)
+    Text("%(text)s").execute({"text": newText})
 
 def lowercase_text(text):
     """Formats dictated text to lower case.
