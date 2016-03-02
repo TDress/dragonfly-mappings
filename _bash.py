@@ -280,7 +280,8 @@ git_rule = MappingRule(
                 'annals log last [<n>]': Text('git log -p -%(n)d'),
 		"annals log minus stat": Text("git log --stat\n"),
                 'annals log committed by': Text('git log --committer="" '),
-                'annals log committed by Thomas': Text('git log --committer="Thomas Dressler" '),
+                'annals log committed by Thomas': Text('git log --committer=" Thomas Dressler"') 
+                + Key('left:19,backspace'),
 
 		"annals diff": Text("git diff\n"),
 		"annals diff [color] words": Text("git diff --color-words\n"),

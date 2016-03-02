@@ -65,7 +65,7 @@ charMapping = {
     }
 
 def bashFlagText(text): 
-    newText = lib.format.strip_dragon_info(text).lower()
+    newText = str(text).lower()
     if newText in charMapping.keys(): 
         Key(charMapping[newText]).execute()
     else:
