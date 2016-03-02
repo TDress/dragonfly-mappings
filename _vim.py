@@ -36,6 +36,7 @@ navigation_rule = MappingRule(
 		'[<n>] dub [<text>]': Key("%(n)d,w") + Function(lib.combination.executeCombo),
 		'[<n>] (Hynde | hind) [<text>]': Key("%(n)d,b") + Function(lib.combination.executeCombo),
 		'<n> Eli [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
+                'cork (spec | speck)': Key('right,dot'),
                 'Cork (paz | pause | paws)': Key('right, comma,space'), 
                 '(paz | pause | paws) space': Key('comma,space'),
                 '(paz | pause | paws) shoot': Key('comma,enter'),

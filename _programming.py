@@ -60,6 +60,7 @@ symbols_rule = MappingRule(
             'dot space': Text(" . "),
             'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
             'dot id': Text('.id'),
+            'dot 3': Text('...'),
             'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
             'string [<text>]': Text("'%(text)s'"),

@@ -9,26 +9,24 @@ window_rule = MappingRule(
 	name = "window",
 	mapping = {
     		# Tab navigation
-    		'leaf back': Key("cs-tab"),
-    		'leaf next': Key("c-tab"),
-    		'leaf <n>': Key("c-%(n)d"),
-    		'leaf new': Key("c-t"),
-    		'leaf reopen': Key("cs-t"),
-    		'leaf close': Key("c-w"),
-    		'leaf fresh': Key("c-r"),
-    		'leaf link': Key("f"),
-    		'leaf link new': Key("s-f"),
-    		'leaf bar': Key("c-l"),
+    		'browse back': Key("cs-tab"),
+    		'browse next': Key("c-tab"),
+    		'browse <n>': Key("c-%(n)d"),
+    		'browse new': Key("c-t"),
+    		'revive': Key("cs-t"),
+    		'gash': Key("c-w"),
+    		'refresh': Key("c-r"),
+    		'address': Key("c-l"),
 
 	    	#  Moving around
     		'slump more': Key("c-d"),
     		'slump most': Key("pgdown"),
     		'boost more':  Key("c-u"),
     		'boost most':  Key("pgup"),
-    		'leaf top': Key("escape, g, g"),
-    		'leaf bottom': Key("escape, s-g"),
-    		'leaf past': Key("a-left"),
-    		'leaf future': Key("a-right"),
+    		'top': Key("escape, g, g"),
+    		'bottom': Key("escape, s-g"),
+    		'(passed | past)': Key("a-left"),
+    		'future': Key("a-right"),
     
     		#  Searching
     		'braille <text>': Key("escape, slash") + Text("%(text)s") + Key("enter"),
@@ -36,6 +34,7 @@ window_rule = MappingRule(
     		'[<n>] rev': Key("%(n)d, N"),
 
 		#  page actions
+                'scope': Key('f'),
     		'show page atoms': Key("g,s"),
 	},
     	extras = [
