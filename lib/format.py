@@ -141,7 +141,8 @@ def strip_backslash_info(text):
         backslash_index = word.find("\\")
         if backslash_index > -1:
             word = word[:backslash_index]  # Remove spoken form info.
-        word = " " + word  # Adds spacing between normal words.
+        if newWords[-1:].isalnum():
+            word = " " + word  # Adds spacing between normal words.
         newWords += word
     return newWords
 
