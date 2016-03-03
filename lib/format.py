@@ -135,13 +135,14 @@ class FormatTypes:
 
 
 def strip_backslash_info(text): 
-    newWords = []
+    newWords = ""
     words = str(text).split(" ")
     for word in words:
         backslash_index = word.find("\\")
         if backslash_index > -1:
             word = word[:backslash_index]  # Remove spoken form info.
-        newWords.append(word)
+        word = " " + word  # Adds spacing between normal words.
+        newWords += word
     return newWords
 
 def strip_dragon_info(text):
