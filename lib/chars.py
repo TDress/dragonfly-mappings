@@ -30,6 +30,7 @@ charMapping = {
         'udall': "u",
         'victor': "v",
         'whiskey': "w",
+        'whisking': "w",
         'x-ray':"x",
         'yankee': "y",
         'zulu': "z",

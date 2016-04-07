@@ -35,6 +35,7 @@ vimMapping = {
         "raft end": "rbracket",
         "scape": "escape",
         "shoot": "enter",
+        'she': 'enter',
         "slump": "j",
         "swap": "r",
         "swap more": "R",

@@ -38,6 +38,9 @@ navigation_rule = MappingRule(
 		'<n> Eli [<text>]': Key("%(n)d,e") + Function(lib.combination.executeCombo),
                 'cork (spec | speck)': Key('right,dot'),
                 'Cork (paz | pause | paws)': Key('right, comma,space'), 
+                '(Cork | quirks) Stowe': Key('right,space,equal,space'),
+                '(Cork | quirks) shark': Key('right') + Text('->'),
+
                 '(paz | pause | paws) space': Key('comma,space'),
                 '(paz | pause | paws) shoot': Key('comma,enter'),
                 'cork optic': Key('right,colon,space'),
@@ -45,6 +48,7 @@ navigation_rule = MappingRule(
                 'pitch': Key('right,space'),
                 'seal (sever | several)': Key('escape,A') + Text(';') + Key('escape'),
                 'seal (paz | pause | paws)': Key('escape,A,comma,escape'),
+                '(paz | pause | paws) [<text>]': Key('comma') + Function(lib.combination.executeCombo),
 
 
                 # more searching actions
@@ -92,7 +96,7 @@ buffer_rule = MappingRule(
             'code quit': Key("escape,colon,q,enter"),
             'code quit bang': Key("escape,colon,q,exclamation,enter"),
             'code remove':  Key('escape,colon,b,d,enter'),
-            'code save quit bang': Key("escape,colon,w,q,exclamation,enter"),
+            'code save quit bang': Key("escape,colon,w,q,space,exclamation,left,backspace,enter"),
             'code edit': Key("escape,colon,e,space"),
             'code shell': Key("escape,colon,s,h,enter"),
             'code search file':Key('escape,colon') + Text('CtrlP '),
@@ -139,6 +143,8 @@ manipulation_rule = MappingRule(
                 '[<n>] jump right':  Key('escape,%(n)d,rangle') +  Pause('20') +  Key('rangle'),
                 '[<n>] jump left':  Key('escape,%(n)d,langle') +  Pause('20') +  Key('langle'),
                 'code indent': Key('escape,G,equal,g:2,c-o,c-o'),
+                'line indent': Key('escape,d:2,O'),
+                'line indent <n>': Key('escape,v,j:%(n)d,equal'),
                 'shoot push': Key('enter:2,up,tab'),
                 '[<n>] shoot [<text>]': Key("enter:%(n)d") +  Function(lib.combination.executeCombo),
                 'lop': Key('d'),

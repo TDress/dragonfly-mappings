@@ -95,6 +95,7 @@ symbols_rule = MappingRule(
             'JavaScript': Text('javascript'),
             'self': Text('self'),
             'Js': Text('js'),
+            'Jason': Text('json'),
             'Id':  Text("id"),
 
     },
@@ -123,13 +124,16 @@ text_formatting_rule = MappingRule(
         '(lowercase | lower case) [<text>]': Function(lib.format.lowercase_text),
         'hyphen case [<text>]': Function(lib.format.dash_text),
         '(spec | speck) case [<text>]': Function(lib.format.dot_text),
-        'Ip case <n> <n> <n> <n>': Text('%(n)d.%(n)d.%(n)d.%(n)d'),
-        'version case <n> <n> <n>': Text('%(n)d.%(n)d.%(n)d'),
-        'float case <n> <n>': Text('%(n)d.%(n)d'),
+        'Ip case <n> <m> <x> <y>': Text('%(n)d.%(n)d.%(n)d.%(n)d'),
+        'version case <n> <x> <y>': Text('%(n)d.%(n)d.%(n)d'),
+        'float case <n> <x>': Text('%(n)d.%(n)d'),
     },
     extras = [
 		Dictation("text"),
-		IntegerRef("n", 1, 999)
+		IntegerRef("n", 1, 999),
+		IntegerRef("m", 1, 999),
+		IntegerRef("x", 1, 999),
+		IntegerRef("y", 1, 999),
 	]
 )
 
@@ -188,7 +192,7 @@ php_rule = MappingRule(
         'Rasmus Christ string': Key('escape,A,space') + Text('.') + Key('enter,squote'),
         'empty': Text('empty( )') +  Key('left,backspace'),
         'not empty': Text('!empty( )') +  Key('left,backspace'),
-        'for each': Text('foreach( as ) {') +  Key('enter:2,up:2,escape,dollar,6,h'),
+        'for each': Text('foreach( as ) {') +  Key('enter:2,up:2,escape,dollar,6,h,i'),
         'for each short': Text('foreach( as )') + Key('escape,4,h'),
         'namespace': Text('namespace '),
         'nil': Text('null'),
@@ -200,8 +204,9 @@ php_rule = MappingRule(
         'is set': Text('isset('),
         'not is set': Text('!isset('),
         'if empty': Text('if(empty('),
-        'crimp block': Text('{ }') + Key('left,enter:2,up,tab'),
-        'crimp block remove': Key('percent,d:2,c-o,x'),
+        'block': Text('{ }') + Key('left,enter:2,up,tab'),
+        'seal block': Key('escape,A,space') + Text('{ }') + Key('left,enter:2,up,tab'),
+        'block remove': Key('percent,d:2,c-o,x'),
         "if not empty": Text("if ( !") + Key('left,backspace,escape,l,a')
         + Text('empty('),
         'Jason (in code | encode)': Text('json_encode('),
@@ -211,6 +216,7 @@ php_rule = MappingRule(
         'index zero': Text('[0]'),
         'lithium log (air  | error)': Text('Logger: :error(') + Key('escape,b,h,X,e,l,a'),
         'array shift': Text('array_shift('),
+        'array filter': Text('array_filter('),
         'string to time': Text('strtotime('),
         'Rasmus print custom': Text('pr( );') +  Key('left,left,backspace'),
         'Rasmus print custom exit': Text('pr( );exit;') +  Key('escape,b:3,a,delete'),
@@ -222,6 +228,7 @@ php_rule = MappingRule(
         'variable dump': Text('var_dump( );') + Key('left,left,backspace'),
         'variable dump exit': Text('var_dump( );exit;') + Key('escape,b:3,a,delete'),
         'whale (string | strings)': Text("'' => ''") + Key('escape,h:7,a'),
+        'unset': Text('unset('),
     },
     extras = [
         Dictation("text"),

@@ -21,6 +21,7 @@ general_rule = MappingRule(
                 'text copy': Key("c-c"),
                 'text paste': Key("c-v"),
                 'lock screen': Key('win:down,l'),
+                'dictate': Mimic('show', 'dictation', 'box'),
                 'shards': Mimic('list', 'all', 'windows'),
                 'shard browser': Mimic('switch','to','chrome'),
                 'shard Ubuntu': Mimic('switch','to','lubuntu'),
