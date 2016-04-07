@@ -130,7 +130,7 @@ bash_rule = MappingRule(
                 "rake history [<text>]":  Text("history | grep '%(text)s'") + Key('left'),
                 'history <n>': Text('!%(n)d') + Key('enter'),
 		"(rate recursive | rake recursive | Raker cursive)": Text("grep -r ''") + Key('left'),
-		"rake": Text("grep ''") +  Key('left'),
+		"rake [<text>]": Text("grep '%(text)s'") +  Key('left'),
 
                 # viewing files and text
 		"cat": Text("cat "),
@@ -173,7 +173,7 @@ bash_rule = MappingRule(
 
                 # networking
                 'network all': Text('netstat --all --program '),
-                'network listening': Text('netstat --listening --program '),
+                'network listening': Text('netstat -ltn '),
                 'processes all': Text('ps aux '),
                 'list open': Text('lsof'),
                 'list open port <n>': Text('lsof -i :%(n)d'),
@@ -196,6 +196,7 @@ bash_rule = MappingRule(
                 "scratch tail":Key("c-k"),
                 "scratch head":Key("c-u"),
                 'scratch first': Key('c-a,a-d'),
+                '[<n>] scrape': Key('backspace:%(n)d'),
 
                 "Sudo":Text("sudo "),
                 'Sudo <text>': Text('sudo %(text)s'),
@@ -204,6 +205,7 @@ bash_rule = MappingRule(
                 # short commands and simplifiers
                 'Sudo last': Text('sudo ! !') + Key('left,backspace,enter'),
                 'term last <n>': Text('! :') + Key('left,backspace,right,%(n)d'),
+                'command last': Text('! !') + Key('left,backspace,enter'),
                 
                 # yum
                 'Yum': Text('yum'),
@@ -218,6 +220,7 @@ bash_rule = MappingRule(
 
 		"(vim | them)": Text("vim "),
                 'code': Text('vim '), 
+                'code directory': Text('vim .') + Key('enter'),
                 'vim config': Text('vimrc'),
 
 		"W. get ": Text("wget "),

@@ -21,6 +21,7 @@ general_rule = MappingRule(
                 'text copy': Key("c-c"),
                 'text paste': Key("c-v"),
                 'lock screen': Key('win:down,l'),
+                'dictate': Mimic('show', 'dictation', 'box'),
                 'shards': Mimic('list', 'all', 'windows'),
                 'shard browser': Mimic('switch','to','chrome'),
                 'shard Ubuntu': Mimic('switch','to','lubuntu'),
@@ -30,7 +31,7 @@ general_rule = MappingRule(
                     + Pause('400') + Key('enter:2'),
                 'window close': Key('a-f4'),
                 'flip': Key('a-tab,enter'),
-                '(Spohn | spawn) bash dragonfly': Key('win') + Pause('100') + Text('git bash') + Key('enter') + Pause('1000') + Text('cd ../../C:') + Key('enter') + Pause('300') + Text('cd NatLink/NatLink/MacroSystem') + Key('enter'),
+                '(Spohn | spawn) bash dragonfly': Key('win') + Pause('100') + Text('git bash') + Key('enter') + Pause('500') + Text('cd C:') + Key('enter') + Pause('100') + Text('cd NatLink/NatLink/MacroSystem') + Key('enter'),
 		},
 	extras = [
 		Dictation("text"),
