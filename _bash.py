@@ -24,6 +24,13 @@ general_rule = MappingRule(
                 'end of file': Key('c-d'),
                 "Lennix | Lenox": Text("linux"),
 		"say <text>":  Function(lib.format.strip_backslash_case),
+                # root directories
+                '(route | root) home': Text('/home'),
+                '(route | root) library': Text('/lib'),
+                '(route | root) opt': Text('/opt'),
+                '(route | root) temporary': Text('/tmp'),
+                '(route | root) user': Text('/usr'),
+                '(route | root) variable': Text('/var'),
 
 		},
 	extras = [
@@ -142,7 +149,8 @@ bash_rule = MappingRule(
 		"list now": Text("ls\n"),
                 'list': Text('ls '),
 		"list <text>": Text("ls %(text)s"),
-		"list minus L.": Text("ls -l\n"),
+		"list minus L.": Text("ls -l "),
+		"list minus L. now": Text("ls -l\n"),
 		"list minus A.": Text("ls -a\n"),
 		"list minus one": Text("ls -1 "),
                 'list unsorted': Text('ls -f\n'),
@@ -169,6 +177,7 @@ bash_rule = MappingRule(
 
                 # compression
                 'gun zip decompress': Text('gzip -d '),
+                'tar decompress': Text('sudo tar xvzf '),
 
 
                 # networking
@@ -212,11 +221,11 @@ bash_rule = MappingRule(
                 'Yum install': Text('sudo yum install '),
                 'Yum search': Text('sudo yum search '),
 
-		"pseudo-aptitude install": Text("sudo apt-get install "),
-		"pseudo-aptitude update": Text("sudo apt-get update "),
-		"pseudo-aptitude remove": Text("sudo apt-get remove "),
+		"aptitude install": Text("sudo apt-get install "),
+		"aptitude update": Text("sudo apt-get update "),
+		"aptitude remove": Text("sudo apt-get remove "),
 
-		"A. P. T. file search": Text("apt-file search "),
+		"aptitude search": Text("apt-file search "),
 
 		"(vim | them)": Text("vim "),
                 'code': Text('vim '), 
