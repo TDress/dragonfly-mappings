@@ -145,7 +145,7 @@ manipulation_rule = MappingRule(
                 'code indent': Key('escape,G,equal,g:2,c-o,c-o'),
                 'line indent': Key('escape,d:2,O'),
                 'line indent <n>': Key('escape,v,j:%(n)d,equal'),
-                'shoot push': Key('enter:2,up,tab'),
+                'shoot push': Key('enter,up,tab'),
                 '[<n>] shoot [<text>]': Key("enter:%(n)d") +  Function(lib.combination.executeCombo),
                 'lop': Key('d'),
                 'lop head': Key('d,g:2'),

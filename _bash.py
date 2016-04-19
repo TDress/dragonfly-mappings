@@ -107,7 +107,7 @@ bash_rule = MappingRule(
                 'push D [<text>]': Text('pushd %(text)s'),
                 'pop D': Text('popd') + Key('enter'),
                 'directory stack': Text('dirs'),
-
+                'tree': Text('tree '),
 		"copy": Text("cp "),
 		"copy recursive": Text("cp -r "),
 		"copy <text>": Text("cp %(text)s"),
