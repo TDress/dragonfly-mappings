@@ -151,6 +151,7 @@ manipulation_rule = MappingRule(
                 'lop head': Key('d,g:2'),
                 'lop tail': Key('d,G'),
 		'[<n>] lop Eli': Key("%(n)d,d,e"),
+                'lop Buck': Key('escape,d,dollar'),
 		'[<n>] lop (Hynde | hind)': Key("%(n)d,b"),
 		'[<n>] lop slump': Key("%(n)d,j"),
 		'[<n>] lop boost': Key("%(n)d,k"),

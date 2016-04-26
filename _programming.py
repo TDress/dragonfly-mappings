@@ -224,6 +224,7 @@ php_rule = MappingRule(
         'string to time': Text('strtotime('),
         'Rasmus print custom': Text('pr( );') +  Key('left,left,backspace'),
         'Rasmus print custom exit': Text('pr( );exit;') +  Key('escape,b:3,a,delete'),
+        'exit': Text('exit;'),
         'Rasmus print readable': Text('print_r( )') +  Key('left,backspace'),
         'Rasmus <text>': SCText('$%(text)s'),
         'static access': Text(': :') + Key('left,backspace,escape,l,a'),
