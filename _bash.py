@@ -23,6 +23,8 @@ general_rule = MappingRule(
 		"cancel": Key("c-c"),
                 'end of file': Key('c-d'),
                 "Lennix | Lenox": Text("linux"),
+                'dot slash': Text('./'),
+                'tilde slash': Text('~/'),
 		"say <text>":  Function(lib.format.strip_backslash_case),
                 # root directories
                 '(route | root) home': Text('/home'),
@@ -50,6 +52,7 @@ file_extensions_rule = MappingRule(
 		"dot text": Text(".txt"),
 		"dot pie": Text(".py"),
                 'dot Php': Text('.php'),
+                'dot Sh': Text('.sh'),
                 'dot config': Text('.config'),
                 'dot configure short': Text('.conf'),
                 'dot log': Text('.log'),
@@ -100,9 +103,12 @@ bash_rule = MappingRule(
                 'double dot':Text('../'),
 		"CD triple dot": Text("cd ../..\n"),
                 'triple dot':Text('../../'),
-		"CD ": Text("cd ") + Key("tab:2"),
+		"CD ": Text("cd "),
+		"CD tab": Text("cd ") + Key("tab:2"),
                 'Cd home': Text('cd ~') + Key('enter'),
+                'Cd home documents': Text('cd ~/Documents'),
                 'Cd last': Text('cd -') + Key('enter'),
+                'Cd capital <text>': Text('cd ') + Function(lib.format.capital_text),
 		"CD <text>": Text("cd %(text)s"),
                 'push D [<text>]': Text('pushd %(text)s'),
                 'pop D': Text('popd') + Key('enter'),
@@ -127,6 +133,7 @@ bash_rule = MappingRule(
 		"secure copy <text>": Text("scp %(text)"),
 
                 "change mode": Text("chmod "),
+                "change owner": Text('chown '),
 
                 # find
                 'find': Text("find * -name ''") + Key('left'), 
@@ -151,7 +158,8 @@ bash_rule = MappingRule(
 		"list <text>": Text("ls %(text)s"),
 		"list minus L.": Text("ls -l "),
 		"list minus L. now": Text("ls -l\n"),
-		"list minus A.": Text("ls -a\n"),
+		"list minus A.": Text("ls -a "),
+		"list minus A. now": Text("ls -a\n"),
 		"list minus one": Text("ls -1 "),
                 'list unsorted': Text('ls -f\n'),
 
@@ -246,9 +254,24 @@ bash_rule = MappingRule(
                 "screen paste":Key('c-a,rbracket'),
                 "screen kill": Key('c-a,k'),
                 # node package manager
-                'node packages':  Text('npm '),
-                'node packages install':  Text('npm install') +  Key('enter'),
-                'node packages build':  Text('npm build') +  Key('enter'),
+                'node packages':  Text('sudo npm '),
+                'Npm': Text('npm '),
+                'Npm start': Text('npm start'),
+                'node packages install':  Text('sudo npm install '),
+                'node packages install global':  Text('sudo npm install -g '),
+                'node packages build':  Text('sudo npm build'),
+
+                # react native command line
+                'react initialize': Text('react-native init '),
+                'react run android': Text('react-native run-android') + Key('enter'),
+                'react run iOs': Text('react-native run-ios'),
+
+                # adb
+                "Adb": Text('adb '),
+                "Adb start server": Text('adb start-server'),
+                "Adb kill server": Text('adb kill-server'),
+                "Adb devices": Text('adb devices'),
+                "Adb log react": Text('adb logcat *:S ReactNative:V ReactNativeJS:V'),
 
         },
 	extras = [
@@ -320,13 +343,17 @@ git_rule = MappingRule(
                 'annals (Paul | pull) origin master':Text('git pull origin master'),
                 'annals show': Text('git show '),
 		"annals stash": Text("git stash\n"),
+                "annals ignore": Text('.gitignore'),
 
 		"annals help": Text("git help"),
 		"annals help push": Text("git help push\n"),
 
 		"annals remote add": Text("git remote add "),
-		"annals remote version": Text("git remote -v") + Key("enter")		
-		},
+                "annals remote remove": Text('git remote remove '),
+                "annals remote rename": Text('git remote rename '),
+		"annals remote version": Text("git remote -v") + Key("enter"),		
+
+                                },
         extras = [
 		Dictation("text"),
 		IntegerRef("n", 0, 50)

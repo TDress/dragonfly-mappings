@@ -14,6 +14,7 @@ window_rule = MappingRule(
     		'browse <n>': Key("c-%(n)d"),
     		'browse new': Key("c-t"),
     		'revive': Key("cs-t"),
+                'gash <n>': Key("c-tab,c-w:%(n)"),
     		'gash': Key("c-w"),
     		'refresh': Key("c-r"),
     		'address': Key("c-l"),

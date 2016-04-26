@@ -31,6 +31,7 @@ rules = MappingRule(
         "in <text>": SCText("in %(text)s"),
         "((jquery|jay query) (variable|var)|dollar paren)": Text("$()") + Key("left"),  # @IgnorePep8
         "object": Text("Object "),
+        "for in": Text('for( var  in )') + Key('left:9,backspace,right:4'),
         "reg exp": Text("RegExp"),
         "string object": Text("String"),
         "this": Text("this"),
@@ -44,6 +45,7 @@ rules = MappingRule(
         # Global variables and objects.
         "window": Text("window"),
         "undefined": Text("undefined"),
+        "use strict": Text("'use strict';"),
     },
     extras=[
         IntegerRef("n", 1, 100),
