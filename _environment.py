@@ -47,6 +47,7 @@ lubuntu_rule = MappingRule(
 	name = "lubuntu",
 	mapping = {
             'terminal new': Key('a-f2') +  Pause('100') + Text('gnome-terminal') + Key('enter'),
+            'chrome new': Key('a-f2') +  Pause('100') + Text('google-chrome') + Key('enter'),
             'window full-screen': Key('f11'),
 	}
 )
