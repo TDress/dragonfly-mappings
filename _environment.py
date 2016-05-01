@@ -16,6 +16,7 @@ general_rule = MappingRule(
                 "[<n>] up [<text>]": Key("up:%(n)d") + Function(lib.combination.executeCombo),
                 "[<n>] down [<text>]": Key("down:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] space [<text>]':Key('space:%(n)d') + Function(lib.combination.executeCombo), 
+                'tab shoot': Key('tab, enter'),
                 "[<n>] tab [<text>]":Key("tab:%(n)d") + Function(lib.combination.executeCombo),
                 '[<n>] tab back': Key("s-tab:%(n)d"),
                 'text copy': Key("c-c"),

@@ -103,6 +103,10 @@ bash_rule = MappingRule(
                 'double dot':Text('../'),
 		"CD triple dot": Text("cd ../..\n"),
                 'triple dot':Text('../../'),
+                'dot space': Text(" . "),
+                'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
+                'dot id': Text('.id'),
+                'dot 3': Text('...'),
 		"CD ": Text("cd "),
 		"CD tab": Text("cd ") + Key("tab:2"),
                 'Cd home': Text('cd ~') + Key('enter'),
@@ -263,6 +267,7 @@ bash_rule = MappingRule(
 
                 # react native command line
                 'react initialize': Text('react-native init '),
+                'react start': Text('react-native start') + Key('enter'),
                 'react run android': Text('react-native run-android') + Key('enter'),
                 'react run iOs': Text('react-native run-ios'),
 
@@ -272,6 +277,7 @@ bash_rule = MappingRule(
                 "Adb kill server": Text('adb kill-server'),
                 "Adb devices": Text('adb devices'),
                 "Adb log react": Text('adb logcat *:S ReactNative:V ReactNativeJS:V'),
+                'Adb reverse <n>': Text('adb reverse tcp:%(n)d tcp:%(n)d'),
 
         },
 	extras = [

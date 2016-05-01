@@ -92,6 +92,7 @@ buffer_rule = MappingRule(
             'code back': Key("escape,colon,b,p,enter"),
             'code last': Key("c-caret"),
             'code <n>': Key("escape,colon,b") + Text("%(n)d") +  Key('enter'),
+            'code line <n>': Key('escape, colon') + Text('%(n)d\n'),
             'code save': Key("escape,colon,w,enter"),
             'code save bang': Key("escape,colon,w,exclamation,enter"),
             'code save quit': Key("escape,colon,w,q,enter"),
@@ -126,7 +127,7 @@ buffer_rule = MappingRule(
 	},
 	extras = [
 		Dictation("text"),
-		IntegerRef("n", 1, 500)
+		IntegerRef("n", 1, 5000)
 	],
 	defaults = {
 		"n": 1
@@ -161,14 +162,15 @@ manipulation_rule = MappingRule(
                 'lop line above': Key('escape,k,d:2'),
                 'lop line below': Key('escape,j,d:2'),
 		'lop line [<text>]': Key("escape,d,d") +  Function(lib.combination.executeCombo), 
-                '[<n>] oust [<text>]': Key("%(n)d,c") +  Function(lib.combination.executeCombo), 
                 '[<n>] oust back': Key("escape,%(n)d,b,%(n)d,c,e"),
                 '[<n>] oust next': Key("escape,%(n)d,c,e"),
-                'oust Buck':Key('escape,c,dollar'),
+'oust Buck':Key('escape,c,dollar'),
                 'oust word':Key('escape,c,a,w'),
                 'oust inside': Key('escape,c,i'),
-                'oust line': Key('c:2'),
-                'paste': Key("escape,p"),
+                'oust line': Key('escape,c:2'),
+
+                '[<n>] oust [<text>]': Key("%(n)d,c") +  Function(lib.combination.executeCombo), 
+                                'paste': Key("escape,p"),
                 'paste front': Key("P"),
                 'redo': Key("cs-r"),
    		'sub [<text>]': Key("s") +  Function(lib.combination.executeCombo),

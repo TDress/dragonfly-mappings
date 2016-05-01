@@ -58,10 +58,6 @@ symbols_rule = MappingRule(
             'crimp [<text>]': Text("{") +  Function(lib.combination.executeCombo),
             'crimp push': Text('{') + Key('enter:2,escape,k:2,A'),
             'crimp end': Text("}"),
-            'dot space': Text(" . "),
-            'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
-            'dot id': Text('.id'),
-            'dot 3': Text('...'),
             'sever [<text>]':Text(";") +  Function(lib.combination.executeCombo),
             
             'string [<text>]': Text("'%(text)s'"),

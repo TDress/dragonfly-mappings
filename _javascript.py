@@ -22,6 +22,8 @@ rules = MappingRule(
     mapping={
         # Keywords:
         'console log': Text('console.log(.);') +  Key('left:2,backspace'),
+        'console warn': Text('console.warn(.);') +  Key('left:2,backspace'),
+        'constant [<text>]': Text('const %(text)s'),
         "debugger": Text("debugger"),
         "default": Text("default"),
         "function": Text("function "),
@@ -52,7 +54,8 @@ rules = MappingRule(
         Dictation("text"),
     ],
     defaults={
-        "n": 1
+        "n": 1,
+        "text": ''
     }
 )
 
