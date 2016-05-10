@@ -7,7 +7,7 @@ bashMapping = {
     'caret': 'caret',
     'carrot': 'caret',
     'delete': 'delete',
-    'hyphen': 'hyphen',
+    '-': 'hyphen',
     'left': 'left',
     'left word': 'a-b',
     'pipe': 'bar',

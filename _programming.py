@@ -93,6 +93,7 @@ symbols_rule = MappingRule(
             'self': Text('self'),
             'Js': Text('js'),
             'Jason': Text('json'),
+            'Jason big': Text('JSON'),
             'Id':  Text("id"),
 
     },

@@ -22,6 +22,7 @@ rules = MappingRule(
     mapping={
         # Keywords:
         'console log': Text('console.log(.);') +  Key('left:2,backspace'),
+        'console error': Text('console.error(.);') +  Key('left:2,backspace'),
         'console warn': Text('console.warn(.);') +  Key('left:2,backspace'),
         'constant [<text>]': Text('const %(text)s'),
         "debugger": Text("debugger"),

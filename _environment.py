@@ -21,6 +21,8 @@ general_rule = MappingRule(
                 '[<n>] tab back': Key("s-tab:%(n)d"),
                 'text copy': Key("c-c"),
                 'text paste': Key("c-v"),
+                'select all': Key('c-a'),
+                'select all clear': Key('c-a, delete'),
                 'lock screen': Key('win:down,l'),
                 'dictate': Mimic('show', 'dictation', 'box'),
                 'shards': Mimic('list', 'all', 'windows'),

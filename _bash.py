@@ -58,6 +58,8 @@ file_extensions_rule = MappingRule(
                 'dot log': Text('.log'),
                 'dot Js': Text('.js'),
                 'dot Html': Text('.html'),
+                'dot Xml': Text('.xml'),
+
                 # hidden files
                 'hidden [<text>]': Text('.%(text)s'),
                 'hidden vim config': Text('.vimrc'),
@@ -104,7 +106,7 @@ bash_rule = MappingRule(
 		"CD triple dot": Text("cd ../..\n"),
                 'triple dot':Text('../../'),
                 'dot space': Text(" . "),
-                'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
+                #'dot [<text>]': Text(".") +  Function(lib.combination.executeCombo),
                 'dot id': Text('.id'),
                 'dot 3': Text('...'),
 		"CD ": Text("cd "),
@@ -149,6 +151,7 @@ bash_rule = MappingRule(
                 'history <n>': Text('!%(n)d') + Key('enter'),
 		"(rate recursive | rake recursive | Raker cursive)": Text("grep -r ''") + Key('left'),
 		"rake [<text>]": Text("grep '%(text)s'") +  Key('left'),
+                'rake recursive include': Text("grep -r --include  ''"),
 
                 # viewing files and text
 		"cat": Text("cat "),
