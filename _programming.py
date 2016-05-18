@@ -71,6 +71,7 @@ symbols_rule = MappingRule(
             'amp': Text("&"),
             'amp space':  Key('space,ampersand,space'),
             'amp twice':  Text(' & &') + Key('escape,X,a,space'),
+            'amp twice start line':  Text('& &') + Key('escape,X,a,space'),
             
             'or': Key('space,bar,space:2,bar,left,backspace:2,right,space'),
 
@@ -141,7 +142,7 @@ builtin_statement_rule = MappingRule(
         '(brake | break)': Text('break'),
         '(brake | break) finish': Text('break;') +  Key('enter'), 
         "case": Text("case "),
-        "case <text>": SCText("case %(text)s"),
+        "case <text>": SCText("case '%(text)s'"),
         "catch": Text("catch () {") + Key("left:3"),
         "continue": Text("continue"),
         'continue finish':  Text('continue;') +  Key('enter'),
@@ -205,6 +206,7 @@ php_rule = MappingRule(
         'if empty': Text('if(empty('),
         'string length': Text('strlen('),
         'block': Text('{ }') + Key('left,enter:2,up,tab'),
+        'arc block': Text('( )') + Key('left,enter:2,up,tab'),
         'seal block': Key('escape,A,space') + Text('{ }') + Key('left,enter:2,up,tab'),
         'block remove': Key('percent,d:2,c-o,x'),
         "if not empty": Text("if ( !") + Key('left,backspace,escape,l,a')
@@ -218,6 +220,7 @@ php_rule = MappingRule(
         'lithium log notice': Text('Logger: :notice(') + Key('escape,b,h,X,e,l,a'),
         'array shift': Text('array_shift('),
         'array filter': Text('array_filter('),
+        'array reduce': Text('array_reduce('),
         'array map': Text('array_map('),
         'array values': Text('array_values('),
         'Rasmus regular expression match': Text('preg_match()'),
@@ -228,6 +231,8 @@ php_rule = MappingRule(
         'Rasmus print readable': Text('print_r( )') +  Key('left,backspace'),
         'Rasmus <text>': SCText('$%(text)s'),
         'static access': Text(': :') + Key('left,backspace,escape,l,a'),
+        'static access <text>': Text(': :') + Key('left,backspace,escape,l,a') 
+            + Text('%(text)s'),
         'static function <text>': Text(': :%(text)s( )') + Key('escape,X,b:2,h,X,w:2,a'),
         'use': Text('use '),
         'variable dump': Text('var_dump( );') + Key('left,left,backspace'),
