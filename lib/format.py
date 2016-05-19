@@ -218,7 +218,7 @@ def format_path_case(text):
         if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
             word = "/" + word  # Adds dashes between normal words.
         newText += word
-    return newText
+    return newText + "/"
 
 def format_namespace_case(text):
     newText = ""

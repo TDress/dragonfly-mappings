@@ -243,9 +243,8 @@ bash_rule = MappingRule(
 		"aptitude search": Text("apt-file search "),
 
 		"(vim | them)": Text("vim "),
-                'code': Text('vim '), 
-                'code directory': Text('vim .') + Key('enter'),
-                'vim config': Text('vimrc'),
+                'code [<text>]': Text('vim %(text)s'), 
+                'code config': Text('vimrc'),
 
 		"W. get ": Text("wget "),
 
@@ -361,6 +360,8 @@ git_rule = MappingRule(
                 "annals remote remove": Text('git remote remove '),
                 "annals remote rename": Text('git remote rename '),
 		"annals remote version": Text("git remote -v") + Key("enter"),		
+
+                "annals revert": Text("git revert "),
 
                                 },
         extras = [
