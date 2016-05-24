@@ -16,6 +16,7 @@ symbols_rule = MappingRule(
             "greater than": Text(" > "),
             "greater equals": Text(" >= "),
 
+            '(tick | take) word': Key('escape, e, a, apostrophe, escape, b, i, apostrophe, escape'),
             'tick [<text>]': Key("apostrophe") +  Function(lib.combination.executeCombo),
             'tick twice [<text>]': Key("dquote") + Function(lib.combination.executeCombo),
             '(way | weigh) (stow | Stowe)': Key("space, equal, equal, space"),
@@ -53,6 +54,7 @@ symbols_rule = MappingRule(
             'ternary optic': Text(' : '),
             'ternary crypt': Text(' ? '),
 
+            'raft block': Text('[ ]') + Key('left, enter:2, up, tab'),
             'raft [<text>]': Text("[") +  Function(lib.combination.executeCombo),
             'raft end': Text("]"),
             'crimp [<text>]': Text("{") +  Function(lib.combination.executeCombo),
@@ -214,10 +216,12 @@ php_rule = MappingRule(
         'Jason (in code | encode)': Text('json_encode('),
         'Jason (the code | decode)': Text('json_decode('),
         'lithium log': Text('Logger: :debug(') + Key('escape,b,h,X,e,l,a'),
+        'Rasmus method': Text('_ _method_ _') + Key('escape, X, b, l, v, 5, l, tilde, h, X'),
         'die': Text('die;'),
         'index zero': Text('[0]'),
         'lithium log (air  | error)': Text('Logger: :error(') + Key('escape,b,h,X,e,l,a'),
         'lithium log notice': Text('Logger: :notice(') + Key('escape,b,h,X,e,l,a'),
+        'array keys': Text('array_keys('),
         'array shift': Text('array_shift('),
         'array filter': Text('array_filter('),
         'array reduce': Text('array_reduce('),

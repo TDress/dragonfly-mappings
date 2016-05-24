@@ -149,6 +149,7 @@ bash_rule = MappingRule(
 
                 "rake history [<text>]":  Text("history | grep '%(text)s'") + Key('left'),
                 'history <n>': Text('!%(n)d') + Key('enter'),
+                'history <text>': Text('%(text)s') + Key('pgup'),
 		"(rate recursive | rake recursive | Raker cursive)": Text("grep -r ''") + Key('left'),
 		"rake [<text>]": Text("grep '%(text)s'") +  Key('left'),
                 'rake recursive include': Text("grep -r --include  ''"),
@@ -362,6 +363,7 @@ git_rule = MappingRule(
 		"annals remote version": Text("git remote -v") + Key("enter"),		
 
                 "annals revert": Text("git revert "),
+                "annals reset": Text('git reset --hard '),
 
                                 },
         extras = [
