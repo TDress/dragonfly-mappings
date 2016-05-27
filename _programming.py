@@ -81,7 +81,7 @@ symbols_rule = MappingRule(
             'Cork or': Key('right,space,bar,space:2,bar,left,backspace:2,right,space'),
 
             # arithmetic
-            'increment': Text('+ +') + Key('left, backspace right'),
+            'increment': Text('+ +') + Key('left, backspace, right'),
             'Christ space [<text>]': Text(" + ") + Function(lib.combination.executeCombo),
             'Christ [<text>]': Text("+") +  Function(lib.combination.executeCombo),
             "Christ equals": Text(" += "),
