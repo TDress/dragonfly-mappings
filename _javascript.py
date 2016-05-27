@@ -42,7 +42,9 @@ rules = MappingRule(
         "to String": Text("toString()") + Key("left"),
         'variable short': Text('var'),
         "variable (define | defined)": Text("var "),
+        "let (define | defined)": Text("let "),
         "(variable|var) (define | defined) <text>": SCText("var %(text)s"),
+        "let (define | defined) <text>": SCText("let %(text)s"),
         "with": Text("with () {") + Key("left:3"),
         "with <text>": SCText("with (%(text)s) {") + Key("left:3"),
         # Global variables and objects.

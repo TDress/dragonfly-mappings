@@ -35,6 +35,7 @@ symbols_rule = MappingRule(
             'snake Id': Text('_id'),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'snake word [<text>]': Text('_%(text)s'),
+            'spec word [<text>]': Text('.%(text)s'),
 
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic twice [<text>]': Key("colon:2") +  Function(lib.combination.executeCombo),
@@ -48,8 +49,9 @@ symbols_rule = MappingRule(
             'shark [<text>]': Text("->%(text)s"),
             'trout [<text>]': Text(">") +  Function(lib.combination.executeCombo),
             'trout less [<text>]': Text("<") + Function(lib.combination.executeCombo),
+            'Cork ternary': Key('right') + Text(' ?  : ') + Key('left:3'),
             'ternary': Text(" ?  : ") +  Key('left:3'),
-            'ternary start line': Text("?  : ") +  Key('left:3'),
+            'ternary start': Text("?  : ") +  Key('left:3'),
             'ternary short': Text(" ? :") +  Key("left,backspace,right,space"),
             'ternary optic': Text(' : '),
             'ternary crypt': Text(' ? '),
@@ -73,20 +75,25 @@ symbols_rule = MappingRule(
             'amp': Text("&"),
             'amp space':  Key('space,ampersand,space'),
             'amp twice':  Text(' & &') + Key('escape,X,a,space'),
-            'amp twice start line':  Text('& &') + Key('escape,X,a,space'),
+            'amp twice start':  Text('& &') + Key('escape,X,a,space'),
             
             'or': Key('space,bar,space:2,bar,left,backspace:2,right,space'),
+            'Cork or': Key('right,space,bar,space:2,bar,left,backspace:2,right,space'),
 
             # arithmetic
+            'increment': Text('+ +') + Key('left, backspace right'),
             'Christ space [<text>]': Text(" + ") + Function(lib.combination.executeCombo),
             'Christ [<text>]': Text("+") +  Function(lib.combination.executeCombo),
             "Christ equals": Text(" += "),
             'Christ twice': Text("++"),
             "(minus|subtract|subtraction)": Text(" - "),
+            "(minus|subtract|subtraction) <n>": Text(" - %(n)d"),
             "(minus|subtract|subtraction) equals": Text(" -= "),
             'divide': Text(' / '),
 
             'mod [<text>]':  Key("percent") +  Function(lib.combination.executeCombo),
+            'oust mod': Key('c, percent'),
+            '(Lopp | lop) mod': Key('d, percent'),
             'slug space':  Key("space,asterisk,space"),
             'slug':  Key("asterisk"),
             'hash': Key("hash"),
@@ -102,6 +109,7 @@ symbols_rule = MappingRule(
     },
     extras = [
         Dictation("text"),
+        IntegerRef("n", 1, 999999),
         ],
     defaults = {
         "text":''
@@ -152,9 +160,9 @@ builtin_statement_rule = MappingRule(
         "do while": Text("do {") +  Key('enter, rbrace,space') 
             + Text('while('),
         "else": Text("else"),
-        "else if": Text("else if ( ) {") + Key("left:3, backspace"),
+        "else if": Text("else if ( )") + Key("left, backspace"),
         "extends ": Text("extends "),
-        "for": Text("for () {") + Key("left:3"),
+        "for": Text("for ( )") + Key("left, backspace"),
         "false": Text("false"),
         "finally": Text("finally {") + Key("enter"),
         "if": Text("if ("),
@@ -186,7 +194,7 @@ php_rule = MappingRule(
     name = 'php',
     mapping = {
         'comment':Text('// '),
-        'comment more': Text('/*') + Key('enter'),
+        'comment more': Text('/* *') + Key('left, backspace, right, enter'),
         'comment line': Key('escape,I') + Text('// ') + Key('escape'),
         'comment line <n>': Key('escape,0,c-v,%(n)d,j,k,I') + Text('// ') + Key('escape'),
         '(comment | comments) remove': Key('escape, I, delete:3, escape'),

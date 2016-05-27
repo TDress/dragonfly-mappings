@@ -189,9 +189,11 @@ def format_capital_case(text):
     newText = ""
     words = strip_dragon_info(text)
     for word in words:
-        if newText != "" and newText[-1:].isalnum() and word[-1:].isalnum():
-            word = " " + word  # Adds spacing between normal words.
-        newText += string.capwords(word)
+        if newText.length == 0:
+            delimit = ''
+        else:
+            delimit = ' '
+        newText = '%s%s%s' % (newText, delimit, word.capitalize())
     return newText
 
 def format_pascal_case(text):

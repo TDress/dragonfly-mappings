@@ -111,6 +111,7 @@ buffer_rule = MappingRule(
 
             #common options
             'code ignore case': Key("escape,colon") +  Text("set ignorecase") +  Key("enter"),
+            'code respect case': Key("escape,colon") +  Text("set ignorecase!") +  Key("enter"),
 
             # window actions
             'horizontal split': Key("escape,colon,s,p,enter"),
@@ -147,8 +148,8 @@ manipulation_rule = MappingRule(
                 '(Cleve | cleave) up push': Key("escape,O,enter"),
                 '[<n>] jump right':  Key('escape, v, l,%(n)d,rangle'),
                 '[<n>] jump left':  Key('escape, v, l,%(n)d,langle'),
-                'jump right <n>': Key('escape,v,j:%(n)d - 1,rangle'),
-                'jump left <n>': Key('escape,v,j:%(n)d - 1,langle'),
+                'jump right <n>': Key('escape,v, %(n)d-1, j, rangle'),
+                'jump left <n>': Key('escape,v,%(n)d - 1,j,langle'),
                 'code indent': Key('escape,G,equal,g:2,c-o,c-o'),
                 'line indent': Key('escape,d:2,O'),
                 'line indent <n>': Key('escape,v,j:%(n)d,equal'),
@@ -183,6 +184,7 @@ manipulation_rule = MappingRule(
    		'swap [<text>]': Key("r") +  Function(lib.combination.executeCombo),
    		'swap more [<text>]': Key("s-r") +  Function(lib.combination.executeCombo),
                 'tilde last': Key('escape, b, tilde'),
+                'tilde word': Key('escape, l, e, v, b, tilde'),
                 'tilde [<text>]': Key("tilde") +  Function(lib.combination.executeCombo),
                 'top off [<text>]': Key("cs-p") + Function(lib.combination.executeCombo),
                 'trim up': Key('escape,0,w,h,v,k,dollar,x'),

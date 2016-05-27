@@ -254,7 +254,7 @@ def tags(element):
     if element in voidElements:
         Text("<%s />" % str(element)).execute()
     else:
-        Text("<%s></%s>" % (elementString, elementString)).execute()
+        Text("<%s> </%s>" % (elementString, elementString)).execute()
         Key("left:%s" % (len(elementString) + 3)).execute()
 
 
