@@ -36,6 +36,7 @@ symbols_rule = MappingRule(
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'snake word [<text>]': Text('_%(text)s'),
             'spec word [<text>]': Text('.%(text)s'),
+            'spec': Text('.'),
 
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
             'optic twice [<text>]': Key("colon:2") +  Function(lib.combination.executeCombo),
@@ -162,7 +163,7 @@ builtin_statement_rule = MappingRule(
         "else": Text("else"),
         "else if": Text("else if ( )") + Key("left, backspace"),
         "extends ": Text("extends "),
-        "for": Text("for ( )") + Key("left, backspace"),
+        "for loop": Text("for ( )") + Key("left, backspace"),
         "false": Text("false"),
         "finally": Text("finally {") + Key("enter"),
         "if": Text("if ("),

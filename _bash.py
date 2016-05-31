@@ -51,6 +51,7 @@ file_extensions_rule = MappingRule(
 	mapping = {
 		"dot text": Text(".txt"),
 		"dot pie": Text(".py"),
+                'dot Jason': Text('.json'),
                 'dot Php': Text('.php'),
                 'dot Sh': Text('.sh'),
                 'dot config': Text('.config'),
@@ -97,6 +98,7 @@ bash_rule = MappingRule(
             'flag': Text(' -'),
             'option <text>': Text(' --') + Function(lib.chars.bashFlagText) + Key('space'), 
             'option': Text(' --'),
+                'curl trace': Text('curl --trace-ascii - '),
                 "curl [<text>]": Text("curl ") +  Function(lib.combination.executeCombo),
 		"P. W. D.": Text("pwd\n"),
 

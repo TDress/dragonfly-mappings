@@ -189,7 +189,7 @@ def format_capital_case(text):
     newText = ""
     words = strip_dragon_info(text)
     for word in words:
-        if newText.length == 0:
+        if len(newText) == 0:
             delimit = ''
         else:
             delimit = ' '

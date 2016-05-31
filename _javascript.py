@@ -42,6 +42,7 @@ rules = MappingRule(
         "to String": Text("toString()") + Key("left"),
         'variable short': Text('var'),
         "variable (define | defined)": Text("var "),
+        "let (define | defined) I": Text("let i="),
         "let (define | defined)": Text("let "),
         "(variable|var) (define | defined) <text>": SCText("var %(text)s"),
         "let (define | defined) <text>": SCText("let %(text)s"),

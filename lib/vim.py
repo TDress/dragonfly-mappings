@@ -16,6 +16,7 @@ vimMapping = {
         "etch": "i",
         "etch start": "I",
         "hind": "b",
+        'kind': 'b',
         "hynde": "b",
         "indent": "equal,equal",
         "lance":"a",
