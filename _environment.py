@@ -33,7 +33,7 @@ general_rule = MappingRule(
                 '(spawn | Spohn) Ubuntu': Key('win') + Pause('100') + Text('Oracle') + Key('enter')
                     + Pause('400') + Key('enter:2'),
                 'window close': Key('a-f4'),
-                'flip': Key('a-tab,enter'),
+                'flip': Key('a-tab, alt'),
                 '(Spohn | spawn) bash dragonfly': Key('win') + Pause('100') + Text('git bash') + Key('enter') + Pause('500') + Text('cd C:') + Key('enter') + Pause('100') + Text('cd NatLink/NatLink/MacroSystem') + Key('enter'),
 		},
 	extras = [

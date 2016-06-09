@@ -58,6 +58,7 @@ file_extensions_rule = MappingRule(
                 'dot configure short': Text('.conf'),
                 'dot log': Text('.log'),
                 'dot Js': Text('.js'),
+                'spec Js': Text('.js'),
                 'dot Html': Text('.html'),
                 'dot Xml': Text('.xml'),
 
@@ -217,6 +218,7 @@ bash_rule = MappingRule(
                 'bash zilch': Key('c-a'),
 
                 "[<n>] backspace": Key("backspace:%(n)d"),
+                "[<n>] basses": Key("backspace:%(n)d"),
                 '[<n>] delete [<text>]': Key("delete:%(n)d") + Function(lib.combination.executeCombo),
 		"[<n>] scratch back": Key("a-backspace:%(n)d"),
 		"[<n>] scratch next": Key("a-d:%(n)d"),
@@ -228,16 +230,18 @@ bash_rule = MappingRule(
                 "Sudo":Text("sudo "),
                 'Sudo <text>': Text('sudo %(text)s'),
                 'Sudo service': Text('sudo service '),
+                '(pseudocode | sudo code)': Text('sudo vim '),
 
                 # short commands and simplifiers
                 'Sudo last': Text('sudo ! !') + Key('left,backspace,enter'),
-                'term last <n>': Text('! :') + Key('left,backspace,right,%(n)d'),
+                'term last <n>': Text('! :') + Key('left,backspace,right,%(n)d, space'),
                 'command last': Text('! !') + Key('left,backspace,enter'),
                 
                 # yum
                 'Yum': Text('yum'),
                 'Yum install': Text('sudo yum install '),
                 'Yum search': Text('sudo yum search '),
+                'Yum update': Text('sudo yum -y update\n'),
 
 		"aptitude install": Text("sudo apt-get install "),
 		"aptitude update": Text("sudo apt-get update "),
@@ -263,12 +267,14 @@ bash_rule = MappingRule(
                 "screen paste":Key('c-a,rbracket'),
                 "screen kill": Key('c-a,k'),
                 # node package manager
+                '(node | noted | note) modules': Text('node_modules'),
                 'node packages':  Text('sudo npm '),
                 'Npm': Text('npm '),
+                'Npm initialize': Text('npm init '),
                 'Npm start': Text('npm start'),
-                'node packages install':  Text('sudo npm install '),
-                'node packages install global':  Text('sudo npm install -g '),
-                'node packages build':  Text('sudo npm build'),
+                'npm install':  Text('sudo npm install '),
+                'Npm install global':  Text('sudo npm install -g '),
+                'Npm build':  Text('sudo npm build'),
 
                 # react native command line
                 'react initialize': Text('react-native init '),

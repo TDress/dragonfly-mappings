@@ -280,7 +280,7 @@ rules = MappingRule(
         "hyper attribute <attribute>": Text(' %(attribute)s=""') + Key("left"),
         "hyper attribute <attribute> [equals] <text>": Function(attribute_with_content),  # @IgnorePep8
         # Comments.
-        "hyper comment":  Key('langle,exclamation') + Text("--  -->") + Key("left:4"),
+        "hyper comment":  Text('< !-- -->') + Key('escape, 6, h, X, l:3'),
         "hyper comment <text>": SCText("<!-- %(text)s -->") + Key("left:4"),
         "hyper (open|left) comment":  Key('langle,exclamation') + Text("-- "),
         "hyper (open|left) comment <text>": SCText("<!-- %(text)s"),

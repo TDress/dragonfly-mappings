@@ -42,7 +42,7 @@ symbols_rule = MappingRule(
             'optic twice [<text>]': Key("colon:2") +  Function(lib.combination.executeCombo),
             'optic space': Key("colon, space"),
             'optic Url': Text('://'),
-            'arc [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
+            '(arch | arc) [<text>]': Key("lparen") +  Function(lib.combination.executeCombo),
             'arc push': Key('lparen,enter:2,escape,k:2,A'),
             'arc end': Key("rparen"),
             'whale [<text>]': Text(" => ") +  Function(lib.combination.executeCombo),
@@ -150,7 +150,7 @@ text_formatting_rule = MappingRule(
 builtin_statement_rule = MappingRule(
     name = 'builtin_statement',
     mapping = {
-        '(brake | break)': Text('break'),
+        '(brake | break)': Text('break;'),
         '(brake | break) finish': Text('break;') +  Key('enter'), 
         "case": Text("case "),
         "case <text>": SCText("case '%(text)s'"),

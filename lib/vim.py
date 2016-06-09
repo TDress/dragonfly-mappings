@@ -6,6 +6,7 @@ vimMapping = {
         "bag block": "c-v",
         "boost": "k",
         "buck": "dollar",
+        "but": "dollar",
         "cleave": "o",
         "cleve": "o",
         "cleave up": "O",

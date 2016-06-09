@@ -33,6 +33,7 @@ programming_mapping = {
         "tick twice": "dquote",
         "trout": "rangle",
         "trout less": "langle",
+        'stowe': 'equal',
         "way Stowe": "space,equal,equal,space",
         "way stow": "space,equal,equal,space",
         "way Stowe strict": "space,equal,equal,equal,space",
