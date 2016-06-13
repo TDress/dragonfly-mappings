@@ -36,6 +36,7 @@ window_rule = MappingRule(
 
 		#  page actions
                 'scope': Key('f'),
+                'scoping': Key('escape, f'),
     		'show page atoms': Key("g,s"),
 	},
     	extras = [

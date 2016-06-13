@@ -58,7 +58,7 @@ file_extensions_rule = MappingRule(
                 'dot configure short': Text('.conf'),
                 'dot log': Text('.log'),
                 'dot Js': Text('.js'),
-                'spec Js': Text('.js'),
+                '(spec | Speck | Spector) Js': Text('.js'),
                 'dot Html': Text('.html'),
                 'dot Xml': Text('.xml'),
 
@@ -275,6 +275,7 @@ bash_rule = MappingRule(
                 'npm install':  Text('sudo npm install '),
                 'Npm install global':  Text('sudo npm install -g '),
                 'Npm build':  Text('sudo npm build'),
+                'npm run [<text>]': Text('npm run %(text)s'),
 
                 # react native command line
                 'react initialize': Text('react-native init '),

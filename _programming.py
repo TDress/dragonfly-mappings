@@ -35,7 +35,7 @@ symbols_rule = MappingRule(
             'snake Id': Text('_id'),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'snake word [<text>]': Text('_%(text)s'),
-            'spec word [<text>]': Text('.%(text)s'),
+            'spec [<text>]': Text('.%(text)s'),
             'spec': Text('.'),
 
             'optic [<text>]': Key("colon") +  Function(lib.combination.executeCombo),
@@ -92,6 +92,7 @@ symbols_rule = MappingRule(
             "(minus|subtract|subtraction) equals": Text(" -= "),
             'divide': Text(' / '),
 
+            'modulus': Text(' % '),
             'mod [<text>]':  Key("percent") +  Function(lib.combination.executeCombo),
             'oust mod': Key('c, percent'),
             '(Lopp | lop) mod': Key('d, percent'),
@@ -164,6 +165,7 @@ builtin_statement_rule = MappingRule(
         "else if": Text("else if ( )") + Key("left, backspace"),
         "extends ": Text("extends "),
         "for loop": Text("for ( )") + Key("left, backspace"),
+        "for loop generic": Text("for ( let i=0; i < blank; i+ +)") + Key("left:2, backspace, escape, 0, w:3, X"),
         "false": Text("false"),
         "finally": Text("finally {") + Key("enter"),
         "if": Text("if ("),
@@ -180,9 +182,9 @@ builtin_statement_rule = MappingRule(
         "switch": Text("switch ( ) { }") + Key('left,enter:2,up:2, escape, 0, w:2, a, delete'),
         "throw": Text("throw "),
         "true": Text("true"),
-        "try": Text("try {") + Key("enter"),
-        "while": Text("while () {") + Key("left:3"),
-        "while <text>": SCText("while (%(text)s) {") + Key("left:3"),
+        "try": Text("try {") + Key("enter:2, up, tab"),
+        "while": Text("while ( ) {") + Key("enter:2, up:2, escape, dollar, left:2, i, backspace"),
+        "while <text>": Text("while (%(text)s ) {") + Key("enter:2, up:2, escape, dollar, left:2, i, backspace"),
 
 
     },
