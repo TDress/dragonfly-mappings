@@ -35,6 +35,7 @@ symbols_rule = MappingRule(
             'snake Id': Text('_id'),
             'snake [<text>]': Key("underscore") +  Function(lib.combination.executeCombo),
             'snake word [<text>]': Text('_%(text)s'),
+            '(spec | Speck | Spector) Js': Text('.js'),
             'spec [<text>]': Text('.%(text)s'),
             'spec': Text('.'),
 
@@ -76,6 +77,7 @@ symbols_rule = MappingRule(
             'amp': Text("&"),
             'amp space':  Key('space,ampersand,space'),
             'amp twice':  Text(' & &') + Key('escape,X,a,space'),
+            'cork and':  Key('right') + Text(' & &') + Key('escape,X,a,space'),
             'amp twice start':  Text('& &') + Key('escape,X,a,space'),
             
             'or': Key('space,bar,space:2,bar,left,backspace:2,right,space'),
@@ -207,6 +209,10 @@ php_rule = MappingRule(
         'not empty': Text('!empty( )') +  Key('left,backspace'),
         'for each': Text('foreach( as ) {') +  Key('enter:2,up:2,escape,dollar,6,h,i'),
         'for each short': Text('foreach( as )') + Key('escape,4,h'),
+        'loop Rasmus Ike': Text('for ( $i = 0; ; $i + + ) {') 
+            + Key('enter:2, escape, k:2, dollar, b, X, left, X, left, X, 6, b, X, w:5'),
+        'loop Rasmus Jake': Text('for ( $j = 0; ; $j + + ) {') 
+            + Key('enter:2, escape, k:2, dollar, b, X, left, X, left, X, 6, b, X, w:5'),
         'namespace': Text('namespace '),
         'nil': Text('null'),
         'PHP': Text("php"),

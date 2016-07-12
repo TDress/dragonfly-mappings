@@ -58,7 +58,6 @@ file_extensions_rule = MappingRule(
                 'dot configure short': Text('.conf'),
                 'dot log': Text('.log'),
                 'dot Js': Text('.js'),
-                '(spec | Speck | Spector) Js': Text('.js'),
                 'dot Html': Text('.html'),
                 'dot Xml': Text('.xml'),
 
@@ -81,6 +80,7 @@ symbol_rule = MappingRule(
             'backslash [<text>]':  Key('backslash') +  Function(lib.combination.executeCombo),
             'slash [<text>]':  Key('slash') +  Function(lib.combination.executeCombo),
             "caret | carrot":  Text("^"),
+            'hyphen <text>': Key('hyphen') +  Text('%(text)s'),
             'hyphen [<text>]': Key('hyphen') +  Function(lib.combination.executeCombo),
         },
         extras = [
@@ -122,7 +122,7 @@ bash_rule = MappingRule(
                 'push D [<text>]': Text('pushd %(text)s'),
                 'pop D': Text('popd') + Key('enter'),
                 'directory stack': Text('dirs'),
-                'tree': Text('tree '),
+                'tree [<text>]': Text('tree %(text)s'),
 		"copy": Text("cp "),
 		"copy recursive": Text("cp -r "),
 		"copy <text>": Text("cp %(text)s"),
@@ -272,7 +272,7 @@ bash_rule = MappingRule(
                 'Npm': Text('npm '),
                 'Npm initialize': Text('npm init '),
                 'Npm start': Text('npm start'),
-                'npm install':  Text('sudo npm install '),
+                'npm install':  Text('npm install '),
                 'Npm install global':  Text('sudo npm install -g '),
                 'Npm build':  Text('sudo npm build'),
                 'npm run [<text>]': Text('npm run %(text)s'),
@@ -336,7 +336,7 @@ git_rule = MappingRule(
                 'annals log committed by Thomas': Text('git log --committer=" Thomas Dressler"') 
                 + Key('left:19,backspace'),
 
-		"annals diff": Text("git diff\n"),
+		"annals diff": Text("git diff "),
 		"annals diff [color] words": Text("git diff --color-words\n"),
 		"annals diff (cache | cash)": Text("git diff --color-words --cached\n"),
 
@@ -360,7 +360,9 @@ git_rule = MappingRule(
                 'annals (Paul | pull) origin':Text('git pull origin'),
                 'annals (Paul | pull) origin master':Text('git pull origin master'),
                 'annals show': Text('git show '),
-		"annals stash": Text("git stash\n"),
+		"annals stash": Text("git stash "),
+		"annals stash push": Text("git stash push"),
+		"annals stash pop": Text("git stash pop"),
                 "annals ignore": Text('.gitignore'),
 
 		"annals help": Text("git help"),

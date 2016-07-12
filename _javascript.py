@@ -35,6 +35,8 @@ rules = MappingRule(
         "((jquery|jay query) (variable|var)|dollar paren)": Text("$()") + Key("left"),  # @IgnorePep8
         "object": Text("Object "),
         "for in": Text('for( var  in )') + Key('left:9,backspace,right:4'),
+        'Loop Js Ike': Text('for ( let i = 0; ; i + + ) {') + Key('enter:2, escape, k:2, dollar, b, X, left, X, left, X, 6, b, X, w:5'),
+        'Loop Js Jake': Text('for ( let j = 0; ; j + + ) {') + Key('enter:2, escape, k:2, dollar, b, X, left, X, left, X, 6, b, X, w:5'),
         "reg exp": Text("RegExp"),
         "string object": Text("String"),
         "this": Text("this"),

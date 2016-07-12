@@ -106,6 +106,7 @@ buffer_rule = MappingRule(
             'code edit': Key("escape,colon,e,space"),
             'code shell': Key("escape,colon,s,h,enter"),
             'code search file':Key('escape,colon') + Text('CtrlP '),
+            'code search e-commerce':Key('escape,colon') + Text('CtrlP ~/ecom/') + Key('enter'),
             'code search libraries':Key('escape,colon') + Text('CtrlP ~/ecom/webdev_trunk/libraries/') + Key('enter'),
             'code search applications':Key('escape,colon') + Text('CtrlP ~/ecom/webdev_trunk/applications/') + Key('enter'),
             'code search function': Key('escape,colon') + Text(' Flisttoggle') + Key('enter'),
@@ -147,6 +148,8 @@ manipulation_rule = MappingRule(
                 '(Cleve | cleave) [<text>]': Key("escape,o") + Function(lib.combination.executeCombo),
                 '(Cleve | cleave) push': Key("escape,o,enter,up"), 
                 '(Cleve | cleave) up push': Key("escape,O,enter, up"),
+                '<n> jump right <m>':  Key('escape, v, j,%(m)d, %(n)d, rangle'),
+                '<n> jump left <m>':  Key('escape, v, j,%(m)d, %(n)d, langle'),
                 '[<n>] jump right':  Key('escape, v, l,%(n)d,rangle'),
                 '[<n>] jump left':  Key('escape, v, l,%(n)d,langle'),
                 'jump right <n>': Key('escape,v, j:%(n)d, rangle'),
@@ -193,6 +196,7 @@ manipulation_rule = MappingRule(
                 '[<n>] trim back [<text>]': Key("%(n)d,X") +  Function(lib.combination.executeCombo),
                 'undo': Key("escape,u"),
                 'yank line <n>': Key('escape,0, v, %(n)d-1, j, $, y'),
+                'yank word': Key('e, b, y, e'),
                 'yank [<text>]': Key("y") +  Function(lib.combination.executeCombo),
                 'yank line [<text>]': Key("y,y") + Function(lib.combination.executeCombo),
                 # recording and replaying movements
@@ -206,10 +210,12 @@ manipulation_rule = MappingRule(
 	},
 	extras = [
 		Dictation("text"),
-                IntegerRef("n", 1, 20)
+                IntegerRef("n", 1, 20),
+                IntegerRef("m", 1, 20)
 	],
         defaults = {
                 "n":  1,
+                "m":  1,
                 "text": ""
         }
 )
