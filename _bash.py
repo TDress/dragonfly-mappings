@@ -276,6 +276,8 @@ bash_rule = MappingRule(
                 'Npm install global':  Text('sudo npm install -g '),
                 'Npm build':  Text('sudo npm build'),
                 'npm run [<text>]': Text('npm run %(text)s'),
+                # Python package manager
+                'Python install': Text('pip install '),
 
                 # react native command line
                 'react initialize': Text('react-native init '),
