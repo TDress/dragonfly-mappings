@@ -1,3 +1,4 @@
 _settings.py
 *.pyc
 core/
+_settings.pyc
